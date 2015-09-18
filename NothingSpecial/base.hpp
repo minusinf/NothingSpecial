@@ -13,5 +13,7 @@
 #include <memory> // unique_ptr
 #include <vector>
 #include <map>
+#include <string>
+#include <iostream>
 
 #endif /* base_h */

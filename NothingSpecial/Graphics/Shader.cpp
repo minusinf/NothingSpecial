@@ -7,7 +7,7 @@
 //
 
 #include "Shader.hpp"
-#include "ShaderException.hpp"
+#include "GraphicsException.hpp"
 
 #include <exception>
 #include <fstream>

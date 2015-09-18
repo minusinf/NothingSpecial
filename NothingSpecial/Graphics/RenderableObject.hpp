@@ -13,9 +13,8 @@ namespace Graphics {
     class RenderableObject
     {
     public:
-        RenderableObject();
         virtual ~RenderableObject();
-        virtual void render() const;
+        virtual void render() const = 0;
     };
 }
 

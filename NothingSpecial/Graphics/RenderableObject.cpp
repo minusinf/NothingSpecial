@@ -8,3 +8,9 @@
 
 #include "RenderableObject.hpp"
 
+using namespace Graphics;
+
+RenderableObject::~RenderableObject()
+{
+    
+}

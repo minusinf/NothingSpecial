@@ -9,9 +9,10 @@
 #ifndef Window_hpp
 #define Window_hpp
 
+#include "base.hpp"
 
 class GLFWwindow;
-
+class Scene;
 class Window
 {
 public:
@@ -22,6 +23,7 @@ public:
     
     void close();
     void render();
+    void loadScene(std::shared_ptr<Scene> scene);
     void keyCallback(int key, int scancode, int action, int mods);
     void sizeCallback(int width, int height);
 private:
@@ -29,6 +31,8 @@ private:
     int m_width;
     int m_height;
     GLFWwindow* m_window;
+    
+    std::shared_ptr<Scene> m_scene;
 };
 
 #endif /* Window_hpp */

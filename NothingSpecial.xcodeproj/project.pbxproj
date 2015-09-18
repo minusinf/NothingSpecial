@@ -14,11 +14,11 @@
 		507CEDFE1BAC9AAB00D644F7 /* Window.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 507CEDFC1BAC9AAB00D644F7 /* Window.cpp */; settings = {ASSET_TAGS = (); }; };
 		507CEE051BACA57500D644F7 /* OpenGLWrapper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 507CEE031BACA57500D644F7 /* OpenGLWrapper.cpp */; settings = {ASSET_TAGS = (); }; };
 		507CEE081BACA6B300D644F7 /* Shader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 507CEE061BACA6B300D644F7 /* Shader.cpp */; settings = {ASSET_TAGS = (); }; };
-		507CEE0B1BACAFB700D644F7 /* ShaderException.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 507CEE091BACAFB700D644F7 /* ShaderException.cpp */; settings = {ASSET_TAGS = (); }; };
 		507CEE0E1BACB36D00D644F7 /* Scene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 507CEE0C1BACB36D00D644F7 /* Scene.cpp */; settings = {ASSET_TAGS = (); }; };
 		507CEE111BACB39500D644F7 /* Mesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 507CEE0F1BACB39500D644F7 /* Mesh.cpp */; settings = {ASSET_TAGS = (); }; };
 		507CEE151BACB9E700D644F7 /* RenderableObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 507CEE131BACB9E700D644F7 /* RenderableObject.cpp */; settings = {ASSET_TAGS = (); }; };
 		507CEE1A1BACC0D700D644F7 /* tiny_obj_loader.cc in Sources */ = {isa = PBXBuildFile; fileRef = 507CEE181BACC0D700D644F7 /* tiny_obj_loader.cc */; settings = {ASSET_TAGS = (); }; };
+		507CEE1D1BACC18F00D644F7 /* ObjMesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 507CEE1B1BACC18F00D644F7 /* ObjMesh.cpp */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -45,8 +45,6 @@
 		507CEE041BACA57500D644F7 /* OpenGLWrapper.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = OpenGLWrapper.hpp; path = Graphics/OpenGLWrapper.hpp; sourceTree = "<group>"; };
 		507CEE061BACA6B300D644F7 /* Shader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Shader.cpp; path = Graphics/Shader.cpp; sourceTree = "<group>"; };
 		507CEE071BACA6B300D644F7 /* Shader.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Shader.hpp; path = Graphics/Shader.hpp; sourceTree = "<group>"; };
-		507CEE091BACAFB700D644F7 /* ShaderException.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ShaderException.cpp; path = Graphics/ShaderException.cpp; sourceTree = "<group>"; };
-		507CEE0A1BACAFB700D644F7 /* ShaderException.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = ShaderException.hpp; path = Graphics/ShaderException.hpp; sourceTree = "<group>"; };
 		507CEE0C1BACB36D00D644F7 /* Scene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Scene.cpp; sourceTree = "<group>"; };
 		507CEE0D1BACB36D00D644F7 /* Scene.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Scene.hpp; sourceTree = "<group>"; };
 		507CEE0F1BACB39500D644F7 /* Mesh.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Mesh.cpp; path = Graphics/Mesh.cpp; sourceTree = "<group>"; };
@@ -56,6 +54,9 @@
 		507CEE141BACB9E700D644F7 /* RenderableObject.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = RenderableObject.hpp; path = Graphics/RenderableObject.hpp; sourceTree = "<group>"; };
 		507CEE181BACC0D700D644F7 /* tiny_obj_loader.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = tiny_obj_loader.cc; path = external/tinyobjloader/tiny_obj_loader.cc; sourceTree = "<group>"; };
 		507CEE191BACC0D700D644F7 /* tiny_obj_loader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = tiny_obj_loader.h; path = external/tinyobjloader/tiny_obj_loader.h; sourceTree = "<group>"; };
+		507CEE1B1BACC18F00D644F7 /* ObjMesh.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ObjMesh.cpp; path = Graphics/ObjMesh.cpp; sourceTree = "<group>"; };
+		507CEE1C1BACC18F00D644F7 /* ObjMesh.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = ObjMesh.hpp; path = Graphics/ObjMesh.hpp; sourceTree = "<group>"; };
+		507CEE1E1BACC2E300D644F7 /* GraphicsException.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = GraphicsException.hpp; path = Graphics/GraphicsException.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,12 +114,13 @@
 				507CEE041BACA57500D644F7 /* OpenGLWrapper.hpp */,
 				507CEE061BACA6B300D644F7 /* Shader.cpp */,
 				507CEE071BACA6B300D644F7 /* Shader.hpp */,
-				507CEE091BACAFB700D644F7 /* ShaderException.cpp */,
-				507CEE0A1BACAFB700D644F7 /* ShaderException.hpp */,
 				507CEE0F1BACB39500D644F7 /* Mesh.cpp */,
 				507CEE101BACB39500D644F7 /* Mesh.hpp */,
 				507CEE131BACB9E700D644F7 /* RenderableObject.cpp */,
 				507CEE141BACB9E700D644F7 /* RenderableObject.hpp */,
+				507CEE1B1BACC18F00D644F7 /* ObjMesh.cpp */,
+				507CEE1C1BACC18F00D644F7 /* ObjMesh.hpp */,
+				507CEE1E1BACC2E300D644F7 /* GraphicsException.hpp */,
 			);
 			name = Graphics;
 			sourceTree = "<group>";
@@ -200,9 +202,9 @@
 				507CEE0E1BACB36D00D644F7 /* Scene.cpp in Sources */,
 				507CEE051BACA57500D644F7 /* OpenGLWrapper.cpp in Sources */,
 				507CEDF01BAC970C00D644F7 /* main.cpp in Sources */,
+				507CEE1D1BACC18F00D644F7 /* ObjMesh.cpp in Sources */,
 				507CEE111BACB39500D644F7 /* Mesh.cpp in Sources */,
 				507CEE1A1BACC0D700D644F7 /* tiny_obj_loader.cc in Sources */,
-				507CEE0B1BACAFB700D644F7 /* ShaderException.cpp in Sources */,
 				507CEE081BACA6B300D644F7 /* Shader.cpp in Sources */,
 				507CEDFE1BAC9AAB00D644F7 /* Window.cpp in Sources */,
 			);

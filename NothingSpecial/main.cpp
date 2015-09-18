@@ -14,6 +14,16 @@
 #define WINDOW_HEIGHT 768
 #define PROJECT_NAME "Nothing Special"
 
+#include "Scene.hpp"
+#include "ObjMesh.hpp"
+std::shared_ptr<Scene>
+createScene()
+{
+    std::shared_ptr<Scene> scene(new Scene());
+    scene->addObject(std::make_shared<Graphics::ObjMesh>("/Users/pascal/Downloads/bunny.obj"));
+    return scene;
+}
+
 void glfw_error_callback(int error, const char* desc)
 {
     std::cerr << "GLFW ERROR(" << std::to_string(error) << ")" << desc << std::endl;
@@ -31,23 +41,22 @@ int main(int argc, const char * argv[]) {
     }
     glfwSetErrorCallback(glfw_error_callback);
     
-    GLFWwindow* window = glfwCreateWindow(WINDOW_WIDTH, WINDOW_HEIGHT, PROJECT_NAME, NULL, NULL);
-    if (!window)
+    GLFWwindow* glfwwindow = glfwCreateWindow(WINDOW_WIDTH, WINDOW_HEIGHT, PROJECT_NAME, NULL, NULL);
+    if (!glfwwindow)
     {
         glfwTerminate();
-        std::cerr << "Failed to create window. Aborting." << std::endl;
+        std::cerr << "Failed to create glfw window. Aborting." << std::endl;
         exit(EXIT_FAILURE);
     }
-    glfwMakeContextCurrent(window);
+    glfwMakeContextCurrent(glfwwindow);
     
-    std::unique_ptr<Window> pWindow(new Window(window));
-    while (pWindow->isActive())
+    Window window(glfwwindow);
+    window.loadScene(createScene());
+    while (window.isActive())
     {
-        pWindow->render();
+        window.render();
         glfwPollEvents();
-    }
-    pWindow->close();
-    
+    }    
     glfwTerminate();
     return EXIT_SUCCESS;
 }

@@ -7,6 +7,7 @@
 //
 
 #include "Window.hpp"
+#include "Scene.hpp"
 #include <map>
 #include <GLFW/glfw3.h>
 #include <iostream>
@@ -39,7 +40,8 @@ glfwWindowRefreshCallback(GLFWwindow* window)
 
 Window::Window(GLFWwindow* window):
     m_window(window),
-    m_active(true)
+    m_active(true),
+    m_scene(new Scene()) // empty default scene
 {
     m_glfwWindowMap[window] = this;
     glfwSetKeyCallback(window, glfwKeyCallback);
@@ -70,20 +72,22 @@ Window::render()
     float ratio = m_width / (float) m_height;
 
     glClear(GL_COLOR_BUFFER_BIT);
-    glMatrixMode(GL_PROJECTION);
-    glLoadIdentity();
-    glOrtho(-ratio, ratio, -1.f, 1.f, 1.f, -1.f);
-    glMatrixMode(GL_MODELVIEW);
-    glLoadIdentity();
-    glRotatef((float) glfwGetTime() * 50.f, 0.f, 0.f, 1.f);
-    glBegin(GL_TRIANGLES);
-    glColor3f(1.f, 0.f, 0.f);
-    glVertex3f(-0.6f, -0.4f, 0.f);
-    glColor3f(0.f, 1.f, 0.f);
-    glVertex3f(0.6f, -0.4f, 0.f);
-    glColor3f(0.f, 0.f, 1.f);
-    glVertex3f(0.f, 0.6f, 0.f);
-    glEnd();
+    m_scene->render();
+    
+//    glMatrixMode(GL_PROJECTION);
+//    glLoadIdentity();
+//    glOrtho(-ratio, ratio, -1.f, 1.f, 1.f, -1.f);
+//    glMatrixMode(GL_MODELVIEW);
+//    glLoadIdentity();
+//    glRotatef((float) glfwGetTime() * 50.f, 0.f, 0.f, 1.f);
+//    glBegin(GL_TRIANGLES);
+//    glColor3f(1.f, 0.f, 0.f);
+//    glVertex3f(-0.6f, -0.4f, 0.f);
+//    glColor3f(0.f, 1.f, 0.f);
+//    glVertex3f(0.6f, -0.4f, 0.f);
+//    glColor3f(0.f, 0.f, 1.f);
+//    glVertex3f(0.f, 0.6f, 0.f);
+//    glEnd();
     
     glfwSwapBuffers(m_window);
 }
@@ -105,6 +109,12 @@ Window::sizeCallback(int width, int height)
 {
     m_width = width;
     m_height = height;
+}
+
+void
+Window::loadScene(std::shared_ptr<Scene> scene)
+{
+    m_scene = scene;
 }
 
 void
