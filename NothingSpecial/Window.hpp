@@ -9,6 +9,7 @@
 #ifndef Window_hpp
 #define Window_hpp
 
+
 class GLFWwindow;
 
 class Window
