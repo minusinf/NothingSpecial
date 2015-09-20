@@ -17,7 +17,15 @@
 #include <map>
 #include <string>
 #include <iostream>
+#include <cassert>
+#include <sstream>
 
-#include <GLFW/glfw3.h>
+// GLFW Setup
+#define GLFW_INCLUDE_GLCOREARB
+#define GLFW_INCLUDE_GLEXT
+#include <GLFW/glfw3.h> // Includes OpenGL
+
+
+#include <glm/glm.hpp>
 
 #endif /* base_h */
