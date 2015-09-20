@@ -12,13 +12,14 @@
 		507CEDF91BAC987700D644F7 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 507CEDF81BAC987700D644F7 /* OpenGL.framework */; };
 		507CEDFB1BAC987F00D644F7 /* OpenCL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 507CEDFA1BAC987F00D644F7 /* OpenCL.framework */; };
 		507CEDFE1BAC9AAB00D644F7 /* Window.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 507CEDFC1BAC9AAB00D644F7 /* Window.cpp */; settings = {ASSET_TAGS = (); }; };
-		507CEE051BACA57500D644F7 /* OpenGLWrapper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 507CEE031BACA57500D644F7 /* OpenGLWrapper.cpp */; settings = {ASSET_TAGS = (); }; };
+		507CEE051BACA57500D644F7 /* GLWrapper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 507CEE031BACA57500D644F7 /* GLWrapper.cpp */; settings = {ASSET_TAGS = (); }; };
 		507CEE081BACA6B300D644F7 /* Shader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 507CEE061BACA6B300D644F7 /* Shader.cpp */; settings = {ASSET_TAGS = (); }; };
 		507CEE0E1BACB36D00D644F7 /* Scene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 507CEE0C1BACB36D00D644F7 /* Scene.cpp */; settings = {ASSET_TAGS = (); }; };
 		507CEE111BACB39500D644F7 /* Mesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 507CEE0F1BACB39500D644F7 /* Mesh.cpp */; settings = {ASSET_TAGS = (); }; };
 		507CEE151BACB9E700D644F7 /* RenderableObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 507CEE131BACB9E700D644F7 /* RenderableObject.cpp */; settings = {ASSET_TAGS = (); }; };
 		507CEE1A1BACC0D700D644F7 /* tiny_obj_loader.cc in Sources */ = {isa = PBXBuildFile; fileRef = 507CEE181BACC0D700D644F7 /* tiny_obj_loader.cc */; settings = {ASSET_TAGS = (); }; };
 		507CEE1D1BACC18F00D644F7 /* ObjMesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 507CEE1B1BACC18F00D644F7 /* ObjMesh.cpp */; settings = {ASSET_TAGS = (); }; };
+		507CEE201BAD71AC00D644F7 /* libGLEW.1.12.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 507CEE1F1BAD71AC00D644F7 /* libGLEW.1.12.0.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -41,8 +42,8 @@
 		507CEDFA1BAC987F00D644F7 /* OpenCL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenCL.framework; path = System/Library/Frameworks/OpenCL.framework; sourceTree = SDKROOT; };
 		507CEDFC1BAC9AAB00D644F7 /* Window.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Window.cpp; sourceTree = "<group>"; };
 		507CEDFD1BAC9AAB00D644F7 /* Window.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Window.hpp; sourceTree = "<group>"; };
-		507CEE031BACA57500D644F7 /* OpenGLWrapper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = OpenGLWrapper.cpp; path = Graphics/OpenGLWrapper.cpp; sourceTree = "<group>"; };
-		507CEE041BACA57500D644F7 /* OpenGLWrapper.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = OpenGLWrapper.hpp; path = Graphics/OpenGLWrapper.hpp; sourceTree = "<group>"; };
+		507CEE031BACA57500D644F7 /* GLWrapper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GLWrapper.cpp; path = Graphics/GLWrapper.cpp; sourceTree = "<group>"; };
+		507CEE041BACA57500D644F7 /* GLWrapper.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GLWrapper.hpp; path = Graphics/GLWrapper.hpp; sourceTree = "<group>"; };
 		507CEE061BACA6B300D644F7 /* Shader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Shader.cpp; path = Graphics/Shader.cpp; sourceTree = "<group>"; };
 		507CEE071BACA6B300D644F7 /* Shader.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Shader.hpp; path = Graphics/Shader.hpp; sourceTree = "<group>"; };
 		507CEE0C1BACB36D00D644F7 /* Scene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Scene.cpp; sourceTree = "<group>"; };
@@ -57,6 +58,7 @@
 		507CEE1B1BACC18F00D644F7 /* ObjMesh.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ObjMesh.cpp; path = Graphics/ObjMesh.cpp; sourceTree = "<group>"; };
 		507CEE1C1BACC18F00D644F7 /* ObjMesh.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = ObjMesh.hpp; path = Graphics/ObjMesh.hpp; sourceTree = "<group>"; };
 		507CEE1E1BACC2E300D644F7 /* GraphicsException.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = GraphicsException.hpp; path = Graphics/GraphicsException.hpp; sourceTree = "<group>"; };
+		507CEE1F1BAD71AC00D644F7 /* libGLEW.1.12.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libGLEW.1.12.0.dylib; path = ../../../../usr/local/Cellar/glew/1.12.0/lib/libGLEW.1.12.0.dylib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +66,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				507CEE201BAD71AC00D644F7 /* libGLEW.1.12.0.dylib in Frameworks */,
 				507CEDFB1BAC987F00D644F7 /* OpenCL.framework in Frameworks */,
 				507CEDF91BAC987700D644F7 /* OpenGL.framework in Frameworks */,
 				507CEDF71BAC986B00D644F7 /* libglfw3.3.1.dylib in Frameworks */,
@@ -76,6 +79,7 @@
 		507CEDE31BAC970C00D644F7 = {
 			isa = PBXGroup;
 			children = (
+				507CEE1F1BAD71AC00D644F7 /* libGLEW.1.12.0.dylib */,
 				507CEDFA1BAC987F00D644F7 /* OpenCL.framework */,
 				507CEDF81BAC987700D644F7 /* OpenGL.framework */,
 				507CEDF61BAC986B00D644F7 /* libglfw3.3.1.dylib */,
@@ -110,8 +114,8 @@
 		507CEE021BACA52900D644F7 /* Graphics */ = {
 			isa = PBXGroup;
 			children = (
-				507CEE031BACA57500D644F7 /* OpenGLWrapper.cpp */,
-				507CEE041BACA57500D644F7 /* OpenGLWrapper.hpp */,
+				507CEE031BACA57500D644F7 /* GLWrapper.cpp */,
+				507CEE041BACA57500D644F7 /* GLWrapper.hpp */,
 				507CEE061BACA6B300D644F7 /* Shader.cpp */,
 				507CEE071BACA6B300D644F7 /* Shader.hpp */,
 				507CEE0F1BACB39500D644F7 /* Mesh.cpp */,
@@ -200,7 +204,7 @@
 			files = (
 				507CEE151BACB9E700D644F7 /* RenderableObject.cpp in Sources */,
 				507CEE0E1BACB36D00D644F7 /* Scene.cpp in Sources */,
-				507CEE051BACA57500D644F7 /* OpenGLWrapper.cpp in Sources */,
+				507CEE051BACA57500D644F7 /* GLWrapper.cpp in Sources */,
 				507CEDF01BAC970C00D644F7 /* main.cpp in Sources */,
 				507CEE1D1BACC18F00D644F7 /* ObjMesh.cpp in Sources */,
 				507CEE111BACB39500D644F7 /* Mesh.cpp in Sources */,
@@ -297,6 +301,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					/usr/local/Cellar/glfw3/3.1.1/lib,
+					/usr/local/Cellar/glew/1.12.0/lib,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -309,6 +314,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					/usr/local/Cellar/glfw3/3.1.1/lib,
+					/usr/local/Cellar/glew/1.12.0/lib,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

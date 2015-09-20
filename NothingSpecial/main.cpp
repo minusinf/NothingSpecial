@@ -7,7 +7,7 @@
 //
 
 #include <iostream>
-#include <GLFW/glfw3.h>
+#include "base.hpp"
 #include "Window.hpp"
 
 #define WINDOW_WIDTH 1024

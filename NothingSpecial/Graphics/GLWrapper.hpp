@@ -9,11 +9,16 @@
 #ifndef OpenGLWrapper_hpp
 #define OpenGLWrapper_hpp
 
+#include <string>
+
 namespace Graphics
 {
-   class OpenGLWrapper
+   class GLWrapper
     {
     public:
+        static bool GLError();
+        static bool GLError(std::string& errorString);
+        static void GLErrorThrow();
     };
 }
 #endif /* OpenGLWrapper_hpp */
