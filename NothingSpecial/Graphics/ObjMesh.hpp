@@ -15,7 +15,7 @@
 
 #include "tiny_obj_loader.h"
 namespace Graphics {
-    class ObjMesh:public Mesh
+    class ObjMesh: public Mesh
     {
     public:
         ObjMesh(const std::string& path, const Shader& shader);

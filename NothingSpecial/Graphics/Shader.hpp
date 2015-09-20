@@ -1,19 +1,40 @@
-//
-//  Shader.hpp
-//  NothingSpecial
-//
-//  Created by Pascal Spörri on 18/09/15.
-//  Copyright © 2015 Pascal Spörri. All rights reserved.
-//
+/*******************************************************************************
+ Copyright (C) 2012 Adrian Blumer (blumer.adrian@gmail.com)
+ TerrainErosion Graphics Library
+ Copyright (C) 2015 Pascal Spörri (me@pascalspoerri.ch)
+ 
+ All Rights Reserved.
+ 
+ You may use, distribute and modify this code under the terms of the
+ MIT license (http://opensource.org/licenses/MIT).
+ *******************************************************************************/
 
 #ifndef Shader_hpp
 #define Shader_hpp
 
 #include "base.hpp"
+#include "GLHelper.hpp"
 
 namespace Graphics {
     class Shader
     {
+        typedef struct UniformInfo
+        {
+            std::string Name;                   /// name of the uniform variable
+            GL::ShaderVariableType Type;        /// type of the uniform variable
+            int Length;                         /// length of the uniform array
+            uint Location;                      /// location property
+        } UniformInfo;
+        
+        typedef struct AttributeInfo
+        {
+            std::string Name;
+            GL::ShaderVariableType Type;
+            int Length;
+            int Location;
+            bool Present;
+        } AttributeInfo;
+        
     public:
         Shader(const std::string& vertexShaderPath,
                const std::string& fragmentShaderPath);
@@ -25,6 +46,27 @@ namespace Graphics {
         void bind() const;
         void unbind() const;
         static void unbindCurrent();
+        
+        const std::string& vertexShaderPath();
+        const std::string& fragmentShaderPath();
+        
+        OpenGLShaderProgramID_t programID();
+        
+        /// Set Uniforms
+        bool setUniform(const std::string& name, const glm::vec3& v);
+        bool setUniform(const std::string& name, const glm::vec4& v);
+        bool setUniform(const std::string& name, const glm::mat4& v, bool transpose = false);
+        bool setUniform(const std::string& name, bool v);
+        bool setUniform(const std::string& name, int v);
+        
+        /// Attributes
+        bool mapAttribute(const std::string& name, uint location);
+        GLuint attributeLocation(const std::string& name);
+        
+    protected:
+        void loadUniformInfo();
+        void loadAttributeInfo();
+        
     private:
         const std::string m_vertexShaderPath;
         const std::string m_fragmentShaderPath;
@@ -34,9 +76,18 @@ namespace Graphics {
 
         // OpenGL
         bool m_compiled;
-        GLuint m_pId;
-        GLuint m_fId;
-        GLuint m_vId;
+        OpenGLShaderProgramID_t m_pId;
+        OpenGLShaderID_t m_fId;
+        OpenGLShaderID_t m_vId;
+        
+        // Uniforms
+        GLuint m_uniformCount;
+        std::unordered_map<std::string, UniformInfo> m_uniformInfo;
+        
+        GLuint m_attributeCount;
+        std::unordered_map<std::string, AttributeInfo> m_attributeInfo;
+        
+    private:
         
         static const Shader* ms_boundShader;
     };

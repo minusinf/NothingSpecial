@@ -33,6 +33,7 @@ ObjMesh::ObjMesh(const std::string& path, const Shader& shader):
     std::cout << "Loaded the mesh " << path << " containing "
               << std::to_string(m_shapes.size()) << " shapes and "
               << std::to_string(m_materials.size()) << " materials" << std::endl;
+    
 }
 
 ObjMesh::ObjMesh(const std::string& path):
@@ -54,5 +55,6 @@ ObjMesh::~ObjMesh()
 void
 ObjMesh::render() const
 {
-    
+    m_shader.bind();
+    std::cout << "Bound shader" << std::endl;
 }

@@ -32,7 +32,7 @@ namespace Graphics {
         }
         virtual void print() const _NOEXCEPT
         {
-            std::cerr << "Encountered a Graphics Exception" << m_msg;
+            std::cerr << "Encountered a Graphics Exception:\n" << m_msg << std::endl;
         }
     private:
         const std::string m_msg;
@@ -53,7 +53,7 @@ namespace Graphics {
         }
         virtual void print() const _NOEXCEPT
         {
-            std::cerr << "Encountered a Shader Exception" << what();
+            std::cerr << "Encountered a Shader Exception:\n" << what() << std::endl;
         }
     };
     
@@ -72,7 +72,7 @@ namespace Graphics {
         }
         virtual void print() const _NOEXCEPT
         {
-            std::cerr << "Encountered an OpenGL Exception" << what();
+            std::cerr << "Encountered an OpenGL Exception:\n" << what() << std::endl;
         }
     };
     
@@ -91,7 +91,7 @@ namespace Graphics {
         }
         virtual void print() const _NOEXCEPT
         {
-            std::cerr << "Encountered a Mesh Exception" << what();
+            std::cerr << "Encountered a Mesh Exception:\n" << what() << std::endl;
         }
     };
 }

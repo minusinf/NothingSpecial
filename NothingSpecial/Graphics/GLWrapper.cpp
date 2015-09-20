@@ -33,7 +33,15 @@ GLWrapper::GLError(std::string &errorString)
         return false;
     }
     std::stringstream stream;
-    stream << glGetString(error);
+    const char* charstr = (const char*)glGetString(error);
+    if (charstr != NULL)
+    {
+        stream << glGetString(error);
+    }
+    else
+    {
+        stream << "Code " << std::to_string(error);
+    }
     errorString = stream.str();
     return true;
 }

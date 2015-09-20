@@ -62,6 +62,7 @@
 		507CEE1F1BAD71AC00D644F7 /* libGLEW.1.12.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libGLEW.1.12.0.dylib; path = ../../../../usr/local/Cellar/glew/1.12.0/lib/libGLEW.1.12.0.dylib; sourceTree = "<group>"; };
 		507CEE211BAEC7C900D644F7 /* GLHelper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GLHelper.cpp; path = Graphics/GLHelper.cpp; sourceTree = "<group>"; };
 		507CEE221BAEC7C900D644F7 /* GLHelper.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GLHelper.hpp; path = Graphics/GLHelper.hpp; sourceTree = "<group>"; };
+		508586B61BAF34200034647B /* VertexBuffer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = VertexBuffer.hpp; path = Graphics/VertexBuffer.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,6 +131,7 @@
 				507CEE1B1BACC18F00D644F7 /* ObjMesh.cpp */,
 				507CEE1C1BACC18F00D644F7 /* ObjMesh.hpp */,
 				507CEE1E1BACC2E300D644F7 /* GraphicsException.hpp */,
+				508586B61BAF34200034647B /* VertexBuffer.hpp */,
 			);
 			name = Graphics;
 			sourceTree = "<group>";

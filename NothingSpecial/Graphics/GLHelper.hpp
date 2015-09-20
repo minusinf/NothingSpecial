@@ -1,12 +1,13 @@
-/****************************************************************************
+/*******************************************************************************
  Copyright (C) 2012 Adrian Blumer (blumer.adrian@gmail.com)
+    TerrainErosion Graphics Library
  Copyright (C) 2015 Pascal Spörri (me@pascalspoerri.ch)
 
  All Rights Reserved.
  
  You may use, distribute and modify this code under the terms of the
  MIT license (http://opensource.org/licenses/MIT).
- *****************************************************************************/
+ *******************************************************************************/
 
 #ifndef GLHelper_H
 #define GLHelper_H
@@ -15,6 +16,7 @@
 
 typedef GLint OpenGLShaderProgramID_t;
 typedef GLint OpenGLShaderID_t;
+typedef GLuint OpenGLVertexBufferID_t;
 
 namespace Graphics
 {
@@ -30,8 +32,8 @@ namespace Graphics
     
     namespace GL
     {
-        bool GetCompileStatus(OpenGLShaderProgramID_t id);
-        bool GetLinkStatus(GLuint id);
+        bool GetCompileStatus(OpenGLShaderID_t id);
+        bool GetLinkStatus(OpenGLShaderProgramID_t id);
         std::string GetShaderInfoLog(OpenGLShaderProgramID_t id);
         std::string GetProgramInfoLog(OpenGLShaderProgramID_t id);
         

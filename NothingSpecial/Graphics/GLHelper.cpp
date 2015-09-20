@@ -14,7 +14,7 @@ namespace Graphics
 {
     namespace GL
     {
-        bool GetCompileStatus(OpenGLShaderProgramID_t id)
+        bool GetCompileStatus(OpenGLShaderID_t id)
         {
             GLint status;
             glGetShaderiv(id, GL_COMPILE_STATUS, &status);

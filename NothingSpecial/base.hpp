@@ -19,6 +19,7 @@
 #include <iostream>
 #include <cassert>
 #include <sstream>
+#include <unordered_map>
 
 // GLFW Setup
 #define GLFW_INCLUDE_GLCOREARB
