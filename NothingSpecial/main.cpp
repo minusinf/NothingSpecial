@@ -42,9 +42,8 @@ int main(int argc, const char * argv[]) {
     }
     glfwSetErrorCallback(glfw_error_callback);
     
-    // Use OpenGL Core v4.1
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 1);
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 2);
     glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
     
@@ -56,6 +55,8 @@ int main(int argc, const char * argv[]) {
         exit(EXIT_FAILURE);
     }
     glfwMakeContextCurrent(glfwwindow);
+    
+    std::cout << "OpenGL Version " << glGetString(GL_VERSION) << std::endl;
     
     Window window(glfwwindow);
     window.loadScene(createScene());

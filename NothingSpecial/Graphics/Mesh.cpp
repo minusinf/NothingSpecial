@@ -31,10 +31,10 @@ Mesh::Mesh():
     GLWrapper::GLErrorThrow();
     m_shader.bind();
     m_verticesVBO.set(m_vertices);
-    m_verticesVBO.map(0, false);
+    m_verticesVBO.map(m_shader.attributeLocation("in_Position"), false);
 
     m_colorsVBO.set(m_colors);
-    m_colorsVBO.map(1, false);
+    m_colorsVBO.map(m_shader.attributeLocation("in_Color"), false);
     m_shader.unbind();
     
     GLWrapper::GLErrorThrow();
@@ -51,6 +51,17 @@ Mesh::render() const
 {
     std::cout << "Rendering" << std::endl;
     m_shader.bind();
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    m_verticesVBO.bind();
+    m_colorsVBO.bind();
+    GLWrapper::GLErrorThrow();
+    
     glDrawArrays(GL_TRIANGLES, 0, 3);
+    GLWrapper::GLErrorThrow();
+    
+    glBindVertexArray(0);
+    GLWrapper::GLErrorThrow();
+    
+    glUseProgram(0);
+    GLWrapper::GLErrorThrow();
+
 }

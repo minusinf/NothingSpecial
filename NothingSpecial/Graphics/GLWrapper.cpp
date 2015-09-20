@@ -52,6 +52,7 @@ GLWrapper::GLErrorThrow()
     std::string error;
     if (GLError(error))
     {
+//        std::cerr << "Seeing " << error << " - error" << std::endl;
         throw OpenGLException(error);
     }
 }

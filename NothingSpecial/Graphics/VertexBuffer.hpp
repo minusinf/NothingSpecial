@@ -25,51 +25,57 @@ namespace Graphics {
         
         void set(const std::vector<T>& data);
         void map(GLuint location, bool normalized);
-        void bind();
+        void bind() const;
     private:
         OpenGLVertexBufferID_t m_vbo;
+        GLuint m_buffer;
     };
 
     template<typename T>
     VertexBuffer<T>::VertexBuffer()
     {
-        glGenBuffers(1, &m_vbo);
+        glGenVertexArrays(1, &m_vbo);
+        glBindVertexArray(m_vbo);
+        glGenBuffers(1, &m_buffer);
         GLWrapper::GLErrorThrow();
     }
     
     template<typename T>
     VertexBuffer<T>::~VertexBuffer()
     {
-        glDeleteBuffers(1, &m_vbo);
+        glDeleteVertexArrays(1, &m_vbo);
         GLWrapper::GLErrorThrow();
     }
     
     template<typename T> void
-    VertexBuffer<T>::bind()
+    VertexBuffer<T>::bind() const
     {
-        glBindBuffer(GL_ARRAY_BUFFER, m_vbo);
+        glBindVertexArray(m_vbo);
         GLWrapper::GLErrorThrow();
     }
     
     template<typename T> void
     VertexBuffer<T>::set(const std::vector<T> &data)
     {
-        glBindBuffer(GL_ARRAY_BUFFER, m_vbo);
+        glBindVertexArray(m_vbo);
         size_t size = sizeof(T)*data.size();
+        glBindBuffer(GL_ARRAY_BUFFER, m_buffer);
         glBufferData(GL_ARRAY_BUFFER, size, &data[0], GL_STATIC_DRAW);
+        glBindVertexArray(0);
         GLWrapper::GLErrorThrow();
     }
     
     template<typename T> void
     VertexBuffer<T>::map(GLuint location, bool normalized)
     {
-        glBindBuffer(GL_ARRAY_BUFFER, m_vbo);
-        glEnableVertexAttribArray(location);
-        GLWrapper::GLErrorThrow();
+        glBindVertexArray(m_vbo);
+        glBindBuffer(GL_ARRAY_BUFFER, m_buffer);
         glVertexAttribPointer(location,
                               GL::TypeInfo<T>::ElementCount,
                               GL::TypeInfo<T>::ElementType,
                               normalized, 0, 0);
+        glEnableVertexAttribArray(0);
+        glBindVertexArray(0);
         GLWrapper::GLErrorThrow();
     }
 }

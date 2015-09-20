@@ -71,7 +71,7 @@ Window::render()
     
     float ratio = m_width / (float) m_height;
 
-    glClear(GL_COLOR_BUFFER_BIT);
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     m_scene->render();
     
 //    glMatrixMode(GL_PROJECTION);

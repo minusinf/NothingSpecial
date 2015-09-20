@@ -1,6 +1,6 @@
 /*******************************************************************************
  Copyright (C) 2012 Adrian Blumer (blumer.adrian@gmail.com)
- TerrainErosion Graphics Library
+    TerrainErosion Graphics Library
  Copyright (C) 2015 Pascal Spörri (me@pascalspoerri.ch)
  
  All Rights Reserved.
@@ -54,6 +54,10 @@ Shader::bind() const
     {
         glUseProgram(m_pId);
         Shader::ms_boundShader = this;
+    }
+    else
+    {
+        throw ShaderException("Binding uncompiled program");
     }
 }
 
@@ -180,6 +184,10 @@ Shader::reload()
     {
         bind();
     }
+    
+    loadAttributeInfo();
+    loadUniformInfo();
+    
     m_compiled = true;
 }
 
@@ -389,12 +397,12 @@ void Shader::loadAttributeInfo()
 {
     m_attributeCount = GL::GetProgramProperty(m_pId, GL::ProgramProperty::AttributeCount);
     std::cout << "AttributeCount: " << m_attributeCount << std::endl; // DEBUG
-    
+    int32_t location = 0;
     for (GLuint i=0; i<m_attributeCount; i++)
     {
         AttributeInfo info;
-        GL::GetAttributeInfo(m_pId,i,info.Length,info.Type,info.Name);
-        info.Location = -1;
+        GL::GetAttributeInfo(m_pId, i, info.Length, info.Type, info.Name);
+        info.Location = location;
         info.Present = true;
         
         
@@ -403,13 +411,13 @@ void Shader::loadAttributeInfo()
         {
             AttributeInfo& oldAt  = (*iter).second;
             info.Location = oldAt.Location;
-            if (info.Present)
-            {
-                glBindAttribLocation(m_pId,info.Location, info.Name.c_str());
-            }
+
         }
-        
-        
+        location++;
+        if (info.Present)
+        {
+            glBindAttribLocation(m_pId, info.Location, info.Name.c_str());
+        }
         std::cout << "\t" << info.Name << " (" << GL::StringOf(info.Type) << "," << info.Length << "): " << info.Location << "\n"; // DEBUG
         
         m_attributeInfo[info.Name] = info;
