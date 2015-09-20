@@ -20,6 +20,7 @@
 		507CEE1A1BACC0D700D644F7 /* tiny_obj_loader.cc in Sources */ = {isa = PBXBuildFile; fileRef = 507CEE181BACC0D700D644F7 /* tiny_obj_loader.cc */; settings = {ASSET_TAGS = (); }; };
 		507CEE1D1BACC18F00D644F7 /* ObjMesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 507CEE1B1BACC18F00D644F7 /* ObjMesh.cpp */; settings = {ASSET_TAGS = (); }; };
 		507CEE201BAD71AC00D644F7 /* libGLEW.1.12.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 507CEE1F1BAD71AC00D644F7 /* libGLEW.1.12.0.dylib */; };
+		507CEE231BAEC7C900D644F7 /* GLHelper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 507CEE211BAEC7C900D644F7 /* GLHelper.cpp */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -59,6 +60,8 @@
 		507CEE1C1BACC18F00D644F7 /* ObjMesh.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = ObjMesh.hpp; path = Graphics/ObjMesh.hpp; sourceTree = "<group>"; };
 		507CEE1E1BACC2E300D644F7 /* GraphicsException.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = GraphicsException.hpp; path = Graphics/GraphicsException.hpp; sourceTree = "<group>"; };
 		507CEE1F1BAD71AC00D644F7 /* libGLEW.1.12.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libGLEW.1.12.0.dylib; path = ../../../../usr/local/Cellar/glew/1.12.0/lib/libGLEW.1.12.0.dylib; sourceTree = "<group>"; };
+		507CEE211BAEC7C900D644F7 /* GLHelper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GLHelper.cpp; path = Graphics/GLHelper.cpp; sourceTree = "<group>"; };
+		507CEE221BAEC7C900D644F7 /* GLHelper.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GLHelper.hpp; path = Graphics/GLHelper.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +119,8 @@
 			children = (
 				507CEE031BACA57500D644F7 /* GLWrapper.cpp */,
 				507CEE041BACA57500D644F7 /* GLWrapper.hpp */,
+				507CEE211BAEC7C900D644F7 /* GLHelper.cpp */,
+				507CEE221BAEC7C900D644F7 /* GLHelper.hpp */,
 				507CEE061BACA6B300D644F7 /* Shader.cpp */,
 				507CEE071BACA6B300D644F7 /* Shader.hpp */,
 				507CEE0F1BACB39500D644F7 /* Mesh.cpp */,
@@ -210,6 +215,7 @@
 				507CEE111BACB39500D644F7 /* Mesh.cpp in Sources */,
 				507CEE1A1BACC0D700D644F7 /* tiny_obj_loader.cc in Sources */,
 				507CEE081BACA6B300D644F7 /* Shader.cpp in Sources */,
+				507CEE231BAEC7C900D644F7 /* GLHelper.cpp in Sources */,
 				507CEDFE1BAC9AAB00D644F7 /* Window.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
