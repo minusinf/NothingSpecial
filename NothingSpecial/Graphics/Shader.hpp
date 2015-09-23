@@ -55,9 +55,9 @@ namespace Graphics {
         GLuint getVAO() const;
         
         /// Set Uniforms
-        bool setUniform(const std::string& name, const glm::vec3& v);
-        bool setUniform(const std::string& name, const glm::vec4& v);
-        bool setUniform(const std::string& name, const glm::mat4& v, bool transpose = false);
+        bool setUniform(const std::string& name, const vec3& v);
+        bool setUniform(const std::string& name, const vec4& v);
+        bool setUniform(const std::string& name, const mat4& v, bool transpose = false);
         bool setUniform(const std::string& name, bool v);
         bool setUniform(const std::string& name, int v);
         

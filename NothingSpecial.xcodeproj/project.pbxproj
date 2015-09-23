@@ -18,9 +18,9 @@
 		507CEE111BACB39500D644F7 /* Mesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 507CEE0F1BACB39500D644F7 /* Mesh.cpp */; };
 		507CEE151BACB9E700D644F7 /* RenderableObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 507CEE131BACB9E700D644F7 /* RenderableObject.cpp */; };
 		507CEE1A1BACC0D700D644F7 /* tiny_obj_loader.cc in Sources */ = {isa = PBXBuildFile; fileRef = 507CEE181BACC0D700D644F7 /* tiny_obj_loader.cc */; };
-		507CEE1D1BACC18F00D644F7 /* ObjMesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 507CEE1B1BACC18F00D644F7 /* ObjMesh.cpp */; };
 		507CEE201BAD71AC00D644F7 /* libGLEW.1.12.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 507CEE1F1BAD71AC00D644F7 /* libGLEW.1.12.0.dylib */; };
 		507CEE231BAEC7C900D644F7 /* GLHelper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 507CEE211BAEC7C900D644F7 /* GLHelper.cpp */; };
+		50A75CC31BB345D100723F4D /* MeshFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50A75CC11BB345D100723F4D /* MeshFactory.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -56,8 +56,6 @@
 		507CEE141BACB9E700D644F7 /* RenderableObject.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = RenderableObject.hpp; path = Graphics/RenderableObject.hpp; sourceTree = "<group>"; };
 		507CEE181BACC0D700D644F7 /* tiny_obj_loader.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = tiny_obj_loader.cc; path = external/tinyobjloader/tiny_obj_loader.cc; sourceTree = "<group>"; };
 		507CEE191BACC0D700D644F7 /* tiny_obj_loader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = tiny_obj_loader.h; path = external/tinyobjloader/tiny_obj_loader.h; sourceTree = "<group>"; };
-		507CEE1B1BACC18F00D644F7 /* ObjMesh.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ObjMesh.cpp; path = Graphics/ObjMesh.cpp; sourceTree = "<group>"; };
-		507CEE1C1BACC18F00D644F7 /* ObjMesh.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = ObjMesh.hpp; path = Graphics/ObjMesh.hpp; sourceTree = "<group>"; };
 		507CEE1E1BACC2E300D644F7 /* GraphicsException.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = GraphicsException.hpp; path = Graphics/GraphicsException.hpp; sourceTree = "<group>"; };
 		507CEE1F1BAD71AC00D644F7 /* libGLEW.1.12.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libGLEW.1.12.0.dylib; path = ../../../../usr/local/Cellar/glew/1.12.0/lib/libGLEW.1.12.0.dylib; sourceTree = "<group>"; };
 		507CEE211BAEC7C900D644F7 /* GLHelper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GLHelper.cpp; path = Graphics/GLHelper.cpp; sourceTree = "<group>"; };
@@ -65,6 +63,8 @@
 		508586B61BAF34200034647B /* VertexBuffer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = VertexBuffer.hpp; path = Graphics/VertexBuffer.hpp; sourceTree = "<group>"; };
 		50A75CBF1BB3408A00723F4D /* simple.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = simple.frag; path = Graphics/shaders/simple.frag; sourceTree = "<group>"; };
 		50A75CC01BB3408A00723F4D /* simple.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = simple.vert; path = Graphics/shaders/simple.vert; sourceTree = "<group>"; };
+		50A75CC11BB345D100723F4D /* MeshFactory.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MeshFactory.cpp; path = Graphics/MeshFactory.cpp; sourceTree = "<group>"; };
+		50A75CC21BB345D100723F4D /* MeshFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MeshFactory.h; path = Graphics/MeshFactory.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,10 +131,10 @@
 				507CEE101BACB39500D644F7 /* Mesh.hpp */,
 				507CEE131BACB9E700D644F7 /* RenderableObject.cpp */,
 				507CEE141BACB9E700D644F7 /* RenderableObject.hpp */,
-				507CEE1B1BACC18F00D644F7 /* ObjMesh.cpp */,
-				507CEE1C1BACC18F00D644F7 /* ObjMesh.hpp */,
 				507CEE1E1BACC2E300D644F7 /* GraphicsException.hpp */,
 				508586B61BAF34200034647B /* VertexBuffer.hpp */,
+				50A75CC11BB345D100723F4D /* MeshFactory.cpp */,
+				50A75CC21BB345D100723F4D /* MeshFactory.h */,
 			);
 			name = Graphics;
 			sourceTree = "<group>";
@@ -225,7 +225,7 @@
 				507CEE0E1BACB36D00D644F7 /* Scene.cpp in Sources */,
 				507CEE051BACA57500D644F7 /* GLWrapper.cpp in Sources */,
 				507CEDF01BAC970C00D644F7 /* main.cpp in Sources */,
-				507CEE1D1BACC18F00D644F7 /* ObjMesh.cpp in Sources */,
+				50A75CC31BB345D100723F4D /* MeshFactory.cpp in Sources */,
 				507CEE111BACB39500D644F7 /* Mesh.cpp in Sources */,
 				507CEE1A1BACC0D700D644F7 /* tiny_obj_loader.cc in Sources */,
 				507CEE081BACA6B300D644F7 /* Shader.cpp in Sources */,

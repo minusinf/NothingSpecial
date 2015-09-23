@@ -134,27 +134,27 @@ namespace Graphics
         
         // glm::vec4
         template<>
-        GLuint TypeInfo<glm::vec4>::ElementType = GL_FLOAT;
+        GLuint TypeInfo<vec4>::ElementType = GL_FLOAT;
         template<>
-        uint TypeInfo<glm::vec4>::ElementCount = 4;
+        uint TypeInfo<vec4>::ElementCount = 4;
         template<>
-        uint TypeInfo<glm::vec4>::TexFormat = GL_RGBA;
+        uint TypeInfo<vec4>::TexFormat = GL_RGBA;
         
         // glm::vec3
         template<>
-        GLuint TypeInfo<glm::vec3>::ElementType = GL_FLOAT;
+        GLuint TypeInfo<vec3>::ElementType = GL_FLOAT;
         template<>
-        uint TypeInfo<glm::vec3>::ElementCount = 3;
+        uint TypeInfo<vec3>::ElementCount = 3;
         template<>
-        uint TypeInfo<glm::vec3>::TexFormat = GL_RGB;
+        uint TypeInfo<vec3>::TexFormat = GL_RGB;
         
         // glm::vec2
         template<>
-        GLuint TypeInfo<glm::vec2>::ElementType = GL_FLOAT;
+        GLuint TypeInfo<vec2>::ElementType = GL_FLOAT;
         template<>
-        uint TypeInfo<glm::vec2>::ElementCount = 2;
+        uint TypeInfo<vec2>::ElementCount = 2;
         template<>
-        uint TypeInfo<glm::vec2>::TexFormat = GL_RG;
+        uint TypeInfo<vec2>::TexFormat = GL_RG;
         
         // float
         template<>

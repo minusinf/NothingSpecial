@@ -16,7 +16,8 @@
 
 #include "Scene.hpp"
 #include "Shader.hpp"
-#include "ObjMesh.hpp"
+#include "Mesh.hpp"
+
 std::shared_ptr<Scene>
 createScene()
 {

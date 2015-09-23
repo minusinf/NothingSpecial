@@ -26,7 +26,12 @@
 #define GLFW_INCLUDE_GLEXT
 #include <GLFW/glfw3.h> // Includes OpenGL
 
+#include <eigen3/Eigen/Dense>
 
-#include <glm/glm.hpp>
+typedef Eigen::Vector4f vec4;
+typedef Eigen::Vector3f vec3;
+typedef Eigen::Vector2f vec2;
+typedef Eigen::Matrix4f mat4;
+//#include <glm/glm.hpp>
 
 #endif /* base_h */

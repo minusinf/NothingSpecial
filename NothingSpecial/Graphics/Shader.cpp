@@ -253,7 +253,7 @@ Shader::programID()
 
 
 
-bool Shader::setUniform(const std::string &name, const glm::vec3 &v)
+bool Shader::setUniform(const std::string &name, const vec3& v)
 {
     try
     {
@@ -261,7 +261,7 @@ bool Shader::setUniform(const std::string &name, const glm::vec3 &v)
         assert(info.Type == GL::ShaderVariableType::vec3_t);
         assert(info.Length == 1);
         assert(Shader::ms_boundShader == this);
-        glUniform3fv(info.Location,1, &v.x);
+        glUniform3fv(info.Location,1, v.data());
         return true;
     }
     catch (std::out_of_range& oor)
@@ -270,7 +270,7 @@ bool Shader::setUniform(const std::string &name, const glm::vec3 &v)
     }
 }
 
-bool Shader::setUniform(const std::string &name, const glm::vec4 &v)
+bool Shader::setUniform(const std::string &name, const vec4& v)
 {
     try
     {
@@ -279,7 +279,7 @@ bool Shader::setUniform(const std::string &name, const glm::vec4 &v)
         assert(info.Type == GL::ShaderVariableType::vec4_t);
         assert(info.Length == 1);
         assert(Shader::ms_boundShader == this);
-        glUniform4fv(info.Location,1, &v.x);
+        glUniform4fv(info.Location,1, v.data());
         return true;
     }
     catch (std::out_of_range& oor)
@@ -288,7 +288,7 @@ bool Shader::setUniform(const std::string &name, const glm::vec4 &v)
     }
 }
 
-bool Shader::setUniform(const std::string &name, const glm::mat4 &v, bool transpose)
+bool Shader::setUniform(const std::string &name, const mat4& v, bool transpose)
 {
     try
     {
@@ -296,7 +296,7 @@ bool Shader::setUniform(const std::string &name, const glm::mat4 &v, bool transp
         assert(info.Type == GL::ShaderVariableType::mat4_t);
         assert(info.Length == 1);
         assert(Shader::ms_boundShader == this);
-        glUniformMatrix4fv(info.Location,1, transpose, &v[0].x);
+        glUniformMatrix4fv(info.Location,1, transpose, v.data());
         return true;
     }
     catch (std::out_of_range& oor)

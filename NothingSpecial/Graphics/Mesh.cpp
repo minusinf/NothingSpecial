@@ -20,13 +20,13 @@ Mesh::Mesh():
     m_verticesVBO()
 {
     m_vertices = {
-        glm::vec4(0.0f,  0.5f,  0.0f, 1.0f),
-        glm::vec4(0.5f, -0.5f,  0.0f, 1.0f),
-        glm::vec4(-0.5f, -0.5f,  0.0f, 1.0f)};
+        vec4(0.0f,  0.5f,  0.0f, 1.0f),
+        vec4(0.5f, -0.5f,  0.0f, 1.0f),
+        vec4(-0.5f, -0.5f,  0.0f, 1.0f)};
     m_colors = {
-        glm::vec4(1.0f, 0.0f, 0.0f, 1.0f),
-        glm::vec4(0.0f, 1.0f, 0.0f, 1.0f),
-        glm::vec4(0.0f, 0.0f, 1.0f, 1.0f)};
+        vec4(1.0f, 0.0f, 0.0f, 1.0f),
+        vec4(0.0f, 1.0f, 0.0f, 1.0f),
+        vec4(0.0f, 0.0f, 1.0f, 1.0f)};
     
     GLWrapper::GLErrorThrow();
     m_shader.bind();

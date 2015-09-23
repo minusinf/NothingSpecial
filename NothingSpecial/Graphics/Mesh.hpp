@@ -12,6 +12,7 @@
 #include "Shader.hpp"
 #include "VertexBuffer.hpp"
 #include "RenderableObject.hpp"
+
 namespace Graphics {
     class Mesh: public RenderableObject
     {
@@ -20,11 +21,11 @@ namespace Graphics {
         virtual ~Mesh();
         virtual void render() const;
         
-        std::vector<glm::vec4> m_vertices;
-        std::vector<glm::vec4> m_colors;
+        std::vector<vec4> m_vertices;
+        std::vector<vec4> m_colors;
         Shader m_shader;
-        VertexBuffer<glm::vec4> m_verticesVBO;
-        VertexBuffer<glm::vec4> m_colorsVBO;
+        VertexBuffer<vec4> m_verticesVBO;
+        VertexBuffer<vec4> m_colorsVBO;
     };
 }
 
