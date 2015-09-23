@@ -20,25 +20,24 @@ Mesh::Mesh():
     m_verticesVBO()
 {
     m_vertices = {
-        -0.8f, -0.8f, 0.0f, 1.0f,
-        0.0f,  0.8f, 0.0f, 1.0f,
-        0.8f, -0.8f, 0.0f, 1.0f};
+        glm::vec4(0.0f,  0.5f,  0.0f, 1.0f),
+        glm::vec4(0.5f, -0.5f,  0.0f, 1.0f),
+        glm::vec4(-0.5f, -0.5f,  0.0f, 1.0f)};
     m_colors = {
-        1.0f, 0.0f, 0.0f, 1.0f,
-        0.0f, 1.0f, 0.0f, 1.0f,
-        0.0f, 0.0f, 1.0f, 1.0f};
+        glm::vec4(1.0f, 0.0f, 0.0f, 1.0f),
+        glm::vec4(0.0f, 1.0f, 0.0f, 1.0f),
+        glm::vec4(0.0f, 0.0f, 1.0f, 1.0f)};
     
     GLWrapper::GLErrorThrow();
     m_shader.bind();
     m_verticesVBO.set(m_vertices);
-    m_verticesVBO.map(m_shader.attributeLocation("in_Position"), false);
+    m_verticesVBO.map(m_shader, m_shader.attributeLocation("in_Position"), false);
 
     m_colorsVBO.set(m_colors);
-    m_colorsVBO.map(m_shader.attributeLocation("in_Color"), false);
+    m_colorsVBO.map(m_shader, m_shader.attributeLocation("in_Color"), false);
     m_shader.unbind();
     
     GLWrapper::GLErrorThrow();
-
 }
 
 Mesh::~Mesh()
@@ -51,10 +50,11 @@ Mesh::render() const
 {
     std::cout << "Rendering" << std::endl;
     m_shader.bind();
-    m_verticesVBO.bind();
-    m_colorsVBO.bind();
+//    m_verticesVBO.bind();
+//    m_colorsVBO.bind();
     GLWrapper::GLErrorThrow();
     
+//    glDrawElements(GL_TRIANGLES, 3, GL_UNSIGNED_BYTE, NULL);
     glDrawArrays(GL_TRIANGLES, 0, 3);
     GLWrapper::GLErrorThrow();
     

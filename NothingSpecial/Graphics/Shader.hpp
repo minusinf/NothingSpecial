@@ -52,6 +52,8 @@ namespace Graphics {
         
         OpenGLShaderProgramID_t programID();
         
+        GLuint getVAO() const;
+        
         /// Set Uniforms
         bool setUniform(const std::string& name, const glm::vec3& v);
         bool setUniform(const std::string& name, const glm::vec4& v);
@@ -80,6 +82,7 @@ namespace Graphics {
         OpenGLShaderID_t m_fId;
         OpenGLShaderID_t m_vId;
         
+        GLuint  m_vao;
         // Uniforms
         GLuint m_uniformCount;
         std::unordered_map<std::string, UniformInfo> m_uniformInfo;

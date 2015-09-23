@@ -20,11 +20,11 @@ namespace Graphics {
         virtual ~Mesh();
         virtual void render() const;
         
-        std::vector<float> m_vertices;
-        std::vector<float> m_colors;
+        std::vector<glm::vec4> m_vertices;
+        std::vector<glm::vec4> m_colors;
         Shader m_shader;
-        VertexBuffer<float> m_verticesVBO;
-        VertexBuffer<float> m_colorsVBO;
+        VertexBuffer<glm::vec4> m_verticesVBO;
+        VertexBuffer<glm::vec4> m_colorsVBO;
     };
 }
 

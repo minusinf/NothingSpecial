@@ -31,6 +31,7 @@ Shader::Shader(const std::string& vertexShaderPath,
         throw ShaderException("Prexisting OpenGL Error: Aborting");
     }
     reload();
+    glGenVertexArrays(1, &m_vao);
 }
 
 Shader::~Shader()
@@ -53,6 +54,8 @@ Shader::bind() const
     if (m_compiled)
     {
         glUseProgram(m_pId);
+        glBindVertexArray(getVAO());
+
         Shader::ms_boundShader = this;
     }
     else
@@ -75,6 +78,12 @@ Shader::unbindCurrent()
 {
     glUseProgram(0);
     ms_boundShader = NULL;
+}
+
+GLuint
+Shader::getVAO() const
+{
+    return m_vao;
 }
 
 void
