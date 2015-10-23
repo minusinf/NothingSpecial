@@ -88,7 +88,6 @@ Window::render()
 //    glColor3f(0.f, 0.f, 1.f);
 //    glVertex3f(0.f, 0.6f, 0.f);
 //    glEnd();
-    glfwPollEvents();
     glfwSwapBuffers(m_window);
 }
 
