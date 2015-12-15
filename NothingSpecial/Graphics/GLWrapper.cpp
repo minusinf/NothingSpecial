@@ -36,7 +36,7 @@ GLWrapper::GLError(std::string &errorString)
     const char* charstr = (const char*)glGetString(error);
     if (charstr != NULL)
     {
-        stream << glGetString(error);
+        stream << charstr;
     }
     else
     {
@@ -52,7 +52,6 @@ GLWrapper::GLErrorThrow()
     std::string error;
     if (GLError(error))
     {
-//        std::cerr << "Seeing " << error << " - error" << std::endl;
         throw OpenGLException(error);
     }
 }

@@ -18,8 +18,6 @@
 #include "GLWrapper.hpp"
 namespace Graphics {
     
-    
-    
     template<typename T>
     class VertexBuffer
     {
@@ -33,7 +31,6 @@ namespace Graphics {
     private:
         
         OpenGLVertexBufferID_t m_vbo;
-        GLuint m_vao;
     };
 
     template<typename T>

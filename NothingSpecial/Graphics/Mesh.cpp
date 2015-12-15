@@ -13,11 +13,34 @@ using namespace::Graphics;
 
 #define SHADER_PATH "Graphics/shaders/"
 
+Mesh::Mesh(std::vector<vec4>&& vertices,
+           std::vector<vec4>&& colors,
+           std::vector<face>&& faces):
+    m_vertices(vertices),
+    m_colors(colors),
+    m_faces(faces),
+    m_shader(BASE_PATH SHADER_PATH "simple.vert",
+             BASE_PATH SHADER_PATH "simple.frag")
+{
+    GLWrapper::GLErrorThrow();
+    m_shader.bind();
+    m_verticesVBO.set(m_vertices);
+    m_verticesVBO.map(m_shader, m_shader.attributeLocation("in_Position"), false);
+    
+    m_colorsVBO.set(m_colors);
+    m_colorsVBO.map(m_shader, m_shader.attributeLocation("in_Color"), false);
+    GLWrapper::GLErrorThrow();
+
+    m_facesVBO.set(m_faces);
+    GLWrapper::GLErrorThrow();
+    
+    m_shader.unbind();
+    GLWrapper::GLErrorThrow();
+}
+
 Mesh::Mesh():
     m_shader(BASE_PATH SHADER_PATH "simple.vert",
-             BASE_PATH SHADER_PATH "simple.frag"),
-    m_colorsVBO(),
-    m_verticesVBO()
+             BASE_PATH SHADER_PATH "simple.frag")
 {
     m_vertices = {
         vec4(0.0f,  0.5f,  0.0f, 1.0f),
@@ -27,6 +50,7 @@ Mesh::Mesh():
         vec4(1.0f, 0.0f, 0.0f, 1.0f),
         vec4(0.0f, 1.0f, 0.0f, 1.0f),
         vec4(0.0f, 0.0f, 1.0f, 1.0f)};
+    
     
     GLWrapper::GLErrorThrow();
     m_shader.bind();
@@ -54,6 +78,9 @@ Mesh::render() const
 //    m_colorsVBO.bind();
     GLWrapper::GLErrorThrow();
     
+    m_facesVBO.bind();
+    glDrawArrays(GL_TRIANGLES, m_faces.size(), GL_UNSIGNED_INT, 0);
+    m_facesVBO.
 //    glDrawElements(GL_TRIANGLES, 3, GL_UNSIGNED_BYTE, NULL);
     glDrawArrays(GL_TRIANGLES, 0, 3);
     GLWrapper::GLErrorThrow();

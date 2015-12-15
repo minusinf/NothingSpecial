@@ -17,15 +17,20 @@ namespace Graphics {
     class Mesh: public RenderableObject
     {
     public:
+        Mesh(std::vector<vec4>&& vertices,
+             std::vector<vec4>&& colors,
+             std::vector<face>&& faces);
         Mesh();
         virtual ~Mesh();
         virtual void render() const;
         
         std::vector<vec4> m_vertices;
         std::vector<vec4> m_colors;
+        std::vector<face> m_faces;
         Shader m_shader;
         VertexBuffer<vec4> m_verticesVBO;
         VertexBuffer<vec4> m_colorsVBO;
+        VertexBuffer<face> m_facesVBO;
     };
 }
 

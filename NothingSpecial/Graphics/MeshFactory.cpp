@@ -33,6 +33,41 @@ MeshFactory::loadObj(Scene &scene, const std::string &path)
     
     for (const auto& shape: m_shapes)
     {
+        std::cout << "Adding shape" << std::endl;
         
+        const auto& objIndices = shape.mesh.indices;
+        const auto& objPositions = shape.mesh.positions;
+        
+        if ((objPositions.size() % 3 != 0)
+            && (objIndices.size() % 3 != 0))
+        {
+            throw GraphicsException("Obj has wrong format");
+        }
+        size_t nVertices = objPositions.size()/3;
+        size_t nIndices = objIndices.size()/3;
+        
+        std::vector<vec4> vertices(nVertices);
+        std::vector<vec4> colors(nVertices, vec4(1,1,1,1));
+        std::vector<face> faces(nIndices);
+        
+        for (size_t idx=0; idx < nVertices; ++idx)
+        {
+            vertices[idx].x() = objPositions[idx*3];
+            vertices[idx].y() = objPositions[idx*3+1];
+            vertices[idx].z() = objPositions[idx*3+2];
+            vertices[idx].w() = 1.0;
+        }
+        
+        for (size_t idx=0; idx < nIndices; ++idx)
+        {
+            faces[idx].x() = objIndices[idx*3];
+            faces[idx].y() = objIndices[idx*3+1];
+            faces[idx].z() = objIndices[idx*3+2];
+        }
+        
+        scene.addObject(std::make_shared<Mesh>(std::move(vertices),
+                                               std::move(colors),
+                                               std::move(faces)));
+        std::cout << "Added obj" << std::endl;
     }
 }

@@ -17,12 +17,14 @@
 #include "Scene.hpp"
 #include "Shader.hpp"
 #include "Mesh.hpp"
+#include "MeshFactory.h"
 
 std::shared_ptr<Scene>
 createScene()
 {
-    std::shared_ptr<Scene> scene(new Scene());
-    scene->addObject(std::make_shared<Graphics::Mesh>());
+    auto scene = std::make_shared<Scene>();
+//    scene->addObject(std::make_shared<Graphics::Mesh>());
+    Graphics::MeshFactory::loadObj(*scene, "/Users/pascal/cube.obj");
     return scene;
 }
 
