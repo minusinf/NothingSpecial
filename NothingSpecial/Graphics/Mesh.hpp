@@ -30,7 +30,7 @@ namespace Graphics {
         Shader m_shader;
         VertexBuffer<vec4> m_verticesVBO;
         VertexBuffer<vec4> m_colorsVBO;
-        VertexBuffer<face> m_facesVBO;
+        VertexBuffer<face, true> m_facesVBO;
     };
 }
 

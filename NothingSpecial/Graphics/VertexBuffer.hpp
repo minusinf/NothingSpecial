@@ -16,9 +16,11 @@
 #include "Shader.hpp"
 #include "GLHelper.hpp"
 #include "GLWrapper.hpp"
+#include "GraphicsException.hpp"
+
 namespace Graphics {
     
-    template<typename T>
+    template<typename T, bool ELEMENT_BUFFER = false>
     class VertexBuffer
     {
     public:
@@ -28,44 +30,71 @@ namespace Graphics {
         void set(const std::vector<T>& data);
         void map(const Shader& shader, GLuint location, bool normalized);
         void bind() const;
+        size_t length() const
+        {
+            return m_size;
+        }
     private:
-        
+        size_t m_size;
         OpenGLVertexBufferID_t m_vbo;
     };
 
-    template<typename T>
-    VertexBuffer<T>::VertexBuffer()
+    template<typename T, bool ELEMENT_BUFFER>
+    VertexBuffer<T, ELEMENT_BUFFER>::VertexBuffer():
+        m_size(0)
     {
         glGenBuffers(1, &m_vbo);
         GLWrapper::GLErrorThrow();
     }
     
-    template<typename T>
-    VertexBuffer<T>::~VertexBuffer()
+    template<typename T, bool ELEMENT_BUFFER>
+    VertexBuffer<T, ELEMENT_BUFFER>::~VertexBuffer()
     {
         glDeleteVertexArrays(1, &m_vbo);
         GLWrapper::GLErrorThrow();
     }
     
-    template<typename T> void
-    VertexBuffer<T>::bind() const
+    template<typename T, bool ELEMENT_BUFFER> void
+    VertexBuffer<T, ELEMENT_BUFFER>::bind() const
     {
-        glBindVertexArray(m_vbo);
+        if (ELEMENT_BUFFER)
+        {
+            glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_vbo);
+            GLWrapper::GLErrorThrow();
+        }
+        else
+        {
+            glBindVertexArray(m_vbo);
+            GLWrapper::GLErrorThrow();
+        }
+    }
+    
+    template<typename T, bool ELEMENT_BUFFER> void
+    VertexBuffer<T, ELEMENT_BUFFER>::set(const std::vector<T> &data)
+    {
+        m_size = sizeof(T)*data.size();
+        if (ELEMENT_BUFFER)
+        {
+            glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_vbo);
+            glBufferData(GL_ELEMENT_ARRAY_BUFFER, m_size, &data[0], GL_STATIC_DRAW);
+        }
+        else
+        {
+            glBindBuffer(GL_ARRAY_BUFFER, m_vbo);
+            glBufferData(GL_ARRAY_BUFFER, m_size, &data[0], GL_STATIC_DRAW);
+        }
         GLWrapper::GLErrorThrow();
     }
     
-    template<typename T> void
-    VertexBuffer<T>::set(const std::vector<T> &data)
-    {
-        glBindBuffer(GL_ARRAY_BUFFER, m_vbo);
-        glBufferData(GL_ARRAY_BUFFER, sizeof(T)*data.size(), &data[0], GL_STATIC_DRAW);
-        GLWrapper::GLErrorThrow();
-    }
-    
-    template<typename T> void
-    VertexBuffer<T>::map(const Shader& shader,
+    template<typename T, bool ELEMENT_BUFFER> void
+    VertexBuffer<T, ELEMENT_BUFFER>::map(const Shader& shader,
                          GLuint location, bool normalized)
     {
+        if (ELEMENT_BUFFER)
+        {
+            throw OpenGLException("Not sure what to do in this case");
+        }
+        
         glBindVertexArray(shader.getVAO());
         glEnableVertexAttribArray(location);
         glBindBuffer(GL_ARRAY_BUFFER, m_vbo);

@@ -36,6 +36,8 @@ Mesh::Mesh(std::vector<vec4>&& vertices,
     
     m_shader.unbind();
     GLWrapper::GLErrorThrow();
+    
+
 }
 
 Mesh::Mesh():
@@ -79,10 +81,11 @@ Mesh::render() const
     GLWrapper::GLErrorThrow();
     
     m_facesVBO.bind();
-    glDrawArrays(GL_TRIANGLES, m_faces.size(), GL_UNSIGNED_INT, 0);
-    m_facesVBO.
-//    glDrawElements(GL_TRIANGLES, 3, GL_UNSIGNED_BYTE, NULL);
-    glDrawArrays(GL_TRIANGLES, 0, 3);
+    glDrawElements(GL_TRIANGLES, m_facesVBO.length()/3, GL_UNSIGNED_INT, (void*) NULL);
+//    glDrawArrays(GL_TRIANGLES, m_faces.size()*3, GL_UNSIGNED_INT, 0);
+//    m_facesVBO.
+////    glDrawElements(GL_TRIANGLES, 3, GL_UNSIGNED_BYTE, NULL);
+//    glDrawArrays(GL_TRIANGLES, 0, 3);
     GLWrapper::GLErrorThrow();
     
     glBindVertexArray(0);

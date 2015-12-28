@@ -36,7 +36,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		504310F21C1F6D9C00D93D96 /* VertexArray.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = VertexArray.hpp; path = Graphics/VertexArray.hpp; sourceTree = "<group>"; };
 		507CEDEC1BAC970C00D644F7 /* NothingSpecial */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = NothingSpecial; sourceTree = BUILT_PRODUCTS_DIR; };
 		507CEDEF1BAC970C00D644F7 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		507CEDF81BAC987700D644F7 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
@@ -136,7 +135,6 @@
 				508586B61BAF34200034647B /* VertexBuffer.hpp */,
 				50A75CC11BB345D100723F4D /* MeshFactory.cpp */,
 				50A75CC21BB345D100723F4D /* MeshFactory.h */,
-				504310F21C1F6D9C00D93D96 /* VertexArray.hpp */,
 			);
 			name = Graphics;
 			sourceTree = "<group>";
