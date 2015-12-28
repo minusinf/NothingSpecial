@@ -38,36 +38,26 @@ int main(int argc, const char * argv[]) {
     std::cout << "Welcome to Project Nothing Special" << std::endl;
     std::cout << "Initializing OpenGL" << std::endl;
     
+    // GLFW Init and Core Profile Setup
     if (!glfwInit())
     {
         std::cerr << "Failed to initialize GLFW. Aborting." << std::endl;
         return EXIT_FAILURE;
     }
     glfwSetErrorCallback(glfw_error_callback);
-    
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 2);
     glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
     
-    GLFWwindow* glfwwindow = glfwCreateWindow(WINDOW_WIDTH, WINDOW_HEIGHT, PROJECT_NAME, NULL, NULL);
-    if (!glfwwindow)
-    {
-        glfwTerminate();
-        std::cerr << "Failed to create glfw window. Aborting." << std::endl;
-        exit(EXIT_FAILURE);
-    }
-    glfwMakeContextCurrent(glfwwindow);
+//    std::cout << "OpenGL Version " << glGetString(GL_VERSION) << std::endl;
     
-    std::cout << "OpenGL Version " << glGetString(GL_VERSION) << std::endl;
-    
-    Window window(glfwwindow);
+    // Create a window
+    Window window(WINDOW_WIDTH, WINDOW_HEIGHT, PROJECT_NAME);
     window.loadScene(createScene());
-    while (window.isActive())
-    {
-        window.render();
-        glfwPollEvents();
-    }    
+    // Show the window
+    window.show();
+    
+    // Terminate the window when the window has closed.
     glfwTerminate();
-    return EXIT_SUCCESS;
 }

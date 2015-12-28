@@ -38,13 +38,21 @@ glfwWindowRefreshCallback(GLFWwindow* window)
     m_glfwWindowMap[window]->render();
 }
 
-Window::Window(GLFWwindow* window):
-    m_window(window),
+Window::Window(int width, int height, const std::string& title):
     m_active(true),
     m_scene(new Scene()) // empty default scene
 {
-    m_glfwWindowMap[window] = this;
-    glfwSetKeyCallback(window, glfwKeyCallback);
+    m_window = glfwCreateWindow(width, height, title.c_str(), NULL, NULL);
+    if (!m_window)
+    {
+        glfwTerminate();
+        std::cerr << "Failed to create glfw window. Aborting." << std::endl;
+        exit(EXIT_FAILURE);
+    }
+    glfwMakeContextCurrent(m_window);
+    
+    m_glfwWindowMap[m_window] = this;
+    glfwSetKeyCallback(m_window, glfwKeyCallback);
     
     // Initialize framebuffer size
     glfwGetFramebufferSize(m_window, &m_width, &m_height);
@@ -61,6 +69,17 @@ bool
 Window::isActive()
 {
     return m_active;
+}
+
+void
+Window::show()
+{
+    while (isActive())
+    {
+        render();
+        glfwPollEvents();
+    }
+
 }
 
 void

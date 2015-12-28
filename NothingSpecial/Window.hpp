@@ -11,18 +11,19 @@
 
 #include "base.hpp"
 
-class GLFWwindow;
+typedef struct GLFWwindow GLFWwindow;
 class Scene;
 class Window
 {
 public:
-    Window(GLFWwindow* window);
+    Window(int width, int height, const std::string& title);
     ~Window();
     
     bool isActive();
     
     void close();
     void render();
+    void show();
     void loadScene(std::shared_ptr<Scene> scene);
     void keyCallback(int key, int scancode, int action, int mods);
     void sizeCallback(int width, int height);
