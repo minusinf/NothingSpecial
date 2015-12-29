@@ -25,13 +25,17 @@ namespace Graphics {
         
     private:
         std::vector<vec3> m_vertices;
-        std::vector<vec3> m_normal;
         std::vector<vec4> m_colors;
         std::vector<face> m_faces;
+        std::vector<vec3> m_normals;
+
         Shader m_shader;
         VertexBuffer<vec3> m_verticesVBO;
         VertexBuffer<vec4> m_colorsVBO;
         VertexBuffer<face, true> m_facesVBO;
+        VertexBuffer<vec3> m_normalsVBO;
+        
+        mat4 m_ModelMatrix;
     };
 }
 

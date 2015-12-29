@@ -1,8 +1,10 @@
-#version 400
-in vec4 ex_Color;
-out vec4 out_Color;
+#version 330 core
+
+in vec4 exColor;
+in vec3 inNormal;
+out vec4 outColor;
 
 void main(void)
 {
-    out_Color = ex_Color;
+    outColor = exColor;
 }
