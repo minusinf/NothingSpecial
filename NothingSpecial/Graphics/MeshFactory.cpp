@@ -46,7 +46,7 @@ MeshFactory::loadObj(Scene &scene, const std::string &path)
         size_t nVertices = objPositions.size()/3;
         size_t nIndices = objIndices.size()/3;
         
-        std::vector<vec4> vertices(nVertices);
+        std::vector<vec3> vertices(nVertices);
         std::vector<vec4> colors(nVertices, vec4(1,1,1,1));
         std::vector<face> faces(nIndices);
         
@@ -55,7 +55,6 @@ MeshFactory::loadObj(Scene &scene, const std::string &path)
             vertices[idx].x() = objPositions[idx*3];
             vertices[idx].y() = objPositions[idx*3+1];
             vertices[idx].z() = objPositions[idx*3+2];
-            vertices[idx].w() = 1.0;
         }
         
         for (size_t idx=0; idx < nIndices; ++idx)

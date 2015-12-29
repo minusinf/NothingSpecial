@@ -13,7 +13,7 @@ using namespace::Graphics;
 
 #define SHADER_PATH "Graphics/shaders/"
 
-Mesh::Mesh(std::vector<vec4>&& vertices,
+Mesh::Mesh(std::vector<vec3>&& vertices,
            std::vector<vec4>&& colors,
            std::vector<face>&& faces):
     m_vertices(vertices),
@@ -35,34 +35,6 @@ Mesh::Mesh(std::vector<vec4>&& vertices,
     GLWrapper::GLErrorThrow();
     
     m_shader.unbind();
-    GLWrapper::GLErrorThrow();
-    
-
-}
-
-Mesh::Mesh():
-    m_shader(BASE_PATH SHADER_PATH "simple.vert",
-             BASE_PATH SHADER_PATH "simple.frag")
-{
-    m_vertices = {
-        vec4(0.0f,  0.5f,  0.0f, 1.0f),
-        vec4(0.5f, -0.5f,  0.0f, 1.0f),
-        vec4(-0.5f, -0.5f,  0.0f, 1.0f)};
-    m_colors = {
-        vec4(1.0f, 0.0f, 0.0f, 1.0f),
-        vec4(0.0f, 1.0f, 0.0f, 1.0f),
-        vec4(0.0f, 0.0f, 1.0f, 1.0f)};
-    
-    
-    GLWrapper::GLErrorThrow();
-    m_shader.bind();
-    m_verticesVBO.set(m_vertices);
-    m_verticesVBO.map(m_shader, m_shader.attributeLocation("in_Position"), false);
-
-    m_colorsVBO.set(m_colors);
-    m_colorsVBO.map(m_shader, m_shader.attributeLocation("in_Color"), false);
-    m_shader.unbind();
-    
     GLWrapper::GLErrorThrow();
 }
 
