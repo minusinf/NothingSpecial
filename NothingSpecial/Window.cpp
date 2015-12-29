@@ -121,6 +121,22 @@ Window::keyCallback(int key, int scancode, int action, int mods)
     {
         close();
     }
+    if (key == GLFW_KEY_UP)
+    {
+        m_camera.moveForward();
+    }
+    if (key == GLFW_KEY_DOWN)
+    {
+        m_camera.moveBackward();
+    }
+    if (key == GLFW_KEY_LEFT)
+    {
+        m_camera.moveLeft();
+    }
+    if (key == GLFW_KEY_RIGHT)
+    {
+        m_camera.moveRight();
+    }
 }
 
 void

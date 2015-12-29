@@ -25,6 +25,11 @@ namespace Graphics {
         
         void move(const vec3& dir);
         
+        void moveForward(float factor=1.0f);
+        void moveBackward();
+        void moveLeft(float factor=-1.0f);
+        void moveRight();
+
         static mat4 createPerspectiveMatrix(float aspect, float angle, float near, float far);
         static mat4 createLookAtMatrix(const vec3& eye, const vec3& center, const vec3& up);
         
@@ -33,6 +38,7 @@ namespace Graphics {
         float m_aspect;
         float m_near;
         float m_far;
+        float m_speed;
         
         mutable mat4 m_viewMatrix;
         mutable bool m_viewMatrixDirty;
@@ -40,9 +46,9 @@ namespace Graphics {
         mutable mat4 m_projMatrix;
         mutable bool m_projMatrixDirty;
         
-        vec3 m_position;
-        vec3 m_up;
-        vec3 m_lookAt;
+        vec3 m_position;// Position
+        vec3 m_up;      // Up
+        vec3 m_front;   // Negative direction
     };
 }
 

@@ -23,13 +23,14 @@ Camera::Camera(float width, float height, float angle, float near, float far):
     m_aspect(width/height),
     m_near(near),
     m_far(far),
+    m_speed(0.5),
     m_viewMatrix(mat4::Identity()),
     m_viewMatrixDirty(true),
     m_projMatrix(mat4::Identity()),
     m_projMatrixDirty(true),
     m_position(10,10,10),
     m_up(0,1,0),
-    m_lookAt(0,0,0)
+    m_front(-m_position.normalized()) // Point at 0,0,0
 {
     resize(width, height);
 }
@@ -39,7 +40,7 @@ Camera::view() const
 {
     if (m_viewMatrixDirty)
     {
-        m_viewMatrix = Camera::createLookAtMatrix(m_position, m_lookAt, m_up);
+        m_viewMatrix = Camera::createLookAtMatrix(m_position, m_position+m_front, m_up);
         m_viewMatrixDirty = false;
     }
     return m_viewMatrix;
@@ -64,6 +65,30 @@ Camera::move(const vec3& dir)
 {
     m_position += dir;
     m_viewMatrixDirty = true;
+}
+
+void
+Camera::moveForward(float factor)
+{
+    move(m_front*m_speed*factor);
+}
+
+void
+Camera::moveBackward()
+{
+    moveForward(-1.0f);
+}
+
+void
+Camera::moveLeft(float factor)
+{
+    move(m_front.cross(m_up).normalized()*factor*m_speed);
+}
+
+void
+Camera::moveRight()
+{
+    moveLeft(1.0f);
 }
 
 
