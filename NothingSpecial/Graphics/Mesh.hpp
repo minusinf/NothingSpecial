@@ -34,8 +34,6 @@ namespace Graphics {
         VertexBuffer<vec4> m_colorsVBO;
         VertexBuffer<face, true> m_facesVBO;
         VertexBuffer<vec3> m_normalsVBO;
-        
-        mat4 m_ModelMatrix;
     };
 }
 

@@ -10,6 +10,8 @@
 
 #include "MathHelpers.h"
 
+#include <eigen3/Eigen/Geometry>
+
 using namespace Graphics;
 
 Camera::Camera(float width, float height):
@@ -31,9 +33,7 @@ Camera::Camera(float width, float height, float angle, float near, float far):
     m_position(10,10,10),
     m_up(0,1,0),
     m_front(-m_position.normalized()), // Point at 0,0,0
-    m_yaw(Math::toDegrees(atan2(m_front.z(), m_front.x()))),
-    m_pitch(Math::toDegrees(atan2(m_front.y(),
-                                  sqrt(m_front.x()*m_front.x()+m_front.z()*m_front.z()))))
+    m_rotationCenter(0,0,0)
 {
     resize(width, height);
 }
@@ -95,28 +95,42 @@ Camera::moveRight()
 }
 
 void
-Camera::mouse(const vec2 &offset, float sensitvity)
+Camera::pan(const vec2 &offset, float sensitivity)
 {
-    vec2 off = offset*sensitvity;
+    using namespace Eigen;
     
-    m_yaw += off.x();
-    m_pitch += off.y();
+    const vec3& xRotationAxis = m_up;
+    vec3 yRotationAxis = m_up.cross(m_front);
+    
+    Quaternionf xRot(AngleAxisf(-offset.x()*sensitivity, xRotationAxis));
+    Quaternionf yRot(AngleAxisf(offset.y()*sensitivity, yRotationAxis));
 
-    if (m_pitch > 89.0f)
-    {
-        m_pitch = 89.0f;
-    }
-    else if (m_pitch < -89.0f)
-    {
-        m_pitch = -89.0f;
-    }
+    Quaternionf rot = xRot*yRot;
+    m_front = rot.matrix() * m_front;
+    m_viewMatrixDirty = true;
+}
+
+void
+Camera::rotate(const vec2 &offset, float sensitivity)
+{
+    using namespace Eigen;
+
+    vec3 xRotationAxis = vec3(0,1,0);
+    vec3 yRotationAxis = -m_front.cross(m_up).normalized();
     
-    float pitch = Math::toRadians(m_pitch);
-    float yaw = Math::toRadians(m_yaw);
-    m_front.x() = cos(yaw)*cos(pitch);
-    m_front.y() = sin(pitch);
-    m_front.z() = sin(yaw)*cos(pitch);
-    m_front.normalize();
+    Quaternionf xRot(AngleAxisf(offset.x()*sensitivity, xRotationAxis));
+    Quaternionf yRot(AngleAxisf(offset.y()*sensitivity, yRotationAxis));
+
+    Quaternionf rot = xRot * yRot;
+
+    Affine3f transform = Translation3f(-m_rotationCenter)
+                       * rot
+                       * Translation3f(m_rotationCenter);
+    
+    m_position = transform * m_position;
+    m_front = rot.matrix() * m_front;
+    m_up = rot.matrix() * m_up;
+    
     m_viewMatrixDirty = true;
 }
 

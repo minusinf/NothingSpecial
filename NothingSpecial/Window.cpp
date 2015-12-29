@@ -150,19 +150,19 @@ Window::keyCallback(int key, int scancode, int action, int mods)
 void
 Window::mouseCursorCallback(double xpos, double ypos)
 {
-    if (!m_mouseLeftPressed)
-    {
-        m_mousePos.x() = xpos;
-        m_mousePos.y() = ypos;
-        return;
-    }
-    
     vec2 offset(m_mousePos.x()-xpos, ypos-m_mousePos.y());
     m_mousePos.x() = xpos;
     m_mousePos.y() = ypos;
     
-    float sensitivty = 0.05;
-    m_camera.mouse(offset, sensitivty);
+    float sensitivity = 0.05;
+    if (m_mouseLeftPressed)
+    {
+        m_camera.pan(offset, sensitivity*0.1);
+    }
+    if (m_mouseRightPressed)
+    {
+        m_camera.rotate(offset, sensitivity);
+    }
 }
 
 void
@@ -179,7 +179,7 @@ Window::mouseButtonCallback(int button, int action, int mods)
             m_mouseLeftPressed = false;
         }
     }
-    else if (button == GLFW_MOUSE_BUTTON_RIGHT && action == GLFW_PRESS)
+    else if (button == GLFW_MOUSE_BUTTON_RIGHT)
     {
         if (action == GLFW_PRESS)
         {
@@ -190,7 +190,7 @@ Window::mouseButtonCallback(int button, int action, int mods)
             m_mouseRightPressed = false;
         }
     }
-    else if (button == GLFW_MOUSE_BUTTON_MIDDLE && action == GLFW_PRESS)
+    else if (button == GLFW_MOUSE_BUTTON_MIDDLE)
     {
         if (action == GLFW_PRESS)
         {

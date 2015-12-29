@@ -10,7 +10,25 @@
 
 using namespace Graphics;
 
+RenderableObject::RenderableObject():
+    m_ModelMatrix(mat4::Identity())
+{
+    
+}
+
 RenderableObject::~RenderableObject()
 {
     
+}
+
+const mat4&
+RenderableObject::modelMatrix() const
+{
+    return m_ModelMatrix;
+}
+
+mat4&
+RenderableObject::modelMatrix()
+{
+    return m_ModelMatrix;
 }

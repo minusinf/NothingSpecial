@@ -16,13 +16,13 @@ using namespace::Graphics;
 Mesh::Mesh(std::vector<vec3>&& vertices,
            std::vector<vec4>&& colors,
            std::vector<face>&& faces):
+    RenderableObject(),
     m_vertices(vertices),
     m_colors(colors),
     m_faces(faces),
     m_normals(Math::Geometry::computeVertexNormals(m_vertices, m_faces)),
     m_shader(BASE_PATH SHADER_PATH "diffuse.vert",
-             BASE_PATH SHADER_PATH "diffuse.frag"),
-    m_ModelMatrix(mat4::Identity())
+             BASE_PATH SHADER_PATH "diffuse.frag")
 {
     GLWrapper::GLErrorThrow();
     m_shader.bind();
@@ -57,7 +57,7 @@ Mesh::render(const Camera& camera) const
     m_shader.bind();
     m_shader.setUniform("uViewMatrix", camera.view());
     m_shader.setUniform("uProjMatrix", camera.proj());
-    m_shader.setUniform("uModelMatrix", m_ModelMatrix);
+    m_shader.setUniform("uModelMatrix", modelMatrix());
     GLWrapper::GLErrorThrow();
     
     m_facesVBO.bind();
