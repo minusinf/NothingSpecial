@@ -82,6 +82,8 @@ Window::Window(int width, int height, const std::string& title):
     glfwSetMouseButtonCallback(m_window, glfwMouseButtonCallback);
     glfwSetScrollCallback(m_window, glfwMouseScrollCallback);
     glfwSetCursorPosCallback(m_window, glfwMouseCursorCallback);
+    
+    std::cout << "OpenGLVersion" << glGetString(GL_VERSION) << std::endl;
 }
 
 Window::~Window()
