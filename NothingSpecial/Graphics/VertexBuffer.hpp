@@ -25,6 +25,11 @@ namespace Graphics {
     {
     public:
         VertexBuffer();
+        VertexBuffer(VertexBuffer&&) = default;
+        // A vertex buffer can only exist once
+        VertexBuffer(const VertexBuffer&) = delete;
+        VertexBuffer& operator=(const VertexBuffer&)& = delete;
+        VertexBuffer& operator=(VertexBuffer&&)& = delete;
         ~VertexBuffer();
         
         void set(const std::vector<T>& data);
