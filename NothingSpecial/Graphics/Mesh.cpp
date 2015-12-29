@@ -54,22 +54,14 @@ Mesh::render(const Camera& camera) const
 {
     glEnable(GL_CULL_FACE);
     
-    std::cout << "Rendering" << std::endl;
     m_shader.bind();
-    
     m_shader.setUniform("uViewMatrix", camera.view());
     m_shader.setUniform("uProjMatrix", camera.proj());
     m_shader.setUniform("uModelMatrix", m_ModelMatrix);
-    //    m_verticesVBO.bind();
-//    m_colorsVBO.bind();
     GLWrapper::GLErrorThrow();
     
     m_facesVBO.bind();
     glDrawElements(GL_TRIANGLES, m_facesVBO.length(), GL_UNSIGNED_INT, (void*) NULL);
-//    glDrawArrays(GL_TRIANGLES, m_faces.size()*3, GL_UNSIGNED_INT, 0);
-//    m_facesVBO.
-////    glDrawElements(GL_TRIANGLES, 3, GL_UNSIGNED_BYTE, NULL);
-//    glDrawArrays(GL_TRIANGLES, 0, 3);
     GLWrapper::GLErrorThrow();
     
     glBindVertexArray(0);
