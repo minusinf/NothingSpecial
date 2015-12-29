@@ -24,7 +24,7 @@ createScene()
 {
     auto scene = std::make_shared<Scene>();
 //    scene->addObject(std::make_shared<Graphics::Mesh>());
-    Graphics::MeshFactory::loadObj(*scene, "/Users/pascal/cube.obj");
+    Graphics::MeshFactory::loadObj(*scene, "/Users/pascal/bunny.obj");
     return scene;
 }
 
@@ -49,9 +49,7 @@ int main(int argc, const char * argv[]) {
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 2);
     glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-    
-//    std::cout << "OpenGL Version " << glGetString(GL_VERSION) << std::endl;
-    
+        
     // Create a window
     Window window(WINDOW_WIDTH, WINDOW_HEIGHT, PROJECT_NAME);
     window.loadScene(createScene());
