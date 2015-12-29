@@ -127,7 +127,7 @@ Camera::mouse(const vec2 &offset, float sensitvity)
 mat4
 Camera::createPerspectiveMatrix(float aspect, float angle, float near, float far)
 {
-    float finv = tan(angle*M_PI/180.0f*0.5f);
+    float finv = tan(Math::toRadians(angle)*0.5f);
     float wl = (far+near)/(near-far);
     float wr = (2*far*near)/(near-far);
     mat4 res;
