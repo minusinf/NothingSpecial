@@ -15,7 +15,6 @@
 class Scene
 {
 public:
-    Scene();
     void render(const Graphics::Camera& camera) const;
     void addObject(std::shared_ptr<Graphics::RenderableObject> obj);
 private:

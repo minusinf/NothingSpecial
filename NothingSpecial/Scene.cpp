@@ -8,11 +8,6 @@
 
 #include "Scene.hpp"
 
-Scene::Scene()
-{
-    
-}
-
 void
 Scene::render(const Graphics::Camera& camera) const
 {
