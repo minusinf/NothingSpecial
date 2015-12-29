@@ -77,6 +77,7 @@ Window::Window(int width, int height, const std::string& title):
     glfwGetFramebufferSize(m_window, &m_width, &m_height);
     glfwSetWindowRefreshCallback(m_window, glfwWindowRefreshCallback);
     glfwSetWindowCloseCallback(m_window, glfwWindowCloseCallback);
+    glfwSetWindowSizeCallback(m_window, glfwFramebufferSizeCallback);
     
     glfwSetMouseButtonCallback(m_window, glfwMouseButtonCallback);
     glfwSetScrollCallback(m_window, glfwMouseScrollCallback);
@@ -112,7 +113,6 @@ Window::render()
     glViewport(0, 0, m_width, m_height);
     
     float ratio = m_width / (float) m_height;
-
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     m_scene->render(m_camera);
     
@@ -214,6 +214,7 @@ Window::sizeCallback(int width, int height)
 {
     m_width = width;
     m_height = height;
+    glViewport(0, 0, m_width, m_height);
     m_camera.resize(width, height);
 }
 
