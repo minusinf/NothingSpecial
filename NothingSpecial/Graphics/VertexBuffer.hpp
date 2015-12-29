@@ -88,12 +88,10 @@ namespace Graphics {
     
     template<typename T, bool ELEMENT_BUFFER> void
     VertexBuffer<T, ELEMENT_BUFFER>::map(const Shader& shader,
-                         GLuint location, bool normalized)
+                                         GLuint location, bool normalized)
     {
-        if (ELEMENT_BUFFER)
-        {
-            throw OpenGLException("Not sure what to do in this case");
-        }
+        // I don't know what to do in this case
+        static_assert(!ELEMENT_BUFFER, "Element array buffers are not supported");
         
         glBindVertexArray(shader.getVAO());
         glEnableVertexAttribArray(location);
@@ -103,14 +101,6 @@ namespace Graphics {
                               GL::TypeInfo<T>::ElementType,
                               normalized,
                               0, 0);
-//        glBindVertexArray(m_vbo);
-//        glBindBuffer(GL_ARRAY_BUFFER, m_buffer);
-//        glVertexAttribPointer(location,
-//                              GL::TypeInfo<T>::ElementCount,
-//                              GL::TypeInfo<T>::ElementType,
-//                              normalized, 0, 0);
-//        glEnableVertexAttribArray(0);
-//        glBindVertexArray(0);
         GLWrapper::GLErrorThrow();
     }
 }
