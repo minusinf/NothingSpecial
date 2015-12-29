@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5035DDCE1C32075000850EEB /* Camera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5035DDCC1C32075000850EEB /* Camera.cpp */; };
+		5035DDD21C32276300850EEB /* Geometry.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5035DDD01C32276300850EEB /* Geometry.cpp */; };
 		507CEDF01BAC970C00D644F7 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 507CEDEF1BAC970C00D644F7 /* main.cpp */; };
 		507CEDF91BAC987700D644F7 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 507CEDF81BAC987700D644F7 /* OpenGL.framework */; };
 		507CEDFB1BAC987F00D644F7 /* OpenCL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 507CEDFA1BAC987F00D644F7 /* OpenCL.framework */; };
@@ -39,6 +40,8 @@
 /* Begin PBXFileReference section */
 		5035DDCC1C32075000850EEB /* Camera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Camera.cpp; path = Graphics/Camera.cpp; sourceTree = "<group>"; };
 		5035DDCD1C32075000850EEB /* Camera.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Camera.hpp; path = Graphics/Camera.hpp; sourceTree = "<group>"; };
+		5035DDD01C32276300850EEB /* Geometry.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Geometry.cpp; path = Math/Geometry.cpp; sourceTree = "<group>"; };
+		5035DDD11C32276300850EEB /* Geometry.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Geometry.hpp; path = Math/Geometry.hpp; sourceTree = "<group>"; };
 		507CEDEC1BAC970C00D644F7 /* NothingSpecial */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = NothingSpecial; sourceTree = BUILT_PRODUCTS_DIR; };
 		507CEDEF1BAC970C00D644F7 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		507CEDF81BAC987700D644F7 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
@@ -85,6 +88,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5035DDCF1C32274900850EEB /* Math */ = {
+			isa = PBXGroup;
+			children = (
+				5035DDD01C32276300850EEB /* Geometry.cpp */,
+				5035DDD11C32276300850EEB /* Geometry.hpp */,
+			);
+			name = Math;
+			sourceTree = "<group>";
+		};
 		507CEDE31BAC970C00D644F7 = {
 			isa = PBXGroup;
 			children = (
@@ -108,6 +120,7 @@
 		507CEDEE1BAC970C00D644F7 /* NothingSpecial */ = {
 			isa = PBXGroup;
 			children = (
+				5035DDCF1C32274900850EEB /* Math */,
 				507CEE161BACC0B300D644F7 /* external */,
 				507CEE021BACA52900D644F7 /* Graphics */,
 				507CEE121BACB7B900D644F7 /* base.hpp */,
@@ -227,6 +240,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				507CEE151BACB9E700D644F7 /* RenderableObject.cpp in Sources */,
+				5035DDD21C32276300850EEB /* Geometry.cpp in Sources */,
 				507CEE0E1BACB36D00D644F7 /* Scene.cpp in Sources */,
 				507CEE051BACA57500D644F7 /* GLWrapper.cpp in Sources */,
 				507CEDF01BAC970C00D644F7 /* main.cpp in Sources */,
