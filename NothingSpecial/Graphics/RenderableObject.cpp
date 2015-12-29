@@ -10,12 +10,6 @@
 
 using namespace Graphics;
 
-RenderableObject::RenderableObject():
-    m_ModelMatrix(mat4::Identity())
-{
-    
-}
-
 RenderableObject::~RenderableObject()
 {
     

@@ -15,13 +15,17 @@ namespace Graphics {
     class RenderableObject
     {
     public:
-        RenderableObject();
+        RenderableObject() = default;
+        RenderableObject(const RenderableObject&) = default;
+        RenderableObject(RenderableObject&&) = default;
+        RenderableObject& operator=(const RenderableObject&)& = default;
+        RenderableObject& operator=(RenderableObject&&)& = default;
         virtual ~RenderableObject();
         virtual void render(const Camera& camera) const = 0;
         virtual const mat4& modelMatrix() const;
     private:
         virtual mat4& modelMatrix();
-        mat4 m_ModelMatrix;
+        mat4 m_ModelMatrix = mat4::Identity();
     };
 }
 

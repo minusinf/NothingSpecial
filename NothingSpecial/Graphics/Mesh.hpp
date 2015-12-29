@@ -17,9 +17,14 @@ namespace Graphics {
     class Mesh: public RenderableObject
     {
     public:
-        Mesh(std::vector<vec3>&& vertices,
-             std::vector<vec4>&& colors,
-             std::vector<face>&& faces);
+        Mesh(const Mesh&) = default;
+        Mesh(Mesh&&) = default;
+        Mesh& operator=(const Mesh&)& = default;
+        Mesh& operator=(Mesh&&)& = default;
+        
+        Mesh(const std::vector<vec3>& vertices,
+             const std::vector<vec4>& colors,
+             const std::vector<face>& faces);
         virtual ~Mesh();
         virtual void render(const Camera& camera) const;
         

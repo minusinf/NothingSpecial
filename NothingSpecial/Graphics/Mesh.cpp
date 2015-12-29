@@ -13,9 +13,9 @@ using namespace::Graphics;
 
 #define SHADER_PATH "Graphics/shaders/"
 
-Mesh::Mesh(std::vector<vec3>&& vertices,
-           std::vector<vec4>&& colors,
-           std::vector<face>&& faces):
+Mesh::Mesh(const std::vector<vec3>& vertices,
+           const std::vector<vec4>& colors,
+           const std::vector<face>& faces):
     RenderableObject(),
     m_vertices(vertices),
     m_colors(colors),
