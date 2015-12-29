@@ -38,6 +38,24 @@ glfwWindowRefreshCallback(GLFWwindow* window)
     m_glfwWindowMap[window]->render();
 }
 
+void
+glfwMouseScrollCallback(GLFWwindow* window, double xoffset, double yoffset)
+{
+    m_glfwWindowMap[window]->mouseScrollCallback(xoffset, yoffset);
+}
+
+void
+glfwMouseCursorCallback(GLFWwindow* window, double xpos, double ypos)
+{
+    m_glfwWindowMap[window]->mouseCursorCallback(xpos, ypos);
+}
+
+void
+glfwMouseButtonCallback(GLFWwindow* window, int button, int action, int mods)
+{
+    m_glfwWindowMap[window]->mouseButtonCallback(button, action, mods);
+}
+
 Window::Window(int width, int height, const std::string& title):
     m_active(true),
     m_camera(width, height),
@@ -59,6 +77,10 @@ Window::Window(int width, int height, const std::string& title):
     glfwGetFramebufferSize(m_window, &m_width, &m_height);
     glfwSetWindowRefreshCallback(m_window, glfwWindowRefreshCallback);
     glfwSetWindowCloseCallback(m_window, glfwWindowCloseCallback);
+    
+    glfwSetMouseButtonCallback(m_window, glfwMouseButtonCallback);
+    glfwSetScrollCallback(m_window, glfwMouseScrollCallback);
+    glfwSetCursorPosCallback(m_window, glfwMouseCursorCallback);
 }
 
 Window::~Window()
@@ -94,20 +116,6 @@ Window::render()
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     m_scene->render(m_camera);
     
-//    glMatrixMode(GL_PROJECTION);
-//    glLoadIdentity();
-//    glOrtho(-ratio, ratio, -1.f, 1.f, 1.f, -1.f);
-//    glMatrixMode(GL_MODELVIEW);
-//    glLoadIdentity();
-//    glRotatef((float) glfwGetTime() * 50.f, 0.f, 0.f, 1.f);
-//    glBegin(GL_TRIANGLES);
-//    glColor3f(1.f, 0.f, 0.f);
-//    glVertex3f(-0.6f, -0.4f, 0.f);
-//    glColor3f(0.f, 1.f, 0.f);
-//    glVertex3f(0.6f, -0.4f, 0.f);
-//    glColor3f(0.f, 0.f, 1.f);
-//    glVertex3f(0.f, 0.6f, 0.f);
-//    glEnd();
     glfwSwapBuffers(m_window);
 }
 
@@ -137,6 +145,68 @@ Window::keyCallback(int key, int scancode, int action, int mods)
     {
         m_camera.moveRight();
     }
+}
+
+void
+Window::mouseCursorCallback(double xpos, double ypos)
+{
+    if (!m_mouseLeftPressed)
+    {
+        m_mousePos.x() = xpos;
+        m_mousePos.y() = ypos;
+        return;
+    }
+    
+    vec2 offset(m_mousePos.x()-xpos, ypos-m_mousePos.y());
+    m_mousePos.x() = xpos;
+    m_mousePos.y() = ypos;
+    
+    float sensitivty = 0.05;
+    m_camera.mouse(offset, sensitivty);
+}
+
+void
+Window::mouseButtonCallback(int button, int action, int mods)
+{
+    if (button == GLFW_MOUSE_BUTTON_LEFT)
+    {
+        if (action == GLFW_PRESS)
+        {
+            m_mouseLeftPressed = true;
+        }
+        else if (action == GLFW_RELEASE)
+        {
+            m_mouseLeftPressed = false;
+        }
+    }
+    else if (button == GLFW_MOUSE_BUTTON_RIGHT && action == GLFW_PRESS)
+    {
+        if (action == GLFW_PRESS)
+        {
+            m_mouseRightPressed = true;
+        }
+        else if (action == GLFW_RELEASE)
+        {
+            m_mouseRightPressed = false;
+        }
+    }
+    else if (button == GLFW_MOUSE_BUTTON_MIDDLE && action == GLFW_PRESS)
+    {
+        if (action == GLFW_PRESS)
+        {
+            m_mouseMiddlePressed = true;
+        }
+        else if (action == GLFW_RELEASE)
+        {
+            m_mouseMiddlePressed = false;
+        }
+    }
+}
+
+void
+Window::mouseScrollCallback(double xoffset, double yoffset)
+{
+    m_camera.moveForward(yoffset*0.1);
 }
 
 void

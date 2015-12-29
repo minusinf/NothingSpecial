@@ -8,7 +8,7 @@
 
 #include "Camera.hpp"
 
-#include <cmath>
+#include "MathHelpers.h"
 
 using namespace Graphics;
 
@@ -30,7 +30,10 @@ Camera::Camera(float width, float height, float angle, float near, float far):
     m_projMatrixDirty(true),
     m_position(10,10,10),
     m_up(0,1,0),
-    m_front(-m_position.normalized()) // Point at 0,0,0
+    m_front(-m_position.normalized()), // Point at 0,0,0
+    m_yaw(Math::toDegrees(atan2(m_front.z(), m_front.x()))),
+    m_pitch(Math::toDegrees(atan2(m_front.y(),
+                                  sqrt(m_front.x()*m_front.x()+m_front.z()*m_front.z()))))
 {
     resize(width, height);
 }
@@ -91,6 +94,31 @@ Camera::moveRight()
     moveLeft(1.0f);
 }
 
+void
+Camera::mouse(const vec2 &offset, float sensitvity)
+{
+    vec2 off = offset*sensitvity;
+    
+    m_yaw += off.x();
+    m_pitch += off.y();
+
+    if (m_pitch > 89.0f)
+    {
+        m_pitch = 89.0f;
+    }
+    else if (m_pitch < -89.0f)
+    {
+        m_pitch = -89.0f;
+    }
+    
+    float pitch = Math::toRadians(m_pitch);
+    float yaw = Math::toRadians(m_yaw);
+    m_front.x() = cos(yaw)*cos(pitch);
+    m_front.y() = sin(pitch);
+    m_front.z() = sin(yaw)*cos(pitch);
+    m_front.normalize();
+    m_viewMatrixDirty = true;
+}
 
 /*
  * creates a perspective matrix according to the C gluPerspectiveMatrix spec

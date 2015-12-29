@@ -44,6 +44,7 @@
 		5035DDD11C32276300850EEB /* Geometry.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Geometry.hpp; path = Math/Geometry.hpp; sourceTree = "<group>"; };
 		5035DDD41C32AAD500850EEB /* diffuse.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = diffuse.vert; path = Graphics/shaders/diffuse.vert; sourceTree = "<group>"; };
 		5035DDD51C32AAD500850EEB /* diffuse.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = diffuse.frag; path = Graphics/shaders/diffuse.frag; sourceTree = "<group>"; };
+		5035DDD61C32C4AD00850EEB /* MathHelpers.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MathHelpers.h; path = Math/MathHelpers.h; sourceTree = "<group>"; };
 		507CEDEC1BAC970C00D644F7 /* NothingSpecial */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = NothingSpecial; sourceTree = BUILT_PRODUCTS_DIR; };
 		507CEDEF1BAC970C00D644F7 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		507CEDF81BAC987700D644F7 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
@@ -95,6 +96,7 @@
 			children = (
 				5035DDD01C32276300850EEB /* Geometry.cpp */,
 				5035DDD11C32276300850EEB /* Geometry.hpp */,
+				5035DDD61C32C4AD00850EEB /* MathHelpers.h */,
 			);
 			name = Math;
 			sourceTree = "<group>";

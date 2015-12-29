@@ -29,6 +29,8 @@ namespace Graphics {
         void moveBackward();
         void moveLeft(float factor=-1.0f);
         void moveRight();
+        
+        void mouse(const vec2& offset, float sensitivity);
 
         static mat4 createPerspectiveMatrix(float aspect, float angle, float near, float far);
         static mat4 createLookAtMatrix(const vec3& eye, const vec3& center, const vec3& up);
@@ -49,6 +51,11 @@ namespace Graphics {
         vec3 m_position;// Position
         vec3 m_up;      // Up
         vec3 m_front;   // Negative direction
+        
+        float m_yaw;
+        float m_pitch;
+        
+        static float toRadian(float deg);
     };
 }
 
