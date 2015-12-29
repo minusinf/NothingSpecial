@@ -253,11 +253,11 @@ Shader::programID()
 
 
 
-bool Shader::setUniform(const std::string &name, const vec3& v)
+bool Shader::setUniform(const std::string &name, const vec3& v) const
 {
     try
     {
-        UniformInfo& info = m_uniformInfo.at(name);
+        const UniformInfo& info = m_uniformInfo.at(name);
         assert(info.Type == GL::ShaderVariableType::vec3_t);
         assert(info.Length == 1);
         assert(Shader::ms_boundShader == this);
@@ -270,12 +270,11 @@ bool Shader::setUniform(const std::string &name, const vec3& v)
     }
 }
 
-bool Shader::setUniform(const std::string &name, const vec4& v)
+bool Shader::setUniform(const std::string &name, const vec4& v) const
 {
     try
     {
-        UniformInfo& info = m_uniformInfo.at(name);
-        
+        const UniformInfo& info = m_uniformInfo.at(name);
         assert(info.Type == GL::ShaderVariableType::vec4_t);
         assert(info.Length == 1);
         assert(Shader::ms_boundShader == this);
@@ -288,11 +287,11 @@ bool Shader::setUniform(const std::string &name, const vec4& v)
     }
 }
 
-bool Shader::setUniform(const std::string &name, const mat4& v, bool transpose)
+bool Shader::setUniform(const std::string &name, const mat4& v, bool transpose) const
 {
     try
     {
-        UniformInfo& info = m_uniformInfo.at(name);
+        const UniformInfo& info = m_uniformInfo.at(name);
         assert(info.Type == GL::ShaderVariableType::mat4_t);
         assert(info.Length == 1);
         assert(Shader::ms_boundShader == this);
@@ -305,11 +304,11 @@ bool Shader::setUniform(const std::string &name, const mat4& v, bool transpose)
     }
 }
 
-bool Shader::setUniform(const std::string &name, bool v)
+bool Shader::setUniform(const std::string &name, bool v) const
 {
     try
     {
-        UniformInfo& info = m_uniformInfo.at(name);
+        const UniformInfo& info = m_uniformInfo.at(name);
         assert(info.Type == GL::ShaderVariableType::bool_t);
         assert(info.Length == 1);
         assert(Shader::ms_boundShader == this);
@@ -322,11 +321,11 @@ bool Shader::setUniform(const std::string &name, bool v)
     }
 }
 
-bool Shader::setUniform(const std::string &name, int v)
+bool Shader::setUniform(const std::string &name, int v) const
 {
     try
     {
-        UniformInfo& info = m_uniformInfo.at(name);
+        const UniformInfo& info = m_uniformInfo.at(name);
         assert(info.Type == GL::ShaderVariableType::int_t);
         assert(info.Length == 1);
         assert(Shader::ms_boundShader == this);

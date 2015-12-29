@@ -72,16 +72,19 @@ Mesh::~Mesh()
 }
 
 void
-Mesh::render() const
+Mesh::render(const Camera& camera) const
 {
     std::cout << "Rendering" << std::endl;
     m_shader.bind();
-//    m_verticesVBO.bind();
+    
+    m_shader.setUniform("u_ViewMatrix", camera.view());
+    m_shader.setUniform("u_ProjMatrix", camera.proj());
+    //    m_verticesVBO.bind();
 //    m_colorsVBO.bind();
     GLWrapper::GLErrorThrow();
     
     m_facesVBO.bind();
-    glDrawElements(GL_TRIANGLES, m_facesVBO.length()/3, GL_UNSIGNED_INT, (void*) NULL);
+    glDrawElements(GL_TRIANGLES, m_facesVBO.length(), GL_UNSIGNED_INT, (void*) NULL);
 //    glDrawArrays(GL_TRIANGLES, m_faces.size()*3, GL_UNSIGNED_INT, 0);
 //    m_facesVBO.
 ////    glDrawElements(GL_TRIANGLES, 3, GL_UNSIGNED_BYTE, NULL);

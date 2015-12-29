@@ -22,7 +22,7 @@ namespace Graphics {
              std::vector<face>&& faces);
         Mesh();
         virtual ~Mesh();
-        virtual void render() const;
+        virtual void render(const Camera& camera) const;
         
         std::vector<vec4> m_vertices;
         std::vector<vec4> m_colors;

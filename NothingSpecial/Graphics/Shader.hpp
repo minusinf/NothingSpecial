@@ -55,11 +55,11 @@ namespace Graphics {
         GLuint getVAO() const;
         
         /// Set Uniforms
-        bool setUniform(const std::string& name, const vec3& v);
-        bool setUniform(const std::string& name, const vec4& v);
-        bool setUniform(const std::string& name, const mat4& v, bool transpose = false);
-        bool setUniform(const std::string& name, bool v);
-        bool setUniform(const std::string& name, int v);
+        bool setUniform(const std::string& name, const vec3& v) const;
+        bool setUniform(const std::string& name, const vec4& v) const;
+        bool setUniform(const std::string& name, const mat4& v, bool transpose = false) const;
+        bool setUniform(const std::string& name, bool v) const;
+        bool setUniform(const std::string& name, int v) const;
         
         /// Attributes
         bool mapAttribute(const std::string& name, uint location);

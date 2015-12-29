@@ -14,11 +14,11 @@ Scene::Scene()
 }
 
 void
-Scene::render() const
+Scene::render(const Graphics::Camera& camera) const
 {
     for (const auto& pm: m_objects)
     {
-        pm->render();
+        pm->render(camera);
     }
 }
 

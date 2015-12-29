@@ -40,6 +40,7 @@ glfwWindowRefreshCallback(GLFWwindow* window)
 
 Window::Window(int width, int height, const std::string& title):
     m_active(true),
+    m_camera(width, height),
     m_scene(new Scene()) // empty default scene
 {
     m_window = glfwCreateWindow(width, height, title.c_str(), NULL, NULL);
@@ -91,7 +92,7 @@ Window::render()
     float ratio = m_width / (float) m_height;
 
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-    m_scene->render();
+    m_scene->render(m_camera);
     
 //    glMatrixMode(GL_PROJECTION);
 //    glLoadIdentity();
@@ -127,6 +128,7 @@ Window::sizeCallback(int width, int height)
 {
     m_width = width;
     m_height = height;
+    m_camera.resize(width, height);
 }
 
 void

@@ -10,7 +10,7 @@
 #define Window_hpp
 
 #include "base.hpp"
-
+#include "Camera.hpp"
 typedef struct GLFWwindow GLFWwindow;
 class Scene;
 class Window
@@ -33,6 +33,7 @@ private:
     int m_height;
     GLFWwindow* m_window;
     
+    Graphics::Camera m_camera;
     std::shared_ptr<Scene> m_scene;
 };
 

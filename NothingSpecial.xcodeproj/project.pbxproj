@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5035DDCE1C32075000850EEB /* Camera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5035DDCC1C32075000850EEB /* Camera.cpp */; };
 		507CEDF01BAC970C00D644F7 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 507CEDEF1BAC970C00D644F7 /* main.cpp */; };
 		507CEDF91BAC987700D644F7 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 507CEDF81BAC987700D644F7 /* OpenGL.framework */; };
 		507CEDFB1BAC987F00D644F7 /* OpenCL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 507CEDFA1BAC987F00D644F7 /* OpenCL.framework */; };
@@ -36,6 +37,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		5035DDCC1C32075000850EEB /* Camera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Camera.cpp; path = Graphics/Camera.cpp; sourceTree = "<group>"; };
+		5035DDCD1C32075000850EEB /* Camera.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Camera.hpp; path = Graphics/Camera.hpp; sourceTree = "<group>"; };
 		507CEDEC1BAC970C00D644F7 /* NothingSpecial */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = NothingSpecial; sourceTree = BUILT_PRODUCTS_DIR; };
 		507CEDEF1BAC970C00D644F7 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		507CEDF81BAC987700D644F7 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
@@ -135,6 +138,8 @@
 				508586B61BAF34200034647B /* VertexBuffer.hpp */,
 				50A75CC11BB345D100723F4D /* MeshFactory.cpp */,
 				50A75CC21BB345D100723F4D /* MeshFactory.h */,
+				5035DDCC1C32075000850EEB /* Camera.cpp */,
+				5035DDCD1C32075000850EEB /* Camera.hpp */,
 			);
 			name = Graphics;
 			sourceTree = "<group>";
@@ -225,6 +230,7 @@
 				507CEE0E1BACB36D00D644F7 /* Scene.cpp in Sources */,
 				507CEE051BACA57500D644F7 /* GLWrapper.cpp in Sources */,
 				507CEDF01BAC970C00D644F7 /* main.cpp in Sources */,
+				5035DDCE1C32075000850EEB /* Camera.cpp in Sources */,
 				50A75CC31BB345D100723F4D /* MeshFactory.cpp in Sources */,
 				507CEE111BACB39500D644F7 /* Mesh.cpp in Sources */,
 				507CEE1A1BACC0D700D644F7 /* tiny_obj_loader.cc in Sources */,
