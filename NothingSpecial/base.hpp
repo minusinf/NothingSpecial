@@ -36,6 +36,7 @@ typedef Eigen::Vector2f vec2;
 typedef Eigen::Matrix4f mat4;
 typedef Eigen::Matrix3f mat3;
 typedef Eigen::Matrix<unsigned int, 3 , 1> face;
+typedef Eigen::MatrixXf matX;
 
 //#include <glm/glm.hpp>
 

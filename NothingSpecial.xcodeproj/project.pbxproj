@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		5035DDCE1C32075000850EEB /* Camera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5035DDCC1C32075000850EEB /* Camera.cpp */; };
 		5035DDD21C32276300850EEB /* Geometry.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5035DDD01C32276300850EEB /* Geometry.cpp */; };
+		5035DDD91C33557900850EEB /* Volume.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5035DDD71C33557900850EEB /* Volume.cpp */; };
 		507CEDF01BAC970C00D644F7 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 507CEDEF1BAC970C00D644F7 /* main.cpp */; };
 		507CEDF91BAC987700D644F7 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 507CEDF81BAC987700D644F7 /* OpenGL.framework */; };
 		507CEDFB1BAC987F00D644F7 /* OpenCL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 507CEDFA1BAC987F00D644F7 /* OpenCL.framework */; };
@@ -45,6 +46,8 @@
 		5035DDD41C32AAD500850EEB /* diffuse.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = diffuse.vert; path = Graphics/shaders/diffuse.vert; sourceTree = "<group>"; };
 		5035DDD51C32AAD500850EEB /* diffuse.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = diffuse.frag; path = Graphics/shaders/diffuse.frag; sourceTree = "<group>"; };
 		5035DDD61C32C4AD00850EEB /* MathHelpers.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MathHelpers.h; path = Math/MathHelpers.h; sourceTree = "<group>"; };
+		5035DDD71C33557900850EEB /* Volume.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Volume.cpp; path = Graphics/Volume.cpp; sourceTree = "<group>"; };
+		5035DDD81C33557900850EEB /* Volume.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Volume.hpp; path = Graphics/Volume.hpp; sourceTree = "<group>"; };
 		507CEDEC1BAC970C00D644F7 /* NothingSpecial */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = NothingSpecial; sourceTree = BUILT_PRODUCTS_DIR; };
 		507CEDEF1BAC970C00D644F7 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		507CEDF81BAC987700D644F7 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
@@ -149,6 +152,8 @@
 				507CEE071BACA6B300D644F7 /* Shader.hpp */,
 				507CEE0F1BACB39500D644F7 /* Mesh.cpp */,
 				507CEE101BACB39500D644F7 /* Mesh.hpp */,
+				5035DDD71C33557900850EEB /* Volume.cpp */,
+				5035DDD81C33557900850EEB /* Volume.hpp */,
 				507CEE131BACB9E700D644F7 /* RenderableObject.cpp */,
 				507CEE141BACB9E700D644F7 /* RenderableObject.hpp */,
 				507CEE1E1BACC2E300D644F7 /* GraphicsException.hpp */,
@@ -254,6 +259,7 @@
 				50A75CC31BB345D100723F4D /* MeshFactory.cpp in Sources */,
 				507CEE111BACB39500D644F7 /* Mesh.cpp in Sources */,
 				507CEE1A1BACC0D700D644F7 /* tiny_obj_loader.cc in Sources */,
+				5035DDD91C33557900850EEB /* Volume.cpp in Sources */,
 				507CEE081BACA6B300D644F7 /* Shader.cpp in Sources */,
 				507CEE231BAEC7C900D644F7 /* GLHelper.cpp in Sources */,
 				507CEDFE1BAC9AAB00D644F7 /* Window.cpp in Sources */,
