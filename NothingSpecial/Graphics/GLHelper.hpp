@@ -20,7 +20,6 @@ typedef GLuint OpenGLVertexBufferID_t;
 
 namespace Graphics
 {
-    
     enum class TextureFormat : uint
     {
         Integer,                /// integer values
@@ -131,9 +130,14 @@ namespace Graphics
          * 		outType =		Returns the tye of the shader uniform.
          *      outName =		Returns the name of the shader uniform.
          */
-        void GetUniformInfo(OpenGLShaderProgramID_t programId, GLuint index, int& outSize, ShaderVariableType& outType, std::string& outName);
+        void GetUniformInfo(OpenGLShaderProgramID_t programId,
+                            GLuint index,
+                            int& outSize,
+                            ShaderVariableType& outType,
+                            std::string& outName);
         
-        GLint GetUniformLocation(OpenGLShaderProgramID_t programId, std::string& name);
+        GLint GetUniformLocation(OpenGLShaderProgramID_t programId,
+                                 std::string& name);
         
         /** Returns information about a shader attribute.
          *
@@ -144,7 +148,11 @@ namespace Graphics
          * 		type = 			Returns the tye of the shader uniform.
          * 		name = 			Returns the name of the shader uniform.
          */
-        void GetAttributeInfo(OpenGLShaderProgramID_t programId, uint index, int& outSize, ShaderVariableType& outType, std::string& outName);
+        void GetAttributeInfo(OpenGLShaderProgramID_t programId,
+                              uint index,
+                              int& outSize,
+                              ShaderVariableType& outType,
+                              std::string& outName);
         
         // TypeInfo
         ///////////////////////////////////////////////////////////////////////////////////

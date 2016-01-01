@@ -72,7 +72,11 @@ namespace Graphics
             return v;
         }
         
-        void GetUniformInfo(OpenGLShaderProgramID_t programId, GLuint index, int& outSize, ShaderVariableType& outType, std::string& outName)
+        void GetUniformInfo(OpenGLShaderProgramID_t programId,
+                            GLuint index,
+                            int& outSize,
+                            ShaderVariableType& outType,
+                            std::string& outName)
         {
             GLsizei maxLen = GetProgramProperty(programId, ProgramProperty::MaxUniformNameLength);
             GLchar* n = new char[maxLen];
@@ -85,7 +89,8 @@ namespace Graphics
             outType = (ShaderVariableType)t;
         }
         
-        GLint GetUniformLocation(OpenGLShaderProgramID_t programId, std::string& name)
+        GLint GetUniformLocation(OpenGLShaderProgramID_t programId,
+                                 std::string& name)
         {
             return glGetUniformLocation(programId, name.c_str());
         }
@@ -117,7 +122,11 @@ namespace Graphics
             }
         }
         
-        void GetAttributeInfo(OpenGLShaderProgramID_t programId, GLuint index, GLint& outSize, ShaderVariableType& outType, std::string& outName)
+        void GetAttributeInfo(OpenGLShaderProgramID_t programId,
+                              GLuint index,
+                              GLint& outSize,
+                              ShaderVariableType& outType,
+                              std::string& outName)
         {
             int maxLen = GetProgramProperty(programId, ProgramProperty::MaxAttributeNameLength);
             char* n = new char[maxLen];
