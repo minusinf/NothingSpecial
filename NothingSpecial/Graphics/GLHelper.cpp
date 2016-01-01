@@ -100,24 +100,24 @@ namespace Graphics
             switch(e)
             {
                 case ShaderVariableType::float_t: return "float";
-                case ShaderVariableType::vec2_t: return "vec2";
-                case ShaderVariableType::vec3_t: return "vec3";
-                case ShaderVariableType::vec4_t: return "vec4";
-                case ShaderVariableType::int_t: return "int";
+                case ShaderVariableType::vec2_t:  return "vec2";
+                case ShaderVariableType::vec3_t:  return "vec3";
+                case ShaderVariableType::vec4_t:  return "vec4";
+                case ShaderVariableType::int_t:   return "int";
                 case ShaderVariableType::ivec2_t: return "ivec2";
                 case ShaderVariableType::ivec3_t: return "ivec3";
                 case ShaderVariableType::ivec4_t: return "ivec4";
-                case ShaderVariableType::uint_t: return "uint";
+                case ShaderVariableType::uint_t:  return "uint";
                 case ShaderVariableType::uvec2_t: return "uvec2";
                 case ShaderVariableType::uvec3_t: return "uvec3";
                 case ShaderVariableType::uvec4_t: return "uvec4";
-                case ShaderVariableType::bool_t: return "bool";
+                case ShaderVariableType::bool_t:  return "bool";
                 case ShaderVariableType::bvec2_t: return "bvec2";
                 case ShaderVariableType::bvec3_t: return "bvec3";
                 case ShaderVariableType::bvec4_t: return "bvec4";
-                case ShaderVariableType::mat2_t: return "mat2";
-                case ShaderVariableType::mat3_t: return "mat3";
-                case ShaderVariableType::mat4_t: return "mat4";
+                case ShaderVariableType::mat2_t:  return "mat2";
+                case ShaderVariableType::mat3_t:  return "mat3";
+                case ShaderVariableType::mat4_t:  return "mat4";
                 default: return "unknown";
             }
         }
@@ -140,28 +140,34 @@ namespace Graphics
         
         // TypeInfo
         ////////////////////////////////////////////////////////////////////////
+
+        // Defaults
+        template<typename T>
+        uint32_t TypeInfo<T>::ElementCount = 1;
+        template<typename T>
+        uint32_t TypeInfo<T>::BitsPerChannel = 32;
         
-        // glm::vec4
+        // vec4
         template<>
         GLuint TypeInfo<vec4>::ElementType = GL_FLOAT;
         template<>
-        uint TypeInfo<vec4>::ElementCount = 4;
+        uint32_t TypeInfo<vec4>::ElementCount = 4;
         template<>
-        uint TypeInfo<vec4>::TexFormat = GL_RGBA;
+        GLuint TypeInfo<vec4>::TexFormat = GL_RGBA;
         
-        // glm::vec3
+        // vec3
         template<>
         GLuint TypeInfo<vec3>::ElementType = GL_FLOAT;
         template<>
-        uint TypeInfo<vec3>::ElementCount = 3;
+        uint32_t TypeInfo<vec3>::ElementCount = 3;
         template<>
-        uint TypeInfo<vec3>::TexFormat = GL_RGB;
+        GLuint TypeInfo<vec3>::TexFormat = GL_RGB;
         
-        // glm::vec2
+        // vec2
         template<>
         GLuint TypeInfo<vec2>::ElementType = GL_FLOAT;
         template<>
-        uint TypeInfo<vec2>::ElementCount = 2;
+        uint32_t TypeInfo<vec2>::ElementCount = 2;
         template<>
         uint TypeInfo<vec2>::TexFormat = GL_RG;
         
@@ -169,9 +175,45 @@ namespace Graphics
         template<>
         GLuint TypeInfo<float>::ElementType = GL_FLOAT;
         template<>
-        uint TypeInfo<float>::ElementCount = 1;
+        uint32_t TypeInfo<float>::ElementCount = 1;
         template<>
-        uint TypeInfo<float>::TexFormat = GL_RED;
+        GLuint TypeInfo<float>::TexFormat = GL_RED;
+        
+        // int_32_t
+        template<>
+        GLuint TypeInfo<int32_t>::ElementType = GL_INT;
+        template<>
+        uint32_t TypeInfo<int32_t>::ElementCount = 1;
+        template<>
+        GLuint TypeInfo<int32_t>::TexFormat = GL_RED;
+
+        // uint32_t
+        template<>
+        GLuint TypeInfo<uint32_t>::ElementType = GL_UNSIGNED_INT;
+        template<>
+        uint32_t TypeInfo<uint32_t>::ElementCount = 1;
+        template<>
+        GLuint TypeInfo<uint32_t>::TexFormat = GL_RED;
+        
+        // int8_t
+        template<>
+        GLuint TypeInfo<int8_t>::ElementType = GL_BYTE;
+        template<>
+        uint32_t TypeInfo<int8_t>::ElementCount = 1;
+        template<>
+        GLuint TypeInfo<int8_t>::TexFormat = GL_RED;
+        template<>
+        uint32_t TypeInfo<int8_t>::BitsPerChannel = 8;
+        
+        // uint8_t
+        template<>
+        GLuint TypeInfo<uint8_t>::ElementType = GL_UNSIGNED_BYTE;
+        template<>
+        uint32_t TypeInfo<uint8_t>::ElementCount = 1;
+        template<>
+        GLuint TypeInfo<uint8_t>::TexFormat = GL_RED;
+        template<>
+        uint32_t TypeInfo<uint8_t>::BitsPerChannel = 8;
         
         // Internal Texture Format
         ////////////////////////////////////////////////////////////////////////

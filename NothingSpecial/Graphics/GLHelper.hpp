@@ -17,6 +17,7 @@
 typedef GLint OpenGLShaderProgramID_t;
 typedef GLint OpenGLShaderID_t;
 typedef GLuint OpenGLVertexBufferID_t;
+typedef GLuint OpenGLTextureBufferID_t;
 
 namespace Graphics
 {
@@ -161,8 +162,9 @@ namespace Graphics
         struct TypeInfo
         {
             static GLuint ElementType;
-            static uint ElementCount;
+            static uint32_t ElementCount;
             static GLuint TexFormat; // one of GL_RED, GL_RG, GL_RGB, GL_RGBA
+            static uint32_t BitsPerChannel;
         };
         
         
