@@ -28,7 +28,10 @@ namespace Graphics {
         TextureBuffer3D(const TextureBuffer3D&) = delete;
         TextureBuffer3D& operator=(const TextureBuffer3D&)& = delete;
         TextureBuffer3D& operator=(TextureBuffer3D&&)& = delete;
-        virtual ~TextureBuffer3D();
+        virtual ~TextureBuffer3D()
+        {
+            
+        }
         
         // RAW Data: HELL YEAH
         void set(const T* data, size_t x, size_t y, size_t z);
@@ -57,7 +60,7 @@ namespace Graphics {
                      y,
                      z,
                      0,
-                     GL::TypeInfo<T>::TextureFormat,
+                     GL::TypeInfo<T>::TexFormat,
                      GL::TypeInfo<T>::ElementType,
                      data);
         
