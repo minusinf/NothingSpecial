@@ -23,9 +23,10 @@ namespace Graphics {
         Volume& operator=(const Volume&)& = default;
         Volume& operator=(Volume&&)& = default;
         
-        Volume(std::shared_ptr<matX> data, const vec3& color);
+        // For the moment we want to restrict ourselves to chars
+        Volume(std::shared_ptr<matXb> data, const vec3& color);
     private:
-        std::shared_ptr<matX> m_data;
+        std::shared_ptr<matXb> m_data;
         vec3 m_color;
     };
 }

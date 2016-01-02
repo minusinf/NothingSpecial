@@ -30,6 +30,8 @@
 
 #include <eigen3/Eigen/Dense>
 
+// Implicit assumption that all computations are done in single precision.
+// Switching to double means modifying GLHelper.cpp/hpp
 typedef Eigen::Vector4f vec4;
 typedef Eigen::Vector3f vec3;
 typedef Eigen::Vector2f vec2;
@@ -37,6 +39,7 @@ typedef Eigen::Matrix4f mat4;
 typedef Eigen::Matrix3f mat3;
 typedef Eigen::Matrix<unsigned int, 3 , 1> face;
 typedef Eigen::MatrixXf matX;
+typedef Eigen::Matrix<char, Eigen::Dynamic, Eigen::Dynamic> matXb;
 
 //#include <glm/glm.hpp>
 

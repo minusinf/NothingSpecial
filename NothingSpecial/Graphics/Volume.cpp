@@ -10,7 +10,7 @@
 
 using namespace Graphics;
 
-Volume::Volume(std::shared_ptr<matX> data, const vec3& color):
+Volume::Volume(std::shared_ptr<matXb> data, const vec3& color):
     m_data(data),
     m_color(color)
 {
