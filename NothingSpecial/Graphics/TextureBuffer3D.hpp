@@ -1,10 +1,11 @@
-//
-//  TextureBuffer3D.hpp
-//  NothingSpecial
-//
-//  Created by Pascal Spörri on 30/12/15.
-//  Copyright © 2015 Pascal Spörri. All rights reserved.
-//
+/*******************************************************************************
+ Copyright (C) 2016 Pascal Spörri (me@pascalspoerri.ch)
+ 
+ All Rights Reserved.
+ 
+ You may use, distribute and modify this code under the terms of the
+ MIT license (http://opensource.org/licenses/MIT).
+ *******************************************************************************/
 
 #ifndef TextureBuffer3D_hpp
 #define TextureBuffer3D_hpp
@@ -18,11 +19,11 @@
 
 namespace Graphics {
     
-    template<typename T, TextureFormat FORMAT = Float>
+    template<typename T, TextureFormat FORMAT = TextureFormat::Float>
     class TextureBuffer3D: TextureBuffer
     {
     public:
-        TextureBuffer3D();
+        TextureBuffer3D() = default;
         TextureBuffer3D(TextureBuffer3D&&) = default;
         TextureBuffer3D(const TextureBuffer3D&) = delete;
         TextureBuffer3D& operator=(const TextureBuffer3D&)& = delete;
@@ -31,22 +32,11 @@ namespace Graphics {
         
         // RAW Data: HELL YEAH
         void set(const T* data, size_t x, size_t y, size_t z);
-        void map(const Shader& shader, GLuint location);
+        void map(GLuint textureUnit);
     };
     
-    template<typename T, TextureFormat FORMAT>
-    TextureBuffer3D<T>::TextureBuffer3D()
-    {
-        glGenTextures(1, &m_texture);
-    }
-    template<typename T, TextureFormat FORMAT>
-    TextureBuffer3D<T>::~TextureBuffer3D()
-    {
-        glDeleteTextures(1, &m_texture);
-    }
-    
     template<typename T, TextureFormat FORMAT> void
-    TextureBuffer3D<T>::set(const T* data,  size_t x, size_t y, size_t z)
+    TextureBuffer3D<T, FORMAT>::set(const T* data, size_t x, size_t y, size_t z)
     {
         glBindTexture(GL_TEXTURE_3D, m_texture);
 // Keeping this for now
@@ -75,7 +65,7 @@ namespace Graphics {
     }
     
     template<typename T, TextureFormat FORMAT> void
-    TextureBuffer3D<T>::map(GLuint textureUnit)
+    TextureBuffer3D<T, FORMAT>::map(GLuint textureUnit)
     {
         m_textureUnit = textureUnit;
         glActiveTexture(GL_TEXTURE0 + m_textureUnit);

@@ -1,10 +1,13 @@
-//
-//  TextureBuffer.hpp
-//  NothingSpecial
-//
-//  Created by Pascal Spörri on 02/01/16.
-//  Copyright © 2016 Pascal Spörri. All rights reserved.
-//
+/*******************************************************************************
+ Copyright (C) 2012 Adrian Blumer (blumer.adrian@gmail.com) 
+   TerrainErosion Graphics Library
+ Copyright (C) 2016 Pascal Spörri (me@pascalspoerri.ch)
+ 
+ All Rights Reserved.
+ 
+ You may use, distribute and modify this code under the terms of the
+ MIT license (http://opensource.org/licenses/MIT).
+ *******************************************************************************/
 
 #ifndef TextureBuffer_hpp
 #define TextureBuffer_hpp
@@ -15,10 +18,13 @@ namespace Graphics {
     class TextureBuffer
     {
     public:
-        TextureBuffer() = 0;
+        TextureBuffer()
+        {
+            glGenTextures(1, &m_texture);
+        }
         virtual ~TextureBuffer()
         {
-            
+            glDeleteTextures(1, &m_texture);
         }
         
         OpenGLTextureBufferID_t textureBuffer() const

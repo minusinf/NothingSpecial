@@ -1,5 +1,6 @@
 /****************************************************************************
  Copyright (C) 2012 Adrian Blumer (blumer.adrian@gmail.com)
+ Copyright (C) 2016 Pascal Spörri (me@pascalspoerri.ch)
  
  All Rights Reserved.
  
@@ -7,69 +8,55 @@
  MIT license (http://opensource.org/licenses/MIT).
  *****************************************************************************/
 
-#ifndef TEXTURE2D_H
-#define TEXTURE2D_H
+#ifndef TEXTUREBUFFER2D_HPP
+#define TEXTUREBUFFER2D_HPP
 
 #include "base.hpp"
+#include "TextureBuffer.hpp"
 
 namespace Graphics
 {
 
-    template<typename T, TextureFormat FORMAT, uint BPC>
-    class Texture2D : public TextureBase
+    template<typename T, TextureFormat FORMAT = TextureFormat::Float>
+    class TextureBuffer2D : public TextureBuffer
     {
     public:
-        void SetData(const Grid2D<T>& data);
+        TextureBuffer2D() = default;
+        TextureBuffer2D(TextureBuffer2D&&) = default;
+        TextureBuffer2D(const TextureBuffer2D&) = delete;
+        TextureBuffer2D& operator=(const TextureBuffer2D&)& = delete;
+        TextureBuffer2D& operator=(TextureBuffer2D&&)& = delete;
         
+        void SetData(const T* data, size_t x, size_t y);
         void Map(uint textureUnit);
-        
-        
-        // some static asserts on template parameters;
-        static_assert(BPC == 8 || BPC == 16 || BPC == 32,
-                      "The BitsPerComponent (BPC) parameter must be one of 8,16 or 32.");
-        static_assert(FORMAT != TextureFormat::Float || BPC != 8,
-                      "TextureFormat::Float requires 16 or 32 bits per component (BPC).");
-        static_assert(FORMAT != TextureFormat::FloatNormalized || BPC != 32,
-                      "TextureFormat::FloatNormalized requires 8 or 16 bits per component (BPC).");
-        static_assert(FORMAT != TextureFormat::FloatSignedNormalized || BPC != 32,
-                      "TextureFormat::FloatNormalizedSigned requires 8 or 16 bits per component (BPC).");
-        
     };
     
     // Implementation
     ///////////////////////////////////////////////
     
-    inline TextureBase::TextureBase()
+    template<typename T, TextureFormat FORMAT> void
+    TextureBuffer2D<T,FORMAT>::Map(uint textureUnit)
     {
-        glGenTextures(1,&_id);
-    }
-    
-    inline TextureBase::~TextureBase()
-    {
-        glDeleteTextures(1,&_id);
-    }
-    
-    template<typename T, TextureFormat FORMAT, uint BPC>
-    inline void Texture2D<T,FORMAT,BPC>::Map(uint textureUnit)
-    {
-        _textureUnit = textureUnit;
+        m_textureUnit = textureUnit;
         glActiveTexture(GL_TEXTURE0 + textureUnit);
-        glBindTexture(GL_TEXTURE_2D,_id);
+        glBindTexture(GL_TEXTURE_2D, m_texture);
         glActiveTexture(GL_TEXTURE0);
     }
     
-    template<typename T, TextureFormat FORMAT, uint BPC>
-    inline void Texture2D<T,FORMAT,BPC>::SetData(const Grid2D<T>& data)
+    template<typename T, TextureFormat FORMAT> void
+    TextureBuffer2D<T,FORMAT>::SetData(const T* data, size_t x, size_t y)
     {
-        glBindTexture(GL_TEXTURE_2D, _id);
+        glBindTexture(GL_TEXTURE_2D, m_texture);
         glTexImage2D(GL_TEXTURE_2D,
                      0,
-                     GL::InternalTextureFormat<FORMAT,BPC,GL::TypeInfo<T>::ElementCount >(), // format used for storage
-                     data.width(),data.height(),
+                     GL::InternalTextureFormat<FORMAT,
+                                               GL::TypeInfo<T>::BitsPerChannel,
+                                               GL::TypeInfo<T>::ElementCount >(),
+                     x, y,
                      0,
                      GL::TypeInfo<T>::TexFormat,
                      GL::TypeInfo<T>::ElementType,
-                     data.ptr());
+                     data);
         
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_BASE_LEVEL, 0);
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAX_LEVEL, 0);
@@ -96,3 +83,5 @@ namespace Graphics
         
         glBindTexture(GL_TEXTURE_3D, 0);
     }
+}
+#endif
