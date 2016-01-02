@@ -70,4 +70,6 @@ Mesh::render(const Camera& camera) const
     glUseProgram(0);
     GLWrapper::GLErrorThrow();
 
+    m_shader.unbind();
+    glDisable(GL_CULL_FACE);
 }
