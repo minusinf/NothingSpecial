@@ -13,21 +13,28 @@
 #include "RenderableObject.hpp"
 #include "Shader.hpp"
 #include "VertexBuffer.hpp"
+#include "TextureBuffer3D.hpp"
+#include "TextureBuffer2D.hpp"
 
 namespace Graphics {
     class Volume: public RenderableObject
     {
     public:
-        Volume(const Volume&) = default;
+        Volume(const Volume&) = delete;
         Volume(Volume&&) = default;
-        Volume& operator=(const Volume&)& = default;
-        Volume& operator=(Volume&&)& = default;
+        Volume& operator=(const Volume&)& = delete;
+        Volume& operator=(Volume&&)& = delete;
         
         // For the moment we want to restrict ourselves to chars
-        Volume(std::shared_ptr<matXb> data, const vec3& color);
+        Volume(std::shared_ptr<matX> data, const vec3& color);
+        
+        virtual void render(const Camera& camera) const;
     private:
-        std::shared_ptr<matXb> m_data;
+        std::shared_ptr<matX> m_data;
         vec3 m_color;
+        
+        Shader m_shader;
+        TextureBuffer3D<float, TextureFormat::Float> m_textureBuffer;
     };
 }
 
