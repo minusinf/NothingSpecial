@@ -159,17 +159,91 @@ namespace Graphics
         ///////////////////////////////////////////////////////////////////////////////////
         
         template<typename T>
-        struct TypeInfo
+        struct TypeInfo;
+        
+        template<>
+        struct TypeInfo<vec4>
         {
-            static GLuint ElementType;
-            static uint32_t ElementCount;
-            static GLuint TexFormat; // one of GL_RED, GL_RG, GL_RGB, GL_RGBA
-            static uint32_t BitsPerChannel;
+            static constexpr GLuint ElementType      = GL_FLOAT;
+            static constexpr uint32_t ElementCount   = 4;
+            // one of GL_RED, GL_RG, GL_RGB, GL_RGBA
+            static constexpr GLuint TexFormat        = GL_RGBA;
+            static constexpr uint32_t BitsPerChannel = 32;
+        };
+
+        template<>
+        struct TypeInfo<vec3>
+        {
+            static constexpr GLuint ElementType      = GL_FLOAT;
+            static constexpr uint32_t ElementCount   = 3;
+            // one of GL_RED, GL_RG, GL_RGB, GL_RGBA
+            static constexpr GLuint TexFormat        = GL_RGB;
+            static constexpr uint32_t BitsPerChannel = 32;
+        };
+
+        template<>
+        struct TypeInfo<vec2>
+        {
+            static constexpr GLuint ElementType      = GL_FLOAT;
+            static constexpr uint32_t ElementCount   = 2;
+            // one of GL_RED, GL_RG, GL_RGB, GL_RGBA
+            static constexpr GLuint TexFormat        = GL_RG;
+            static constexpr uint32_t BitsPerChannel = 32;
         };
         
+        template<>
+        struct TypeInfo<float>
+        {
+            static constexpr GLuint ElementType      = GL_FLOAT;
+            static constexpr uint32_t ElementCount   = 1;
+            // one of GL_RED, GL_RG, GL_RGB, GL_RGBA
+            static constexpr GLuint TexFormat        = GL_RED;
+            static constexpr uint32_t BitsPerChannel = 32;
+        };
+
+        template<>
+        struct TypeInfo<int32_t>
+        {
+            static constexpr GLuint ElementType      = GL_INT;
+            static constexpr uint32_t ElementCount   = 1;
+            // one of GL_RED, GL_RG, GL_RGB, GL_RGBA
+            static constexpr GLuint TexFormat        = GL_RED;
+            static constexpr uint32_t BitsPerChannel = 32;
+        };
+
+        template<>
+        struct TypeInfo<uint32_t>
+        {
+            static constexpr GLuint ElementType      = GL_UNSIGNED_INT;
+            static constexpr uint32_t ElementCount   = 1;
+            // one of GL_RED, GL_RG, GL_RGB, GL_RGBA
+            static constexpr GLuint TexFormat        = GL_RED;
+            static constexpr uint32_t BitsPerChannel = 32;
+        };
+        
+        template<>
+        struct TypeInfo<int8_t>
+        {
+            static constexpr GLuint ElementType      = GL_BYTE;
+            static constexpr uint32_t ElementCount   = 1;
+            // one of GL_RED, GL_RG, GL_RGB, GL_RGBA
+            static constexpr GLuint TexFormat        = GL_RED;
+            static constexpr uint32_t BitsPerChannel = 8;
+        };
+
+        template<>
+        struct TypeInfo<uint8_t>
+        {
+            static constexpr GLuint ElementType      = GL_UNSIGNED_BYTE;
+            static constexpr uint32_t ElementCount   = 1;
+            // one of GL_RED, GL_RG, GL_RGB, GL_RGBA
+            static constexpr GLuint TexFormat        = GL_RED;
+            static constexpr uint32_t BitsPerChannel = 8;
+        };
         
         // Internal Texture Format: BPC=BitsPerComponent (8,16,32), COMPONENTS=VectorComponents (1,2,3,4)
-        template<TextureFormat FORMAT, uint BPC, uint COMPONENTS> GLuint InternalTextureFormat();
+        template<TextureFormat FORMAT, uint32_t BPC, uint32_t COMPONENTS> GLuint
+        InternalTextureFormat();
         
     }
 }
