@@ -24,7 +24,8 @@ createScene()
 {
     auto scene = std::make_shared<Scene>();
 //    scene->addObject(std::make_shared<Graphics::Mesh>());
-    Graphics::MeshFactory::loadObj(*scene, "/Users/pascal/cube.obj", true);
+//    Graphics::MeshFactory::loadObj(*scene, "/Users/pascal/cube.obj", false);
+    Graphics::MeshFactory::addCube(*scene);
     return scene;
 }
 
