@@ -34,8 +34,10 @@ Volume::render(const Camera &camera) const
     m_shader.setUniform("uViewMatrix", camera.view());
     m_shader.setUniform("uProjMatrix", camera.proj());
     m_shader.setUniform("uModelMatrix", modelMatrix());
+    m_shader.setUniform("uVolumeTex", &m_textureBuffer);
     
-    glUseProgram(0);
+    m_cubeFacesVBO.bind();
+    glDrawElements(GL_TRIANGLES, m_cubeFacesVBO.length(), GL_UNSIGNED_INT, (void*) NULL);
     GLWrapper::GLErrorThrow();
     
     m_shader.unbind();
