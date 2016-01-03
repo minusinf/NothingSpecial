@@ -207,7 +207,7 @@ namespace Graphics
             static constexpr GLuint ElementType      = GL_INT;
             static constexpr uint32_t ElementCount   = 1;
             // one of GL_RED, GL_RG, GL_RGB, GL_RGBA
-            static constexpr GLuint TexFormat        = GL_RED;
+            static constexpr GLuint TexFormat        = GL_RED_INTEGER;
             static constexpr uint32_t BitsPerChannel = 32;
         };
 
@@ -217,7 +217,7 @@ namespace Graphics
             static constexpr GLuint ElementType      = GL_UNSIGNED_INT;
             static constexpr uint32_t ElementCount   = 1;
             // one of GL_RED, GL_RG, GL_RGB, GL_RGBA
-            static constexpr GLuint TexFormat        = GL_RED;
+            static constexpr GLuint TexFormat        = GL_RED_INTEGER;
             static constexpr uint32_t BitsPerChannel = 32;
         };
         
@@ -227,7 +227,7 @@ namespace Graphics
             static constexpr GLuint ElementType      = GL_BYTE;
             static constexpr uint32_t ElementCount   = 1;
             // one of GL_RED, GL_RG, GL_RGB, GL_RGBA
-            static constexpr GLuint TexFormat        = GL_RED;
+            static constexpr GLuint TexFormat        = GL_RED_INTEGER;
             static constexpr uint32_t BitsPerChannel = 8;
         };
 
@@ -237,7 +237,7 @@ namespace Graphics
             static constexpr GLuint ElementType      = GL_UNSIGNED_BYTE;
             static constexpr uint32_t ElementCount   = 1;
             // one of GL_RED, GL_RG, GL_RGB, GL_RGBA
-            static constexpr GLuint TexFormat        = GL_RED;
+            static constexpr GLuint TexFormat        = GL_RED_INTEGER;
             static constexpr uint32_t BitsPerChannel = 8;
         };
         
