@@ -13,9 +13,8 @@ using namespace Graphics;
 
 #define SHADER_PATH "Graphics/shaders/"
 
-Volume::Volume(std::shared_ptr<Math::Grid3D<float>> data, const vec3& color):
+Volume::Volume(std::shared_ptr<Math::Grid3D<uint8_t>> data):
     m_data(data),
-    m_color(color),
     m_shader(BASE_PATH SHADER_PATH "volume.vert",
              BASE_PATH SHADER_PATH "volume.frag")
 {

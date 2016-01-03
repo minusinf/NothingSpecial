@@ -42,6 +42,7 @@ namespace Graphics {
     TextureBuffer3D<T, FORMAT>::set(const T* data, size_t x, size_t y, size_t z)
     {
         glBindTexture(GL_TEXTURE_3D, m_texture);
+        GLWrapper::GLErrorThrow();
 // Keeping this for now
 // We may want to have a better way to specify glTexParameters
         glTexParameteri(GL_TEXTURE_3D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
@@ -49,7 +50,7 @@ namespace Graphics {
         glTexParameteri(GL_TEXTURE_3D, GL_TEXTURE_WRAP_S, GL_REPEAT);
         glTexParameteri(GL_TEXTURE_3D, GL_TEXTURE_WRAP_T, GL_REPEAT);
         glTexParameteri(GL_TEXTURE_3D, GL_TEXTURE_WRAP_R, GL_REPEAT);
-        
+        GLWrapper::GLErrorThrow();
 //        glPixelStorei(GL_UNPACK_ALIGNMENT,1);
         glTexImage3D(GL_TEXTURE_3D,
                      0,
@@ -63,8 +64,10 @@ namespace Graphics {
                      GL::TypeInfo<T>::TexFormat,
                      GL::TypeInfo<T>::ElementType,
                      data);
+        GLWrapper::GLErrorThrow();
         
         glBindTexture(GL_TEXTURE_3D, 0);
+        GLWrapper::GLErrorThrow();
     }
     
     template<typename T, TextureFormat FORMAT> void

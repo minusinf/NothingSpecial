@@ -18,14 +18,18 @@
 #include "Shader.hpp"
 #include "Mesh.hpp"
 #include "MeshFactory.h"
-
+#include "VolumeReader.hpp"
+#include "Volume.hpp"
 std::shared_ptr<Scene>
 createScene()
 {
     auto scene = std::make_shared<Scene>();
+    auto volData = VolumeReader::readRaw("/users/pascal/Bucky32x32x32.raw", vec3(32,32,32));
+    auto vol = std::make_shared<Graphics::Volume>(volData);
+    scene->addObject(vol);
 //    scene->addObject(std::make_shared<Graphics::Mesh>());
 //    Graphics::MeshFactory::loadObj(*scene, "/Users/pascal/cube.obj", false);
-    Graphics::MeshFactory::addCube(*scene);
+//    Graphics::MeshFactory::addCube(*scene);
     return scene;
 }
 

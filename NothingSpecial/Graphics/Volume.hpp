@@ -26,16 +26,14 @@ namespace Graphics {
         Volume& operator=(const Volume&)& = delete;
         Volume& operator=(Volume&&)& = delete;
         
-        // For the moment we want to restrict ourselves to chars
-        Volume(std::shared_ptr<Math::Grid3D<float>> data, const vec3& color);
+        Volume(std::shared_ptr<Math::Grid3D<uint8_t>> data);
         
         virtual void render(const Camera& camera) const;
     private:
-        std::shared_ptr<Math::Grid3D<float>> m_data;
-        vec3 m_color;
+        std::shared_ptr<Math::Grid3D<uint8_t>> m_data;
         
         Shader m_shader;
-        TextureBuffer3D<float, TextureFormat::Float> m_textureBuffer;
+        TextureBuffer3D<uint8_t, TextureFormat::UnsignedInteger> m_textureBuffer;
         
         void initCube();
         VertexBuffer<vec3> m_cubeVerticesVBO;
