@@ -27,11 +27,11 @@ namespace Graphics {
         Volume& operator=(Volume&&)& = delete;
         
         // For the moment we want to restrict ourselves to chars
-        Volume(std::shared_ptr<matX> data, const vec3& color);
+        Volume(std::shared_ptr<Math::Grid3D<float>> data, const vec3& color);
         
         virtual void render(const Camera& camera) const;
     private:
-        std::shared_ptr<matX> m_data;
+        std::shared_ptr<Math::Grid3D<float>> m_data;
         vec3 m_color;
         
         Shader m_shader;

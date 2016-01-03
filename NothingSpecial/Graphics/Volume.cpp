@@ -13,14 +13,14 @@ using namespace Graphics;
 
 #define SHADER_PATH "Graphics/shaders/"
 
-Volume::Volume(std::shared_ptr<matX> data, const vec3& color):
+Volume::Volume(std::shared_ptr<Math::Grid3D<float>> data, const vec3& color):
     m_data(data),
     m_color(color),
     m_shader(BASE_PATH SHADER_PATH "volume.vert",
              BASE_PATH SHADER_PATH "volume.frag")
 {
     GLWrapper::GLErrorThrow();
-    m_textureBuffer.set(data->data(), data->rows(), data->cols(), 1);
+    m_textureBuffer.set((*m_data).raw(), (*m_data).dimX(), (*m_data).dimY(), (*m_data).dimZ());
     GLWrapper::GLErrorThrow();
 
     initCube();
