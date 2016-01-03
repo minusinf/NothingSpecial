@@ -7,6 +7,7 @@
 //
 
 #include "Volume.hpp"
+#include "Geometry.hpp"
 
 using namespace Graphics;
 
@@ -22,6 +23,7 @@ Volume::Volume(std::shared_ptr<matX> data, const vec3& color):
     m_textureBuffer.set(data->data(), data->rows(), data->cols(), 1);
     GLWrapper::GLErrorThrow();
 
+    initCube();
 }
 
 void
@@ -40,4 +42,17 @@ Volume::render(const Camera &camera) const
     m_shader.unbind();
     
     glDisable(GL_CULL_FACE);
+}
+
+void
+Volume::initCube()
+{
+    std::vector<vec3> vertices;
+    std::vector<face> faces;
+    Math::Geometry::generateCube(vertices, faces);
+    
+    m_cubeVerticesVBO.set(vertices);
+    m_cubeVerticesVBO.map(m_shader, m_shader.attributeLocation("inPosition"), false);
+    
+    m_cubeFacesVBO.set(faces);
 }

@@ -15,6 +15,7 @@
 #include "VertexBuffer.hpp"
 #include "TextureBuffer3D.hpp"
 #include "TextureBuffer2D.hpp"
+#include "Grid3D.hpp"
 
 namespace Graphics {
     class Volume: public RenderableObject
@@ -35,6 +36,10 @@ namespace Graphics {
         
         Shader m_shader;
         TextureBuffer3D<float, TextureFormat::Float> m_textureBuffer;
+        
+        void initCube();
+        VertexBuffer<vec3> m_cubeVerticesVBO;
+        VertexBuffer<face, true> m_cubeFacesVBO;
     };
 }
 
