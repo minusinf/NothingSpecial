@@ -81,9 +81,9 @@ namespace Graphics
             //			GL_FLOAT_MAT3x4	mat3x4
             //			GL_FLOAT_MAT4x2	mat4x2
             //			GL_FLOAT_MAT4x3	mat4x3
-            //			GL_SAMPLER_1D	sampler1D
+            sampler1D_t = GL_SAMPLER_1D,
             sampler2D_t = GL_SAMPLER_2D,
-            //			GL_SAMPLER_3D	sampler3D
+            sampler3D_t = GL_SAMPLER_3D,
             //			GL_SAMPLER_CUBE	samplerCube
             //			GL_SAMPLER_1D_SHADOW	sampler1DShadow
             //			GL_SAMPLER_2D_SHADOW	sampler2DShadow

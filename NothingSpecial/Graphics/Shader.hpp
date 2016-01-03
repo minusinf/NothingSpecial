@@ -14,6 +14,7 @@
 
 #include "base.hpp"
 #include "GLHelper.hpp"
+#include "TextureBuffer.hpp"
 
 namespace Graphics {
     class Shader
@@ -60,7 +61,8 @@ namespace Graphics {
         bool setUniform(const std::string& name, const mat4& v, bool transpose = false) const;
         bool setUniform(const std::string& name, bool v) const;
         bool setUniform(const std::string& name, int v) const;
-        
+        bool setUniform(const std::string& name, const TextureBuffer* tex);
+
         /// Attributes
         bool mapAttribute(const std::string& name, uint location);
         GLuint attributeLocation(const std::string& name);

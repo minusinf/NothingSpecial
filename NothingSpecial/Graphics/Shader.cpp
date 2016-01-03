@@ -13,6 +13,8 @@
 #include "GraphicsException.hpp"
 #include "GLWrapper.hpp"
 #include "GLHelper.hpp"
+#include "TextureBuffer.hpp"
+
 #include <fstream>
 
 using namespace Graphics;
@@ -330,6 +332,23 @@ bool Shader::setUniform(const std::string &name, int v) const
         assert(info.Length == 1);
         assert(Shader::ms_boundShader == this);
         glUniform1i(info.Location,v);
+        return true;
+    }
+    catch (std::out_of_range& oor)
+    {
+        return false;
+    }
+}
+
+bool Shader::setUniform(const std::string &name, const TextureBuffer* tex)
+{
+    try
+    {
+        const UniformInfo& info = m_uniformInfo.at(name);
+        assert(info.Type == tex->shaderVariableType());
+        assert(info.Length == 1);
+        assert(Shader::ms_boundShader == this);
+        glUniform1i(info.Location,tex->textureUnit()+GL_TEXTURE0);
         return true;
     }
     catch (std::out_of_range& oor)

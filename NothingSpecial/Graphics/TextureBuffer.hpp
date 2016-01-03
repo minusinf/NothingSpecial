@@ -13,6 +13,7 @@
 #define TextureBuffer_hpp
 
 #include "base.hpp"
+#include "GLHelper.hpp"
 
 namespace Graphics {
     class TextureBuffer
@@ -35,6 +36,8 @@ namespace Graphics {
         {
             return m_textureUnit;
         }
+        
+        virtual GL::ShaderVariableType shaderVariableType() const = 0;
     protected:
         OpenGLTextureBufferID_t m_texture;
         GLuint m_textureUnit;

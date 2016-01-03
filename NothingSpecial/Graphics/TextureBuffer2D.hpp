@@ -29,6 +29,10 @@ namespace Graphics
         
         void SetData(const T* data, size_t x, size_t y);
         void Map(uint textureUnit);
+        virtual GL::ShaderVariableType shaderVariableType() const
+        {
+            return GL::ShaderVariableType::sampler2D_t;
+        }
     };
     
     // Implementation
@@ -81,7 +85,7 @@ namespace Graphics
         //        glTexParameteri(GL_TEXTURE_3D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_BORDER);
         //        glTexParameteri(GL_TEXTURE_3D, GL_TEXTURE_WRAP_R, GL_CLAMP_TO_BORDER);
         
-        glBindTexture(GL_TEXTURE_3D, 0);
+        glBindTexture(GL_TEXTURE_2D, 0);
     }
 }
 #endif

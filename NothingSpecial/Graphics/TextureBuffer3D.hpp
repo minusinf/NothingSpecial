@@ -36,6 +36,10 @@ namespace Graphics {
         // RAW Data: HELL YEAH
         void set(const T* data, size_t x, size_t y, size_t z);
         void map(GLuint textureUnit);
+        virtual GL::ShaderVariableType shaderVariableType() const
+        {
+            return GL::ShaderVariableType::sampler3D_t;
+        }
     };
     
     template<typename T, TextureFormat FORMAT> void
