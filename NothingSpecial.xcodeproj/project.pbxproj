@@ -51,6 +51,11 @@
 		5035DDDA1C3491E000850EEB /* TextureBuffer3D.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = TextureBuffer3D.hpp; path = Graphics/TextureBuffer3D.hpp; sourceTree = "<group>"; };
 		5035DDDB1C37489300850EEB /* TextureBuffer.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = TextureBuffer.hpp; path = Graphics/TextureBuffer.hpp; sourceTree = "<group>"; };
 		5035DDDC1C374B4100850EEB /* TextureBuffer2D.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = TextureBuffer2D.hpp; path = Graphics/TextureBuffer2D.hpp; sourceTree = "<group>"; };
+		5035DDDD1C3933E000850EEB /* volume.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = volume.vert; path = Graphics/shaders/volume.vert; sourceTree = "<group>"; };
+		5035DDDE1C3933E000850EEB /* volume.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = volume.frag; path = Graphics/shaders/volume.frag; sourceTree = "<group>"; };
+		5035DDDF1C393B8100850EEB /* polygon.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = polygon.vert; path = Graphics/shaders/polygon.vert; sourceTree = "<group>"; };
+		5035DDE01C393B8100850EEB /* polygon.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = polygon.frag; path = Graphics/shaders/polygon.frag; sourceTree = "<group>"; };
+		5035DDE21C39952100850EEB /* Grid3D.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Grid3D.hpp; path = Math/Grid3D.hpp; sourceTree = "<group>"; };
 		507CEDEC1BAC970C00D644F7 /* NothingSpecial */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = NothingSpecial; sourceTree = BUILT_PRODUCTS_DIR; };
 		507CEDEF1BAC970C00D644F7 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		507CEDF81BAC987700D644F7 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
@@ -100,6 +105,7 @@
 		5035DDCF1C32274900850EEB /* Math */ = {
 			isa = PBXGroup;
 			children = (
+				5035DDE21C39952100850EEB /* Grid3D.hpp */,
 				5035DDD01C32276300850EEB /* Geometry.cpp */,
 				5035DDD11C32276300850EEB /* Geometry.hpp */,
 				5035DDD61C32C4AD00850EEB /* MathHelpers.h */,
@@ -192,6 +198,10 @@
 		50A75CBE1BB3406D00723F4D /* shaders */ = {
 			isa = PBXGroup;
 			children = (
+				5035DDDF1C393B8100850EEB /* polygon.vert */,
+				5035DDE01C393B8100850EEB /* polygon.frag */,
+				5035DDDD1C3933E000850EEB /* volume.vert */,
+				5035DDDE1C3933E000850EEB /* volume.frag */,
 				5035DDD41C32AAD500850EEB /* diffuse.vert */,
 				5035DDD51C32AAD500850EEB /* diffuse.frag */,
 				50A75CBF1BB3408A00723F4D /* simple.frag */,
