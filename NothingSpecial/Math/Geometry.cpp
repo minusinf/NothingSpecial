@@ -56,3 +56,55 @@ Geometry::computeVertexNormals(const std::vector<vec3> &vertices,
     }
     return normals;
 }
+
+void
+Geometry::generateCube(std::vector<vec3> &vertices,
+                       std::vector<face> &faces)
+{
+    vertices.resize(0);
+    vertices = {
+        vec3(1, 1, -1),
+        vec3(1, -1, -1),
+        vec3(-1, -1, -1),
+        vec3(-1, 1, -1),
+        vec3(-1, -1, 1),
+        vec3(-1, 1, 1),
+        vec3(-1, 1, -1),
+        vec3(-1, -1, -1),
+        vec3(1, -1, 1),
+        vec3(1, 1, 1),
+        vec3(-1, -1, 1),
+        vec3(1, 1, 1),
+        vec3(-1, 1, 1),
+        vec3(-1, -1, 1),
+        vec3(1, -1, -1),
+        vec3(1, 1, -1),
+        vec3(1, -1, 1),
+        vec3(1, 1, -1),
+        vec3(1, 1, 1),
+        vec3(1, -1, 1),
+        vec3(1, 1, -1),
+        vec3(-1, 1, -1),
+        vec3(1, 1, 1),
+        vec3(-1, 1, 1),
+        vec3(1, -1, -1),
+        vec3(1, -1, 1),
+        vec3(-1, -1, 1),
+        vec3(-1, -1, -1)
+    };
+    faces.resize(0);
+    faces = {
+        face(0, 1, 2),
+        face(0, 2, 3),
+        face(4, 5, 6),
+        face(4, 6, 7),
+        face(8, 9, 10),
+        face(11, 12, 13),
+        face(14, 15, 16),
+        face(17, 18, 19),
+        face(20, 21, 22),
+        face(21, 23, 22),
+        face(24, 25, 26),
+        face(24, 26, 27)
+    };
+}

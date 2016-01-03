@@ -17,6 +17,8 @@ namespace Graphics {
     public:
         static void loadObj(Scene& scene, const std::string& path, bool drawAsPolygon);
         static void loadObj(Scene& scene, const std::string& path);
+        static void addCube(Scene& scene, bool drawAsPolygon);
+        static void addCube(Scene& scene);
     };
 }
 #endif /* defined(__NothingSpecial__MeshFactory__) */

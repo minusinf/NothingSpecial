@@ -10,6 +10,7 @@
 #include "Mesh.hpp"
 #include "GraphicsException.hpp"
 #include "tiny_obj_loader.h"
+#include "Geometry.hpp"
 
 using namespace Graphics;
 
@@ -61,6 +62,8 @@ MeshFactory::loadObj(Scene &scene, const std::string &path,  bool drawAsPolygon)
             vertices[idx].x() = objPositions[idx*3];
             vertices[idx].y() = objPositions[idx*3+1];
             vertices[idx].z() = objPositions[idx*3+2];
+            std::cout << "vec3(" << vertices[idx].x() << ", " << vertices[idx].y() << ", "
+                      << vertices[idx].z() << ")" << std::endl;
         }
         
         for (size_t idx=0; idx < nIndices; ++idx)
@@ -68,6 +71,8 @@ MeshFactory::loadObj(Scene &scene, const std::string &path,  bool drawAsPolygon)
             faces[idx].x() = objIndices[idx*3];
             faces[idx].y() = objIndices[idx*3+1];
             faces[idx].z() = objIndices[idx*3+2];
+            std::cout << "face(" << faces[idx].x() << ", " << faces[idx].y() << ", "
+                      << faces[idx].z() << ")" << std::endl;
         }
         
         scene.addObject(std::make_shared<Mesh>(std::move(vertices),
@@ -76,4 +81,25 @@ MeshFactory::loadObj(Scene &scene, const std::string &path,  bool drawAsPolygon)
                                                drawAsPolygon));
         std::cout << "Added obj" << std::endl;
     }
+}
+
+void
+MeshFactory::addCube(Scene &scene, bool drawAsPolygon)
+{
+    std::vector<vec3> vertices;
+    std::vector<face> faces;
+    Math::Geometry::generateCube(vertices, faces);
+
+    std::vector<vec4> colors(vertices.size(), vec4(1,1,1,1));
+
+    scene.addObject(std::make_shared<Mesh>(std::move(vertices),
+                                           std::move(colors),
+                                           std::move(faces),
+                                           drawAsPolygon));
+}
+
+void
+MeshFactory::addCube(Scene &scene)
+{
+    addCube(scene, false);
 }

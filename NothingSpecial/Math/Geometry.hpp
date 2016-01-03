@@ -15,12 +15,15 @@ namespace Math {
     class Geometry
     {
     public:
-        static
-        std::vector<vec3> computeFaceNormals(const std::vector<vec3>& vertices,
-                                             const std::vector<face>& faces);
-        static
-        std::vector<vec3> computeVertexNormals(const std::vector<vec3>& vertices,
-                                               const std::vector<face>& faces);
+        static std::vector<vec3>
+        computeFaceNormals(const std::vector<vec3>& vertices,
+                           const std::vector<face>& faces);
+        static std::vector<vec3>
+        computeVertexNormals(const std::vector<vec3>& vertices,
+                             const std::vector<face>& faces);
+        static void
+        generateCube(std::vector<vec3>& vertices,
+                     std::vector<face>& faces);
     };
 }
 
