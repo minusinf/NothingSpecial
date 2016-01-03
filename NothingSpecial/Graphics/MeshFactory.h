@@ -15,6 +15,7 @@ namespace Graphics {
     class MeshFactory
     {
     public:
+        static void loadObj(Scene& scene, const std::string& path, bool drawAsPolygon);
         static void loadObj(Scene& scene, const std::string& path);
     };
 }

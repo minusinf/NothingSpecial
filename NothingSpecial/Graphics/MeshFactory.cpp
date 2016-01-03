@@ -16,6 +16,12 @@ using namespace Graphics;
 void
 MeshFactory::loadObj(Scene &scene, const std::string &path)
 {
+    loadObj(scene, path, false);
+}
+
+void
+MeshFactory::loadObj(Scene &scene, const std::string &path,  bool drawAsPolygon)
+{
     std::vector<tinyobj::shape_t> m_shapes;
     std::vector<tinyobj::material_t> m_materials;
     std::string err = tinyobj::LoadObj(m_shapes, m_materials, path.c_str());
@@ -66,7 +72,8 @@ MeshFactory::loadObj(Scene &scene, const std::string &path)
         
         scene.addObject(std::make_shared<Mesh>(std::move(vertices),
                                                std::move(colors),
-                                               std::move(faces)));
+                                               std::move(faces),
+                                               drawAsPolygon));
         std::cout << "Added obj" << std::endl;
     }
 }
