@@ -22,6 +22,7 @@
 		507CEE1A1BACC0D700D644F7 /* tiny_obj_loader.cc in Sources */ = {isa = PBXBuildFile; fileRef = 507CEE181BACC0D700D644F7 /* tiny_obj_loader.cc */; };
 		507CEE201BAD71AC00D644F7 /* libGLEW.1.12.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 507CEE1F1BAD71AC00D644F7 /* libGLEW.1.12.0.dylib */; };
 		507CEE231BAEC7C900D644F7 /* GLHelper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 507CEE211BAEC7C900D644F7 /* GLHelper.cpp */; };
+		5096EA1B1C39CDE600C2C39B /* VolumeReader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5096EA191C39CDE600C2C39B /* VolumeReader.cpp */; };
 		50A75CC31BB345D100723F4D /* MeshFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50A75CC11BB345D100723F4D /* MeshFactory.cpp */; };
 		50F975341BDAC6BE002DC643 /* libglfw3.3.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 50F975331BDAC6BE002DC643 /* libglfw3.3.1.dylib */; };
 /* End PBXBuildFile section */
@@ -80,6 +81,8 @@
 		507CEE211BAEC7C900D644F7 /* GLHelper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GLHelper.cpp; path = Graphics/GLHelper.cpp; sourceTree = "<group>"; };
 		507CEE221BAEC7C900D644F7 /* GLHelper.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GLHelper.hpp; path = Graphics/GLHelper.hpp; sourceTree = "<group>"; };
 		508586B61BAF34200034647B /* VertexBuffer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = VertexBuffer.hpp; path = Graphics/VertexBuffer.hpp; sourceTree = "<group>"; };
+		5096EA191C39CDE600C2C39B /* VolumeReader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = VolumeReader.cpp; sourceTree = "<group>"; };
+		5096EA1A1C39CDE600C2C39B /* VolumeReader.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = VolumeReader.hpp; sourceTree = "<group>"; };
 		50A75CBF1BB3408A00723F4D /* simple.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = simple.frag; path = Graphics/shaders/simple.frag; sourceTree = "<group>"; };
 		50A75CC01BB3408A00723F4D /* simple.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = simple.vert; path = Graphics/shaders/simple.vert; sourceTree = "<group>"; };
 		50A75CC11BB345D100723F4D /* MeshFactory.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MeshFactory.cpp; path = Graphics/MeshFactory.cpp; sourceTree = "<group>"; };
@@ -145,6 +148,8 @@
 				507CEE0D1BACB36D00D644F7 /* Scene.hpp */,
 				507CEDFC1BAC9AAB00D644F7 /* Window.cpp */,
 				507CEDFD1BAC9AAB00D644F7 /* Window.hpp */,
+				5096EA191C39CDE600C2C39B /* VolumeReader.cpp */,
+				5096EA1A1C39CDE600C2C39B /* VolumeReader.hpp */,
 			);
 			path = NothingSpecial;
 			sourceTree = "<group>";
@@ -276,6 +281,7 @@
 				507CEE111BACB39500D644F7 /* Mesh.cpp in Sources */,
 				507CEE1A1BACC0D700D644F7 /* tiny_obj_loader.cc in Sources */,
 				5035DDD91C33557900850EEB /* Volume.cpp in Sources */,
+				5096EA1B1C39CDE600C2C39B /* VolumeReader.cpp in Sources */,
 				507CEE081BACA6B300D644F7 /* Shader.cpp in Sources */,
 				507CEE231BAEC7C900D644F7 /* GLHelper.cpp in Sources */,
 				507CEDFE1BAC9AAB00D644F7 /* Window.cpp in Sources */,
