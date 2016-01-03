@@ -1,8 +1,11 @@
 #version 410 core
 
-// Diffuse shader
-in vec3 exFragPos;
+
+in vec3 exPosition;
 in vec4 exColor;
+
+uniform sampler3D uVolumeTex;
+
 out vec4 outColor;
 
 void main(void)
