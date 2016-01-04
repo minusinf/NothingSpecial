@@ -20,7 +20,7 @@
 namespace Graphics {
     
     template<typename T, TextureFormat FORMAT = TextureFormat::Float>
-    class TextureBuffer3D: TextureBuffer
+    class TextureBuffer3D: public TextureBuffer
     {
     public:
         TextureBuffer3D():
@@ -62,10 +62,9 @@ namespace Graphics {
     };
     
     template<typename T, TextureFormat FORMAT> void
-    TextureBuffer3D<T, FORMAT>::map(GLuint textureUnit)
+    TextureBuffer3D<T, FORMAT>::map(uint32_t textureUnit)
     {
-        m_textureUnit = textureUnit;
-        glActiveTexture(GL_TEXTURE0 + m_textureUnit);
+        glActiveTexture(GL_TEXTURE0 + textureUnit);
         glBindTexture(GL_TEXTURE_3D, m_texture);
         glActiveTexture(GL_TEXTURE0);
     }
@@ -76,7 +75,6 @@ namespace Graphics {
         glBindTexture(GL_TEXTURE_3D, m_texture);
         GLWrapper::GLErrorThrow();
         setTextureParameters(GL_TEXTURE_3D);
-        GLWrapper::GLErrorThrow();
         
 //        glPixelStorei(GL_UNPACK_ALIGNMENT,1);
         glTexImage3D(GL_TEXTURE_3D,

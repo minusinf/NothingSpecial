@@ -30,7 +30,6 @@ namespace Graphics {
         
         TextureBuffer(TextureBuffer&& other):
             m_texture(std::move(other.m_texture)),
-            m_textureUnit(std::move(other.m_textureUnit)),
             m_textureParameters(std::move(other.m_textureParameters))
         {
         };
@@ -51,15 +50,9 @@ namespace Graphics {
             return m_texture;
         }
         
-        GLuint textureUnit() const
-        {
-            return m_textureUnit;
-        }
-        
         virtual GL::ShaderVariableType shaderVariableType() const = 0;
     protected:
         OpenGLTextureBufferID_t m_texture;
-        GLuint m_textureUnit;
         const std::unordered_map<GLenum,GLint> m_textureParameters;
 
         void setTextureParameters(GLenum target)
