@@ -30,15 +30,22 @@ namespace Graphics {
         
         virtual void render(const Camera& camera) const;
     private:
+        void renderBackFace(const Camera& camera) const;
+        void renderVolume(const Camera& camera) const;
+        
         std::shared_ptr<Math::Grid3D<uint8_t>> m_data;
         
-        Shader m_shader;
-        TextureBuffer2D<vec3, TextureFormat::Float> m_textureBackFace;
-        TextureBuffer3D<uint8_t, TextureFormat::UnsignedInteger> m_textureBuffer;
+        Shader m_shaderBackface;
+        Shader m_shaderVolume;
+        
+        mutable TextureBuffer2D<vec3, TextureFormat::Float> m_textureBackface;
+        mutable TextureBuffer3D<uint8_t, TextureFormat::UnsignedInteger> m_textureBuffer;
         
         void initCube();
         VertexBuffer<vec3> m_cubeVerticesVBO;
         VertexBuffer<face, true> m_cubeFacesVBO;
+        
+        GLuint m_frameBufferIdx;
     };
 }
 
