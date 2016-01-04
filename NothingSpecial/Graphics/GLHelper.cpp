@@ -118,6 +118,9 @@ namespace Graphics
                 case ShaderVariableType::mat2_t:  return "mat2";
                 case ShaderVariableType::mat3_t:  return "mat3";
                 case ShaderVariableType::mat4_t:  return "mat4";
+                case ShaderVariableType::sampler1D_t: return "sampler1D";
+                case ShaderVariableType::sampler2D_t: return "sampler2D";
+                case ShaderVariableType::sampler3D_t: return "sampler3D";
                 default: return "unknown";
             }
         }

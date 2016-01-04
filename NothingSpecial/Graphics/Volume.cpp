@@ -88,8 +88,8 @@ Volume::renderVolume(const Graphics::Camera &camera) const
     m_shaderVolume.setUniform("uViewMatrix", camera.view());
     m_shaderVolume.setUniform("uProjMatrix", camera.proj());
     m_shaderVolume.setUniform("uModelMatrix", modelMatrix());
-//    m_shaderVolume.setUniform("uWindowSize", vec2(camera.width(), camera.height()));
-//    m_shaderVolume.setUniform("uVolumeTex", &m_textureBuffer);
+    m_shaderVolume.setUniform("uWindowSize", vec2(camera.width(), camera.height()));
+    m_shaderVolume.setUniform("uVolumeTex", &m_textureBuffer);
     m_shaderVolume.setUniform("uBackFace",  &m_textureBackface);
     GLWrapper::GLErrorThrow();
     
@@ -98,6 +98,7 @@ Volume::renderVolume(const Graphics::Camera &camera) const
 
     glDrawElements(GL_TRIANGLES, m_cubeFacesVBO.length(), GL_UNSIGNED_INT, (void*) NULL);
     GLWrapper::GLErrorThrow();
+    // In case of error: Work around the driver bug: http://stackoverflow.com/questions/12555165/incorrect-value-from-glgetprogramivprogram-gl-active-uniform-max-length-outpa
     m_cubeFacesVBO.unbind();
 //    GLWrapper::GLErrorThrow();
     

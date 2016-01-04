@@ -1,8 +1,8 @@
 #version 410 core
 
-//uniform vec2 uWindowSize;
+uniform vec2 uWindowSize;
 uniform sampler2D uBackFace;
-//uniform sampler3D uVolumeTex;
+uniform sampler2D uVolumeTex;
 
 in vec3 exPosition;
 in vec3 tfPosition;
