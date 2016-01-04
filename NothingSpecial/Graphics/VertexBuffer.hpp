@@ -35,6 +35,7 @@ namespace Graphics {
         void set(const std::vector<T>& data);
         void map(const Shader& shader, GLuint location, bool normalized);
         void bind() const;
+        void unbind() const;
         size_t length() const
         {
             return m_size;
@@ -70,6 +71,21 @@ namespace Graphics {
         else
         {
             glBindVertexArray(m_vbo);
+            GLWrapper::GLErrorThrow();
+        }
+    }
+    
+    template<typename T, bool ELEMENT_BUFFER> void
+    VertexBuffer<T, ELEMENT_BUFFER>::unbind() const
+    {
+        if (ELEMENT_BUFFER)
+        {
+            glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
+            GLWrapper::GLErrorThrow();
+        }
+        else
+        {
+            glBindVertexArray(0);
             GLWrapper::GLErrorThrow();
         }
     }
