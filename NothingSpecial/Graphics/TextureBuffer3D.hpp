@@ -23,11 +23,28 @@ namespace Graphics {
     class TextureBuffer3D: TextureBuffer
     {
     public:
-        TextureBuffer3D() = default;
-        TextureBuffer3D(TextureBuffer3D&&) = default;
+        TextureBuffer3D():
+            TextureBuffer()
+        {
+            
+        }
+        
+        TextureBuffer3D(const GLTextureParameters_t& textureParameters):
+            TextureBuffer(textureParameters)
+        {
+            
+        }
+        
+        TextureBuffer3D(TextureBuffer3D&& other):
+            TextureBuffer(other)
+        {
+            
+        }
+        
         TextureBuffer3D(const TextureBuffer3D&) = delete;
         TextureBuffer3D& operator=(const TextureBuffer3D&)& = delete;
         TextureBuffer3D& operator=(TextureBuffer3D&&)& = delete;
+        
         virtual ~TextureBuffer3D()
         {
             
@@ -35,7 +52,9 @@ namespace Graphics {
         
         // RAW Data: HELL YEAH
         void set(const T* data, size_t x, size_t y, size_t z);
+        
         void map(GLuint textureUnit);
+        
         virtual GL::ShaderVariableType shaderVariableType() const
         {
             return GL::ShaderVariableType::sampler3D_t;
@@ -43,18 +62,22 @@ namespace Graphics {
     };
     
     template<typename T, TextureFormat FORMAT> void
+    TextureBuffer3D<T, FORMAT>::map(GLuint textureUnit)
+    {
+        m_textureUnit = textureUnit;
+        glActiveTexture(GL_TEXTURE0 + m_textureUnit);
+        glBindTexture(GL_TEXTURE_3D, m_texture);
+        glActiveTexture(GL_TEXTURE0);
+    }
+    
+    template<typename T, TextureFormat FORMAT> void
     TextureBuffer3D<T, FORMAT>::set(const T* data, size_t x, size_t y, size_t z)
     {
         glBindTexture(GL_TEXTURE_3D, m_texture);
         GLWrapper::GLErrorThrow();
-// Keeping this for now
-// We may want to have a better way to specify glTexParameters
-        glTexParameteri(GL_TEXTURE_3D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-        glTexParameteri(GL_TEXTURE_3D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-        glTexParameteri(GL_TEXTURE_3D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-        glTexParameteri(GL_TEXTURE_3D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-        glTexParameteri(GL_TEXTURE_3D, GL_TEXTURE_WRAP_R, GL_REPEAT);
+        setTextureParameters(GL_TEXTURE_3D);
         GLWrapper::GLErrorThrow();
+        
 //        glPixelStorei(GL_UNPACK_ALIGNMENT,1);
         glTexImage3D(GL_TEXTURE_3D,
                      0,
@@ -72,15 +95,6 @@ namespace Graphics {
         
         glBindTexture(GL_TEXTURE_3D, 0);
         GLWrapper::GLErrorThrow();
-    }
-    
-    template<typename T, TextureFormat FORMAT> void
-    TextureBuffer3D<T, FORMAT>::map(GLuint textureUnit)
-    {
-        m_textureUnit = textureUnit;
-        glActiveTexture(GL_TEXTURE0 + m_textureUnit);
-        glBindTexture(GL_TEXTURE_3D, m_texture);
-        glActiveTexture(GL_TEXTURE0);
     }
 }
 

@@ -14,15 +14,33 @@
 
 #include "base.hpp"
 #include "GLHelper.hpp"
+#include "GLWrapper.hpp"
+#include <unordered_map>
+
+typedef std::unordered_map<GLenum, GLint> GLTextureParameters_t;
 
 namespace Graphics {
     class TextureBuffer
     {
     public:
-        TextureBuffer()
+        TextureBuffer():
+            TextureBuffer(GLTextureParameters_t())
+        {
+        }
+        
+        TextureBuffer(TextureBuffer&& other):
+            m_texture(std::move(other.m_texture)),
+            m_textureUnit(std::move(other.m_textureUnit)),
+            m_textureParameters(std::move(other.m_textureParameters))
+        {
+        };
+        
+        TextureBuffer(const GLTextureParameters_t& textureParameters):
+            m_textureParameters(textureParameters)
         {
             glGenTextures(1, &m_texture);
         }
+        
         virtual ~TextureBuffer()
         {
             glDeleteTextures(1, &m_texture);
@@ -32,6 +50,7 @@ namespace Graphics {
         {
             return m_texture;
         }
+        
         GLuint textureUnit() const
         {
             return m_textureUnit;
@@ -41,7 +60,16 @@ namespace Graphics {
     protected:
         OpenGLTextureBufferID_t m_texture;
         GLuint m_textureUnit;
-        
+        const std::unordered_map<GLenum,GLint> m_textureParameters;
+
+        void setTextureParameters(GLenum target)
+        {
+            for (const auto& kv: m_textureParameters)
+            {
+                glTexParameteri(target, kv.first, kv.second);
+                GLWrapper::GLErrorThrow();
+            }
+        }
     };
 }
 
