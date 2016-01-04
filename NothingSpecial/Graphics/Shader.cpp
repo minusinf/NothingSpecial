@@ -253,6 +253,22 @@ Shader::programID()
     return m_pId;
 }
 
+bool Shader::setUniform(const std::string& name, const vec2& v) const
+{
+    try
+    {
+        const UniformInfo& info = m_uniformInfo.at(name);
+        assert(info.Type == GL::ShaderVariableType::vec2_t);
+        assert(info.Length == 1);
+        assert(Shader::ms_boundShader == this);
+        glUniform2fv(info.Location,1, v.data());
+        return true;
+    }
+    catch (std::out_of_range& oor)
+    {
+        return false;
+    }
+}
 
 
 bool Shader::setUniform(const std::string &name, const vec3& v) const
@@ -340,7 +356,7 @@ bool Shader::setUniform(const std::string &name, int v) const
     }
 }
 
-bool Shader::setUniform(const std::string &name, const TextureBuffer* tex)
+bool Shader::setUniform(const std::string &name, const TextureBuffer* tex) const
 {
     try
     {
@@ -348,13 +364,26 @@ bool Shader::setUniform(const std::string &name, const TextureBuffer* tex)
         assert(info.Type == tex->shaderVariableType());
         assert(info.Length == 1);
         assert(Shader::ms_boundShader == this);
-        glUniform1i(info.Location,tex->textureUnit()+GL_TEXTURE0);
+        glUniform1i(info.Location,GL_TEXTURE0+getSetTextureUnit(name));
         return true;
     }
     catch (std::out_of_range& oor)
     {
         return false;
     }
+}
+
+uint32_t
+Shader::getSetTextureUnit(const std::string &name) const
+{
+    auto it = m_textureUnitMapping.find(name);
+    if (it != m_textureUnitMapping.end())
+    {
+        return m_textureUnitMapping[name];
+    }
+    uint32_t mappings = (uint32_t) m_textureUnitMapping.size();
+    m_textureUnitMapping[name] = mappings;
+    return mappings;
 }
 
 bool Shader::mapAttribute(const std::string& name, uint location)

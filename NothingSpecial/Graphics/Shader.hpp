@@ -56,12 +56,13 @@ namespace Graphics {
         GLuint getVAO() const;
         
         /// Set Uniforms
+        bool setUniform(const std::string& name, const vec2& v) const;
         bool setUniform(const std::string& name, const vec3& v) const;
         bool setUniform(const std::string& name, const vec4& v) const;
         bool setUniform(const std::string& name, const mat4& v, bool transpose = false) const;
         bool setUniform(const std::string& name, bool v) const;
         bool setUniform(const std::string& name, int v) const;
-        bool setUniform(const std::string& name, const TextureBuffer* tex);
+        bool setUniform(const std::string& name, const TextureBuffer* tex) const;
 
         /// Attributes
         bool mapAttribute(const std::string& name, uint location);
@@ -71,6 +72,7 @@ namespace Graphics {
         void loadUniformInfo();
         void loadAttributeInfo();
         
+        uint32_t getSetTextureUnit(const std::string& name) const;
     private:
         const std::string m_vertexShaderPath;
         const std::string m_fragmentShaderPath;
@@ -91,6 +93,9 @@ namespace Graphics {
         
         GLuint m_attributeCount;
         std::unordered_map<std::string, AttributeInfo> m_attributeInfo;
+        
+        // Texture units
+        mutable std::unordered_map<std::string, uint32_t> m_textureUnitMapping;
         
     private:
         
