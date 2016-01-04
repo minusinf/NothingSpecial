@@ -87,6 +87,8 @@
 		50A75CC01BB3408A00723F4D /* simple.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = simple.vert; path = Graphics/shaders/simple.vert; sourceTree = "<group>"; };
 		50A75CC11BB345D100723F4D /* MeshFactory.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MeshFactory.cpp; path = Graphics/MeshFactory.cpp; sourceTree = "<group>"; };
 		50A75CC21BB345D100723F4D /* MeshFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MeshFactory.h; path = Graphics/MeshFactory.h; sourceTree = "<group>"; };
+		50EF06771C3B00000090E1C7 /* backfaceMap.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = backfaceMap.vert; path = Graphics/shaders/backfaceMap.vert; sourceTree = "<group>"; };
+		50EF06781C3B00000090E1C7 /* backfaceMap.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = backfaceMap.frag; path = Graphics/shaders/backfaceMap.frag; sourceTree = "<group>"; };
 		50F975331BDAC6BE002DC643 /* libglfw3.3.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libglfw3.3.1.dylib; path = ../../../../usr/local/Cellar/glfw3/3.1.2/lib/libglfw3.3.1.dylib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -203,6 +205,8 @@
 		50A75CBE1BB3406D00723F4D /* shaders */ = {
 			isa = PBXGroup;
 			children = (
+				50EF06771C3B00000090E1C7 /* backfaceMap.vert */,
+				50EF06781C3B00000090E1C7 /* backfaceMap.frag */,
 				5035DDDF1C393B8100850EEB /* polygon.vert */,
 				5035DDE01C393B8100850EEB /* polygon.frag */,
 				5035DDDD1C3933E000850EEB /* volume.vert */,
