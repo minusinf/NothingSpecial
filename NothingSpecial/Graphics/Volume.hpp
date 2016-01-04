@@ -33,6 +33,7 @@ namespace Graphics {
         std::shared_ptr<Math::Grid3D<uint8_t>> m_data;
         
         Shader m_shader;
+        TextureBuffer2D<vec3, TextureFormat::Float> m_textureBackFace;
         TextureBuffer3D<uint8_t, TextureFormat::UnsignedInteger> m_textureBuffer;
         
         void initCube();

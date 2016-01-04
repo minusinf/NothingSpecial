@@ -16,12 +16,20 @@ using namespace Graphics;
 Volume::Volume(std::shared_ptr<Math::Grid3D<uint8_t>> data):
     m_data(data),
     m_shader(BASE_PATH SHADER_PATH "volume.vert",
-             BASE_PATH SHADER_PATH "volume.frag")
+             BASE_PATH SHADER_PATH "volume.frag"),
+    m_textureBackFace({{GL_TEXTURE_WRAP_S, GL_REPEAT},
+                      {GL_TEXTURE_WRAP_T, GL_REPEAT},
+                      {GL_TEXTURE_MIN_FILTER, GL_NEAREST},
+                      {GL_TEXTURE_MAG_FILTER, GL_NEAREST}}),
+    m_textureBuffer({{GL_TEXTURE_MAG_FILTER, GL_LINEAR},
+                     {GL_TEXTURE_MIN_FILTER, GL_LINEAR},
+                     {GL_TEXTURE_WRAP_S, GL_REPEAT},
+                     {GL_TEXTURE_WRAP_T, GL_REPEAT},
+                     {GL_TEXTURE_WRAP_R, GL_REPEAT}})
 {
     GLWrapper::GLErrorThrow();
     m_textureBuffer.set((*m_data).raw(), (*m_data).dimX(), (*m_data).dimY(), (*m_data).dimZ());
     GLWrapper::GLErrorThrow();
-
     initCube();
 }
 
