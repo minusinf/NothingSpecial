@@ -18,6 +18,9 @@ namespace Graphics {
         Camera(float width, float height);
         Camera(float width, float height, float angle, float near, float far);
         
+        float width() const;
+        float height() const;
+        
         void resize(float width, float height);
         
         const mat4& view() const;
@@ -37,6 +40,8 @@ namespace Graphics {
         static mat4 createLookAtMatrix(const vec3& eye, const vec3& center, const vec3& up);
         
     private:
+        float m_width;
+        float m_height;
         float m_angle;
         float m_aspect;
         float m_near;

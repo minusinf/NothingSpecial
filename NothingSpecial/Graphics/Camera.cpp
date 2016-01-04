@@ -21,6 +21,8 @@ Camera::Camera(float width, float height):
 }
 
 Camera::Camera(float width, float height, float angle, float near, float far):
+    m_width(width),
+    m_height(height),
     m_angle(angle),
     m_aspect(width/height),
     m_near(near),
@@ -36,6 +38,18 @@ Camera::Camera(float width, float height, float angle, float near, float far):
     m_rotationCenter(0,0,0)
 {
     resize(width, height);
+}
+
+float
+Camera::width() const
+{
+    return m_width;
+}
+
+float
+Camera::height() const
+{
+    return m_height;
 }
 
 const mat4&
@@ -58,6 +72,9 @@ Camera::proj() const
 void
 Camera::resize(float width, float height)
 {
+    m_width = width;
+    m_height = height;
+    
     m_aspect = width/height;
     m_projMatrix = createPerspectiveMatrix(m_aspect, m_angle, m_near, m_far);
     m_projMatrixDirty = false;
