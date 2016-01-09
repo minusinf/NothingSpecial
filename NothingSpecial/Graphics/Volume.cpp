@@ -32,6 +32,7 @@ Volume::Volume(std::shared_ptr<Math::Grid3D<float>> data):
                      {GL_TEXTURE_WRAP_R, GL_REPEAT}})
 {
     m_textureBuffer.set((*m_data).raw(), (*m_data).dimX(), (*m_data).dimY(), (*m_data).dimZ());
+    float max = std::max((*m_data).dimX(), std::max((*m_data).dimY(), (*m_data).dimZ()));
     GLWrapper::GLErrorThrow();
     
     glGenFramebuffers(1, &m_frameBufferIdx);
@@ -45,6 +46,9 @@ Volume::Volume(std::shared_ptr<Math::Grid3D<float>> data):
     m_ModelMatrix(2,3) = -0.5;
     
     // Scale the volume
+    m_ModelMatrix(0,0) = (*m_data).dimX()/max;
+    m_ModelMatrix(1,1) = (*m_data).dimY()/max;
+    m_ModelMatrix(2,2) = (*m_data).dimZ()/max;
     m_ModelMatrix *= mat4::Identity()*8.0;
     m_ModelMatrix(3,3) = 1.0;
 }
