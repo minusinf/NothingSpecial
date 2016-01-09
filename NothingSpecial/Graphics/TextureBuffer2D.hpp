@@ -47,7 +47,7 @@ namespace Graphics
         
         void SetData(const T* data, size_t x, size_t y);
         
-        void Map(uint textureUnit);
+        virtual void bind() const;
         
         virtual GL::ShaderVariableType shaderVariableType() const
         {
@@ -57,11 +57,9 @@ namespace Graphics
     };
     
     template<typename T, TextureFormat FORMAT> void
-    TextureBuffer2D<T,FORMAT>::Map(uint32_t textureUnit)
+    TextureBuffer2D<T,FORMAT>::bind() const
     {
-        glActiveTexture(GL_TEXTURE0 + textureUnit);
         glBindTexture(GL_TEXTURE_2D, m_texture);
-        glActiveTexture(GL_TEXTURE0);
     }
     
     template<typename T, TextureFormat FORMAT> void

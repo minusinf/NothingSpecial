@@ -50,6 +50,7 @@ namespace Graphics {
             return m_texture;
         }
         
+        virtual void bind() const = 0;
         virtual GL::ShaderVariableType shaderVariableType() const = 0;
     protected:
         OpenGLTextureBufferID_t m_texture;

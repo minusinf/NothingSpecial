@@ -364,7 +364,10 @@ bool Shader::setUniform(const std::string &name, const TextureBuffer* tex) const
         assert(info.Type == tex->shaderVariableType());
         assert(info.Length == 1);
         assert(Shader::ms_boundShader == this);
-        glUniform1i(info.Location,GL_TEXTURE0+getSetTextureUnit(name));
+        uint32_t textureUnit = getSetTextureUnit(name);
+        glActiveTexture(GL_TEXTURE0 + textureUnit);
+        tex->bind();
+        glUniform1i(info.Location,textureUnit);
         return true;
     }
     catch (std::out_of_range& oor)

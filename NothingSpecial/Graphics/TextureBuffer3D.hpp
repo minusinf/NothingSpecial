@@ -53,7 +53,7 @@ namespace Graphics {
         // RAW Data: HELL YEAH
         void set(const T* data, size_t x, size_t y, size_t z);
         
-        void map(GLuint textureUnit);
+        virtual void bind() const;
         
         virtual GL::ShaderVariableType shaderVariableType() const
         {
@@ -62,20 +62,17 @@ namespace Graphics {
     };
     
     template<typename T, TextureFormat FORMAT> void
-    TextureBuffer3D<T, FORMAT>::map(uint32_t textureUnit)
+    TextureBuffer3D<T, FORMAT>::bind() const
     {
-        glActiveTexture(GL_TEXTURE0 + textureUnit);
         glBindTexture(GL_TEXTURE_3D, m_texture);
-        glActiveTexture(GL_TEXTURE0);
     }
     
     template<typename T, TextureFormat FORMAT> void
     TextureBuffer3D<T, FORMAT>::set(const T* data, size_t x, size_t y, size_t z)
     {
-        glBindTexture(GL_TEXTURE_3D, m_texture);
+        bind();
         GLWrapper::GLErrorThrow();
         setTextureParameters(GL_TEXTURE_3D);
-        
 //        glPixelStorei(GL_UNPACK_ALIGNMENT,1);
         glTexImage3D(GL_TEXTURE_3D,
                      0,
@@ -90,7 +87,7 @@ namespace Graphics {
                      GL::TypeInfo<T>::ElementType,
                      data);
         GLWrapper::GLErrorThrow();
-        
+
         glBindTexture(GL_TEXTURE_3D, 0);
         GLWrapper::GLErrorThrow();
     }

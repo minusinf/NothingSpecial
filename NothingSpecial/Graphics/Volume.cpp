@@ -19,7 +19,9 @@ Volume::Volume(std::shared_ptr<Math::Grid3D<uint8_t>> data):
                    BASE_PATH SHADER_PATH "volume.frag"),
     m_shaderBackface(BASE_PATH SHADER_PATH "backfaceMap.vert",
                      BASE_PATH SHADER_PATH "backfaceMap.frag"),
-    m_textureBackface({{GL_TEXTURE_WRAP_S, GL_REPEAT},
+    m_textureBackface({{GL_TEXTURE_BASE_LEVEL, 0},
+                    {GL_TEXTURE_MAX_LEVEL, 0},
+                    {GL_TEXTURE_WRAP_S, GL_REPEAT},
                       {GL_TEXTURE_WRAP_T, GL_REPEAT},
                       {GL_TEXTURE_MIN_FILTER, GL_NEAREST},
                       {GL_TEXTURE_MAG_FILTER, GL_NEAREST}}),
@@ -94,13 +96,10 @@ Volume::renderVolume(const Graphics::Camera &camera) const
     GLWrapper::GLErrorThrow();
     
     m_cubeFacesVBO.bind();
-    GLWrapper::GLErrorThrow();
-
     glDrawElements(GL_TRIANGLES, m_cubeFacesVBO.length(), GL_UNSIGNED_INT, (void*) NULL);
     GLWrapper::GLErrorThrow();
-    // In case of error: Work around the driver bug: http://stackoverflow.com/questions/12555165/incorrect-value-from-glgetprogramivprogram-gl-active-uniform-max-length-outpa
+
     m_cubeFacesVBO.unbind();
-//    GLWrapper::GLErrorThrow();
     
     m_shaderVolume.unbind();
     
