@@ -32,7 +32,7 @@ Camera::Camera(float width, float height, float angle, float near, float far):
     m_viewMatrixDirty(true),
     m_projMatrix(mat4::Identity()),
     m_projMatrixDirty(true),
-    m_position(10,10,10),
+    m_position(2,2,2),
     m_up(0,1,0),
     m_front(-m_position.normalized()), // Point at 0,0,0
     m_rotationCenter(0,0,0)
