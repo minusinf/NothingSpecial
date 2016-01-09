@@ -11,6 +11,8 @@
 
 #include "base.hpp"
 #include "Scene.hpp"
+#include "Mesh.hpp"
+
 namespace Graphics {
     class MeshFactory
     {
@@ -19,6 +21,8 @@ namespace Graphics {
         static void loadObj(Scene& scene, const std::string& path);
         static void addCube(Scene& scene, bool drawAsPolygon);
         static void addCube(Scene& scene);
+        static std::shared_ptr<Graphics::Mesh> createCube();
+        static std::shared_ptr<Graphics::Mesh> createCube(bool drawAsPolygon);
     };
 }
 #endif /* defined(__NothingSpecial__MeshFactory__) */

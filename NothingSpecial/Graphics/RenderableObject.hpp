@@ -23,8 +23,9 @@ namespace Graphics {
         virtual ~RenderableObject();
         virtual void render(const Camera& camera) const = 0;
         virtual const mat4& modelMatrix() const;
-    protected:
         virtual mat4& modelMatrix();
+
+    protected:
         mat4 m_ModelMatrix = mat4::Identity();
     };
 }

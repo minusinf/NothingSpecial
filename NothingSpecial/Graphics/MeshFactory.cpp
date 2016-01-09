@@ -83,19 +83,30 @@ MeshFactory::loadObj(Scene &scene, const std::string &path,  bool drawAsPolygon)
     }
 }
 
-void
-MeshFactory::addCube(Scene &scene, bool drawAsPolygon)
+std::shared_ptr<Graphics::Mesh>
+MeshFactory::createCube()
+{
+    return createCube(false);
+}
+
+std::shared_ptr<Graphics::Mesh>
+MeshFactory::createCube(bool drawAsPolygon)
 {
     std::vector<vec3> vertices;
     std::vector<face> faces;
     Math::Geometry::generateCube(vertices, faces);
-
+    
     std::vector<vec4> colors(vertices.size(), vec4(1,1,1,1));
+    return std::make_shared<Mesh>(std::move(vertices),
+                                  std::move(colors),
+                                  std::move(faces),
+                                  drawAsPolygon);
+}
 
-    scene.addObject(std::make_shared<Mesh>(std::move(vertices),
-                                           std::move(colors),
-                                           std::move(faces),
-                                           drawAsPolygon));
+void
+MeshFactory::addCube(Scene &scene, bool drawAsPolygon)
+{
+    scene.addObject(createCube(drawAsPolygon));
 }
 
 void

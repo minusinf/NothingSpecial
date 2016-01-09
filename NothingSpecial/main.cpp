@@ -33,6 +33,9 @@ createScene()
 
     auto vol = std::make_shared<Graphics::Volume>(volData);
     scene->addObject(vol);
+    auto mesh = Graphics::MeshFactory::createCube(true);
+    mesh->modelMatrix() = vol->modelMatrix();
+//    scene->addObject(mesh);
 //    scene->addObject(std::make_shared<Graphics::Mesh>());
 //    Graphics::MeshFactory::loadObj(*scene, "/Users/pascal/cube.obj", false);
 //    Graphics::MeshFactory::addCube(*scene);
