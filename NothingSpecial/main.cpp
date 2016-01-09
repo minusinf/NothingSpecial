@@ -24,7 +24,11 @@ std::shared_ptr<Scene>
 createScene()
 {
     auto scene = std::make_shared<Scene>();
-    auto volData = VolumeReader::readRaw("/users/pascal/golfball0_0-512x256x256.raw", vec3(512,256,256));
+    auto volData = VolumeReader<uint8_t>::readRaw("/users/pascal/bonsai_256x256x256.raw", vec3(256,256,256));
+//    auto volData = VolumeReader<uint8_t>::readRaw("/users/pascal/skull_256x256x256.raw", vec3(256,256,256));
+
+//    auto volData = VolumeReader<uint16_t>::readRaw("/users/pascal/walnut_400x296x352_ushort.raw", vec3(400,296,352));
+//    auto volData = VolumeReader<uint8_t>::readRaw("/users/pascal/golfball0_0-512x256x256.raw", vec3(512,256,256));
 //    auto volData = VolumeReader::createBox(vec3(16,256,256));
 
     auto vol = std::make_shared<Graphics::Volume>(volData);
