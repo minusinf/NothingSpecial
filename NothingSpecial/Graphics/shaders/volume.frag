@@ -5,7 +5,6 @@ uniform sampler2D uBackFace;
 uniform sampler3D uVolumeTex;
 
 in vec3 exPosition;
-in vec3 tfPosition;
 
 out vec4 outColor;
 
@@ -13,6 +12,7 @@ out vec4 outColor;
 void main(void)
 {
     float stepSize = 0.001;
+
     vec3 sampleColor = vec3(1,1,1);
     
     vec3 backFace = texture(uBackFace, gl_FragCoord.st/uWindowSize).xyz;
@@ -24,19 +24,32 @@ void main(void)
 
     vec3 c = frontFace;
     
-    vec4 color = vec4(0);
-    for (int i=0; i<16000; i++)
+    vec3 color = vec3(0);
+    float alpha = 0.0;
+    float absorption = 0.02;
+    
+    for (int i=0; i<=1600; ++i)
     {
+        // Front to back composition:
+        // http://http.developer.nvidia.com/GPUGems/gpugems_ch39.html
+        // Acceleration Techniques for GPU-based Volume Rendering
         float intensity = texture(uVolumeTex, c).x;
-        color.xyz += intensity*sampleColor;
-        color.w += intensity;
+        float radiance = 1.0 - pow(1.0-intensity, stepSize*10);
+        color += (1.0-alpha)*radiance*sampleColor;
+        alpha += (1.0-alpha)*radiance;
+
+        if (alpha >= 1.0)
+        {
+            alpha = 1.0;
+            break;
+        }
         
         c += dir;
-        if (i * stepSize >= len)
+        if (i * stepSize > len)
         {
             break;
         }
     }
-    outColor = color;
-    outColor.w = 1.0;
+    outColor.xyz = color;
+    outColor.w = alpha;
 }
