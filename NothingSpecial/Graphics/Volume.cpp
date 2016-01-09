@@ -38,6 +38,15 @@ Volume::Volume(std::shared_ptr<Math::Grid3D<float>> data):
     GLWrapper::GLErrorThrow();
 
     initCube();
+    
+    // Center the volume
+    m_ModelMatrix(0,3) = -0.5;
+    m_ModelMatrix(1,3) = -0.5;
+    m_ModelMatrix(2,3) = -0.5;
+    
+    // Scale the volume
+    m_ModelMatrix *= mat4::Identity()*8.0;
+    m_ModelMatrix(3,3) = 1.0;
 }
 
 void

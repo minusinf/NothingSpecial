@@ -34,6 +34,12 @@ void main(void)
         // http://http.developer.nvidia.com/GPUGems/gpugems_ch39.html
         // Acceleration Techniques for GPU-based Volume Rendering
         float intensity = texture(uVolumeTex, c).x;
+        c += dir;
+        if (intensity < 0.1)
+        {
+            continue;
+        }
+
         float radiance = 1.0 - pow(1.0-intensity, stepSize*10);
         color += (1.0-alpha)*radiance*sampleColor;
         alpha += (1.0-alpha)*radiance;
@@ -44,7 +50,6 @@ void main(void)
             break;
         }
         
-        c += dir;
         if (i * stepSize > len)
         {
             break;
