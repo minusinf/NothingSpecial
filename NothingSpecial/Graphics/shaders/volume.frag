@@ -23,7 +23,11 @@ void main(void)
     dir = normalize(dir)*stepSize;
 
     vec3 c = frontFace;
-    
+    if (abs(len) < 1e-2 )
+    {
+        outColor = vec4(1,1,1,1);
+        return;
+    }
     vec3 color = vec3(0);
     float alpha = 0.0;
     float absorption = 0.02;
