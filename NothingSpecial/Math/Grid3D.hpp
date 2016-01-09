@@ -18,10 +18,20 @@ namespace Math {
     {
     public:
         Grid3D(size_t x, size_t y, size_t z);
-        Grid3D(const Grid3D&);
-        Grid3D(Grid3D&&);
-        Grid3D& operator=(const Grid3D&);
-        Grid3D& operator=(Grid3D&&);
+        Grid3D(const Grid3D& other);
+        Grid3D(Grid3D&& other);
+        Grid3D& operator=(const Grid3D& other);
+        Grid3D& operator=(Grid3D&& other);
+        
+        // Typecasting constructor
+        template<typename From>
+        Grid3D(const Grid3D<From>* other):Grid3D(other->dimX(), other->dimY(), other->dimZ())
+        {
+            for (size_t i=0; i<count(); ++i)
+            {
+                operator[](i) = (T) (*other)[i];
+            }
+        }
         
         const T& operator()(size_t i, size_t j, size_t k) const
         {
@@ -106,7 +116,7 @@ namespace Math {
     {
         std::memcpy(m_data.get(), other.m_data.get(), count()*sizeof(T));
     }
-    
+
     template<typename T>
     Grid3D<T>::Grid3D(Grid3D&& other):
         m_x(std::move(other.m_x)),

@@ -15,7 +15,8 @@
 class VolumeReader
 {
 public:
-    static std::shared_ptr<Math::Grid3D<uint8_t>> readRaw(const std::string& filename, const vec3& extents);
+    static std::shared_ptr<Math::Grid3D<float>> readRaw(const std::string& filename, const vec3& extents);
+    static std::shared_ptr<Math::Grid3D<float>> createBox(const vec3& extents);
 };
 
 #endif /* VolumeReader_hpp */

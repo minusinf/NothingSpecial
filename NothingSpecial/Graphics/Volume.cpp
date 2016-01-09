@@ -13,7 +13,7 @@ using namespace Graphics;
 
 #define SHADER_PATH "Graphics/shaders/"
 
-Volume::Volume(std::shared_ptr<Math::Grid3D<uint8_t>> data):
+Volume::Volume(std::shared_ptr<Math::Grid3D<float>> data):
     m_data(data),
     m_shaderVolume(BASE_PATH SHADER_PATH "volume.vert",
                    BASE_PATH SHADER_PATH "volume.frag"),
@@ -31,10 +31,12 @@ Volume::Volume(std::shared_ptr<Math::Grid3D<uint8_t>> data):
                      {GL_TEXTURE_WRAP_T, GL_REPEAT},
                      {GL_TEXTURE_WRAP_R, GL_REPEAT}})
 {
-    glGenFramebuffers(1, &m_frameBufferIdx);
-    GLWrapper::GLErrorThrow();
     m_textureBuffer.set((*m_data).raw(), (*m_data).dimX(), (*m_data).dimY(), (*m_data).dimZ());
     GLWrapper::GLErrorThrow();
+    
+    glGenFramebuffers(1, &m_frameBufferIdx);
+    GLWrapper::GLErrorThrow();
+
     initCube();
 }
 
