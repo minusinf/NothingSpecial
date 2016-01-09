@@ -75,48 +75,48 @@ namespace Graphics
             mat2_t = GL_FLOAT_MAT2,
             mat3_t = GL_FLOAT_MAT3,
             mat4_t = GL_FLOAT_MAT4,
-            //			GL_FLOAT_MAT2x3	mat2x3
-            //			GL_FLOAT_MAT2x4	mat2x4
-            //			GL_FLOAT_MAT3x2	mat3x2
-            //			GL_FLOAT_MAT3x4	mat3x4
-            //			GL_FLOAT_MAT4x2	mat4x2
-            //			GL_FLOAT_MAT4x3	mat4x3
+            mat2x3_t = GL_FLOAT_MAT2x3,
+            mat2x4_t = GL_FLOAT_MAT2x4,
+            mat3x2_t = GL_FLOAT_MAT3x2,
+            mat3x4_t = GL_FLOAT_MAT3x4,
+            mat4x2_t = GL_FLOAT_MAT4x2,
+            mat4x3_t = GL_FLOAT_MAT4x3,
             sampler1D_t = GL_SAMPLER_1D,
             sampler2D_t = GL_SAMPLER_2D,
             sampler3D_t = GL_SAMPLER_3D,
-            //			GL_SAMPLER_CUBE	samplerCube
-            //			GL_SAMPLER_1D_SHADOW	sampler1DShadow
-            //			GL_SAMPLER_2D_SHADOW	sampler2DShadow
-            //			GL_SAMPLER_1D_ARRAY	sampler1DArray
-            //			GL_SAMPLER_2D_ARRAY	sampler2DArray
-            //			GL_SAMPLER_1D_ARRAY_SHADOW	sampler1DArrayShadow
-            //			GL_SAMPLER_2D_ARRAY_SHADOW	sampler2DArrayShadow
-            //			GL_SAMPLER_2D_MULTISAMPLE	sampler2DMS
-            //			GL_SAMPLER_2D_MULTISAMPLE_ARRAY	sampler2DMSArray
-            //			GL_SAMPLER_CUBE_SHADOW	samplerCubeShadow
-            //			GL_SAMPLER_BUFFER	samplerBuffer
-            //			GL_SAMPLER_2D_RECT	sampler2DRect
-            //			GL_SAMPLER_2D_RECT_SHADOW	sampler2DRectShadow
-            //			GL_INT_SAMPLER_1D	isampler1D
-            //			GL_INT_SAMPLER_2D	isampler2D
-            //			GL_INT_SAMPLER_3D	isampler3D
-            //			GL_INT_SAMPLER_CUBE	isamplerCube
-            //			GL_INT_SAMPLER_1D_ARRAY	isampler1DArray
-            //			GL_INT_SAMPLER_2D_ARRAY	isampler2DArray
-            //			GL_INT_SAMPLER_2D_MULTISAMPLE	isampler2DMS
-            //			GL_INT_SAMPLER_2D_MULTISAMPLE_ARRAY	isampler2DMSArray
-            //			GL_INT_SAMPLER_BUFFER	isamplerBuffer
-            //			GL_INT_SAMPLER_2D_RECT	isampler2DRect
-            //			GL_UNSIGNED_INT_SAMPLER_1D	usampler1D
-            //			GL_UNSIGNED_INT_SAMPLER_2D	usampler2D
-            //			GL_UNSIGNED_INT_SAMPLER_3D	usampler3D
-            //			GL_UNSIGNED_INT_SAMPLER_CUBE	usamplerCube
-            //			GL_UNSIGNED_INT_SAMPLER_1D_ARRAY	usampler2DArray
-            //			GL_UNSIGNED_INT_SAMPLER_2D_ARRAY	usampler2DArray
-            //			GL_UNSIGNED_INT_SAMPLER_2D_MULTISAMPLE	usampler2DMS
-            //			GL_UNSIGNED_INT_SAMPLER_2D_MULTISAMPLE_ARRAY	usampler2DMSArray
-            //			GL_UNSIGNED_INT_SAMPLER_BUFFER	usamplerBuffer
-            //			GL_UNSIGNED_INT_SAMPLER_2D_RECT	usampler2DRect
+            samplerCube_t = GL_SAMPLER_CUBE,
+            sampler1DShadow_t = GL_SAMPLER_1D_SHADOW,
+            sampler2DShadow_t = GL_SAMPLER_2D_SHADOW,
+            sampler1DArray_t = GL_SAMPLER_1D_ARRAY,
+            sampler2DArray_t = GL_SAMPLER_2D_ARRAY,
+            sampler1DArrayShadow_t = GL_SAMPLER_1D_ARRAY_SHADOW,
+            sampler2DArrayShadow_t = GL_SAMPLER_2D_ARRAY_SHADOW,
+            sampler2DMS_t = GL_SAMPLER_2D_MULTISAMPLE,
+            sampler2DMSArray_t = GL_SAMPLER_2D_MULTISAMPLE_ARRAY,
+            samplerCubeShadow_t = GL_SAMPLER_CUBE_SHADOW,
+            samplerBuffer_t = GL_SAMPLER_BUFFER,
+            sampler2DRect_t = GL_SAMPLER_2D_RECT,
+            sampler2DRectShadow_t = GL_SAMPLER_2D_RECT_SHADOW,
+            isampler1D_t = GL_INT_SAMPLER_1D,
+            isampler2D_t = GL_INT_SAMPLER_2D,
+            isampler3D_t = GL_INT_SAMPLER_3D,
+            isamplerCube_t = GL_INT_SAMPLER_CUBE,
+            isampler1DArray_t = GL_INT_SAMPLER_1D_ARRAY,
+            isampler2DArray_t = GL_INT_SAMPLER_2D_ARRAY,
+            isampler2DMS_t = GL_INT_SAMPLER_2D_MULTISAMPLE,
+            isampler2DMSArray_t = GL_INT_SAMPLER_2D_MULTISAMPLE_ARRAY,
+            isamplerBuffer_t = GL_INT_SAMPLER_BUFFER,
+            isampler2DRect_t = GL_INT_SAMPLER_2D_RECT,
+            usampler1D_t = GL_UNSIGNED_INT_SAMPLER_1D,
+            usampler2D_t = GL_UNSIGNED_INT_SAMPLER_2D,
+            usampler3D_t = GL_UNSIGNED_INT_SAMPLER_3D,
+            usamplerCube_t = GL_UNSIGNED_INT_SAMPLER_CUBE,
+            usampler1DArray_t = GL_UNSIGNED_INT_SAMPLER_1D_ARRAY,
+            usampler2DArray_t = GL_UNSIGNED_INT_SAMPLER_2D_ARRAY,
+            usampler2DMS_t = GL_UNSIGNED_INT_SAMPLER_2D_MULTISAMPLE,
+            usampler2DMSArray_t = GL_UNSIGNED_INT_SAMPLER_2D_MULTISAMPLE_ARRAY,
+            usamplerBuffer_t = GL_UNSIGNED_INT_SAMPLER_BUFFER,
+            usampler2DRect_t = GL_UNSIGNED_INT_SAMPLER_2D_RECT,
         };
         
         std::string StringOf(ShaderVariableType e);
