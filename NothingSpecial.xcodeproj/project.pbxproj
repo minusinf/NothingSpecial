@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5021DBC61D7C2A720060E12E /* libGLEW.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5021DBC51D7C2A720060E12E /* libGLEW.dylib */; };
+		5021DBC81D7C2B7A0060E12E /* libglfw3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5021DBC71D7C2B7A0060E12E /* libglfw3.dylib */; };
 		5035DDCE1C32075000850EEB /* Camera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5035DDCC1C32075000850EEB /* Camera.cpp */; };
 		5035DDD21C32276300850EEB /* Geometry.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5035DDD01C32276300850EEB /* Geometry.cpp */; };
 		5035DDD91C33557900850EEB /* Volume.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5035DDD71C33557900850EEB /* Volume.cpp */; };
@@ -20,11 +22,9 @@
 		507CEE111BACB39500D644F7 /* Mesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 507CEE0F1BACB39500D644F7 /* Mesh.cpp */; };
 		507CEE151BACB9E700D644F7 /* RenderableObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 507CEE131BACB9E700D644F7 /* RenderableObject.cpp */; };
 		507CEE1A1BACC0D700D644F7 /* tiny_obj_loader.cc in Sources */ = {isa = PBXBuildFile; fileRef = 507CEE181BACC0D700D644F7 /* tiny_obj_loader.cc */; };
-		507CEE201BAD71AC00D644F7 /* libGLEW.1.12.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 507CEE1F1BAD71AC00D644F7 /* libGLEW.1.12.0.dylib */; };
 		507CEE231BAEC7C900D644F7 /* GLHelper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 507CEE211BAEC7C900D644F7 /* GLHelper.cpp */; };
 		5096EA1B1C39CDE600C2C39B /* VolumeReader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5096EA191C39CDE600C2C39B /* VolumeReader.cpp */; };
 		50A75CC31BB345D100723F4D /* MeshFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50A75CC11BB345D100723F4D /* MeshFactory.cpp */; };
-		50F975341BDAC6BE002DC643 /* libglfw3.3.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 50F975331BDAC6BE002DC643 /* libglfw3.3.1.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -40,6 +40,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		5021DBC51D7C2A720060E12E /* libGLEW.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libGLEW.dylib; path = /usr/local/lib/libGLEW.dylib; sourceTree = "<group>"; };
+		5021DBC71D7C2B7A0060E12E /* libglfw3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libglfw3.dylib; path = /usr/local/lib/libglfw3.dylib; sourceTree = "<group>"; };
 		5035DDCC1C32075000850EEB /* Camera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Camera.cpp; path = Graphics/Camera.cpp; sourceTree = "<group>"; };
 		5035DDCD1C32075000850EEB /* Camera.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Camera.hpp; path = Graphics/Camera.hpp; sourceTree = "<group>"; };
 		5035DDD01C32276300850EEB /* Geometry.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Geometry.cpp; path = Math/Geometry.cpp; sourceTree = "<group>"; };
@@ -77,7 +79,6 @@
 		507CEE181BACC0D700D644F7 /* tiny_obj_loader.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = tiny_obj_loader.cc; path = external/tinyobjloader/tiny_obj_loader.cc; sourceTree = "<group>"; };
 		507CEE191BACC0D700D644F7 /* tiny_obj_loader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = tiny_obj_loader.h; path = external/tinyobjloader/tiny_obj_loader.h; sourceTree = "<group>"; };
 		507CEE1E1BACC2E300D644F7 /* GraphicsException.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = GraphicsException.hpp; path = Graphics/GraphicsException.hpp; sourceTree = "<group>"; };
-		507CEE1F1BAD71AC00D644F7 /* libGLEW.1.12.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libGLEW.1.12.0.dylib; path = ../../../../usr/local/Cellar/glew/1.12.0/lib/libGLEW.1.12.0.dylib; sourceTree = "<group>"; };
 		507CEE211BAEC7C900D644F7 /* GLHelper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GLHelper.cpp; path = Graphics/GLHelper.cpp; sourceTree = "<group>"; };
 		507CEE221BAEC7C900D644F7 /* GLHelper.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GLHelper.hpp; path = Graphics/GLHelper.hpp; sourceTree = "<group>"; };
 		508586B61BAF34200034647B /* VertexBuffer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = VertexBuffer.hpp; path = Graphics/VertexBuffer.hpp; sourceTree = "<group>"; };
@@ -89,7 +90,6 @@
 		50A75CC21BB345D100723F4D /* MeshFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MeshFactory.h; path = Graphics/MeshFactory.h; sourceTree = "<group>"; };
 		50EF06771C3B00000090E1C7 /* backfaceMap.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = backfaceMap.vert; path = Graphics/shaders/backfaceMap.vert; sourceTree = "<group>"; };
 		50EF06781C3B00000090E1C7 /* backfaceMap.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = backfaceMap.frag; path = Graphics/shaders/backfaceMap.frag; sourceTree = "<group>"; };
-		50F975331BDAC6BE002DC643 /* libglfw3.3.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libglfw3.3.1.dylib; path = ../../../../usr/local/Cellar/glfw3/3.1.2/lib/libglfw3.3.1.dylib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,8 +97,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				50F975341BDAC6BE002DC643 /* libglfw3.3.1.dylib in Frameworks */,
-				507CEE201BAD71AC00D644F7 /* libGLEW.1.12.0.dylib in Frameworks */,
+				5021DBC81D7C2B7A0060E12E /* libglfw3.dylib in Frameworks */,
+				5021DBC61D7C2A720060E12E /* libGLEW.dylib in Frameworks */,
 				507CEDFB1BAC987F00D644F7 /* OpenCL.framework in Frameworks */,
 				507CEDF91BAC987700D644F7 /* OpenGL.framework in Frameworks */,
 			);
@@ -121,8 +121,8 @@
 		507CEDE31BAC970C00D644F7 = {
 			isa = PBXGroup;
 			children = (
-				50F975331BDAC6BE002DC643 /* libglfw3.3.1.dylib */,
-				507CEE1F1BAD71AC00D644F7 /* libGLEW.1.12.0.dylib */,
+				5021DBC71D7C2B7A0060E12E /* libglfw3.dylib */,
+                5021DBC51D7C2A720060E12E /* libGLEW.dylib */,
 				507CEDFA1BAC987F00D644F7 /* OpenCL.framework */,
 				507CEDF81BAC987700D644F7 /* OpenGL.framework */,
 				507CEDEE1BAC970C00D644F7 /* NothingSpecial */,
@@ -378,9 +378,7 @@
 				HEADER_SEARCH_PATHS = /usr/local/include;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					/usr/local/Cellar/glfw3/3.1.1/lib,
-					/usr/local/Cellar/glew/1.12.0/lib,
-					/usr/local/Cellar/glfw3/3.1.2/lib,
+					/usr/local/lib,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -392,9 +390,7 @@
 				HEADER_SEARCH_PATHS = /usr/local/include;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					/usr/local/Cellar/glfw3/3.1.1/lib,
-					/usr/local/Cellar/glew/1.12.0/lib,
-					/usr/local/Cellar/glfw3/3.1.2/lib,
+					/usr/local/lib,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
